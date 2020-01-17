@@ -1,0 +1,15 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.connector.frontstore.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.connector.frontstore.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.connector.frontstore.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.connector.entities.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.connector.intefaces.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.connector.entities.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.connector.intefaces.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\obj\Release\netstandard2.0\mialco.shopping.connector.frontstore.csprojResolveAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\obj\Release\netstandard2.0\mialco.shopping.connector.frontstore.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\obj\Release\netstandard2.0\mialco.shopping.connector.frontstore.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\obj\Release\netstandard2.0\mialco.shopping.connector.frontstore.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\obj\Release\netstandard2.0\mialco.shopping.connector.frontstore.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.frontstore\obj\Release\netstandard2.0\mialco.shopping.connector.frontstore.pdb

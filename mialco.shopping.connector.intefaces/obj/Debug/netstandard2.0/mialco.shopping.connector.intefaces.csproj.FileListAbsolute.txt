@@ -1,0 +1,9 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\bin\Debug\netstandard2.0\mialco.shopping.connector.intefaces.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\bin\Debug\netstandard2.0\mialco.shopping.connector.intefaces.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\bin\Debug\netstandard2.0\mialco.shopping.connector.intefaces.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\obj\Debug\netstandard2.0\mialco.shopping.connector.intefaces.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\obj\Debug\netstandard2.0\mialco.shopping.connector.intefaces.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\obj\Debug\netstandard2.0\mialco.shopping.connector.intefaces.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\obj\Debug\netstandard2.0\mialco.shopping.connector.intefaces.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\obj\Debug\netstandard2.0\mialco.shopping.connector.intefaces.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.intefaces\obj\Debug\netstandard2.0\mialco.shopping.connector.intefaces.csprojAssemblyReference.cache

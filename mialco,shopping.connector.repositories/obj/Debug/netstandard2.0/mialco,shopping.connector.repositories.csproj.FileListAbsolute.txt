@@ -1,0 +1,17 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco,shopping.connector.repositories.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco,shopping.connector.repositories.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco,shopping.connector.repositories.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\obj\Debug\netstandard2.0\mialco,shopping.connector.repositories.csprojResolveAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\obj\Debug\netstandard2.0\mialco,shopping.connector.repositories.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\obj\Debug\netstandard2.0\mialco,shopping.connector.repositories.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\obj\Debug\netstandard2.0\mialco,shopping.connector.repositories.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\obj\Debug\netstandard2.0\mialco,shopping.connector.repositories.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\obj\Debug\netstandard2.0\mialco,shopping.connector.repositories.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco.shopping.connector.entities.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco.shopping.connector.frontstore.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco.shopping.connector.intefaces.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco.shopping.connector.frontstore.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco.shopping.connector.intefaces.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco,shopping.connector.repositories\bin\Debug\netstandard2.0\mialco.shopping.connector.entities.pdb

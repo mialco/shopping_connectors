@@ -1,0 +1,14 @@
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Debug\netstandard2.0\GoogleAdFeed.csprojAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Debug\netstandard2.0\GoogleAdFeed.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Debug\netstandard2.0\GoogleAdFeed.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Debug\netstandard2.0\GoogleAdFeed.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Debug\netstandard2.0\GoogleAdFeed.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Debug\netstandard2.0\GoogleAdFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Debug\netstandard2.0\GoogleAdFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.dll
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.objectvalues.dll
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.pdb
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.objectvalues.pdb
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Debug\netstandard2.0\GoogleAdFeed.csproj.CopyComplete
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Debug\netstandard2.0\GoogleAdFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Debug\netstandard2.0\GoogleAdFeed.pdb

@@ -1,0 +1,9 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Debug\netstandard2.0\mialco.shopping.objectvalues.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Debug\netstandard2.0\mialco.shopping.objectvalues.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Debug\netstandard2.0\mialco.shopping.objectvalues.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Debug\netstandard2.0\mialco.shopping.objectvalues.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Debug\netstandard2.0\mialco.shopping.objectvalues.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Debug\netstandard2.0\mialco.shopping.objectvalues.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Debug\netstandard2.0\mialco.shopping.objectvalues.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Debug\netstandard2.0\mialco.shopping.objectvalues.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Debug\netstandard2.0\mialco.shopping.objectvalues.csprojAssemblyReference.cache

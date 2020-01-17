@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\mialco.messagehub\mialco.messagehub.csproj" />
+    <ProjectReference Include="..\mialco.shopping.repositories\mialco.shopping.repositories.csproj" />
+    <ProjectReference Include="..\mialco.storage.abstracts\mialco.storage.abstracts.csproj" />
+    <ProjectReference Include="..\mialco.utilities\mialco.utilities.csproj" />
+    <ProjectReference Include="..\mialco.workflow.entities\mialco.workflow.entities.csproj" />
+  </ItemGroup>
+
+</Project>
