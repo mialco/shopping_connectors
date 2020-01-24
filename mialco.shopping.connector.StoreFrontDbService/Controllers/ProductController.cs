@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using mialco.shopping.connector.entities;
-using mialco.shopping.connector.entities.abstraction;
+using mialco.shopping.entities.abstraction;
 using mialco.shopping.connector.frontstore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,12 +23,12 @@ namespace mialco.shopping.connector.StoreFrontDbService.Controllers
 
         // GET: api/Product/5
         [HttpGet("{id}", Name = "Get")]
-        public Entity Get(int id)
+        public Product Get(int id)
         {
 			var p = new Product();
-			p.AssignId(22);
-			p.Description = "P33 Description";
-			p.Name = $"Product{id}";
+			//p.AssignId(22);
+			//p.Description = "P33 Description";
+			//p.Name = $"Product{id}";
 			//p.LongDescription = $"Long Description {id}";
 
 			return p;

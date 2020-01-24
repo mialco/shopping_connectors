@@ -1,4 +1,4 @@
-﻿using mialco.shopping.connector.entities.abstraction;
+﻿using mialco.shopping.entities.abstraction;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +10,7 @@ namespace mialco.shopping.connector.entities
 		public GenericProductEntity() : base()
 		{ }
 
-		public GenericProductEntity(long id):base(id)
+		public GenericProductEntity(int id):base(id)
 		{
 			
 		}

@@ -1,5 +1,5 @@
 using mialco.shopping.connector.entities;
-using mialco.shopping.connector.entities.abstraction;
+using mialco.shopping.entities.abstraction;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -26,7 +26,7 @@ namespace mialco.shopping.connector.test
 		[InlineData(-1)]
 		[InlineData(-200)]
 		[InlineData(0)]
-		public void Should_Fail_If_Assign_Zero_Or_Negative_Identifier(long id)
+		public void Should_Fail_If_Assign_Zero_Or_Negative_Identifier(int id)
 		{
 			Assert.Throws<ArgumentOutOfRangeException>(()=>new GenericProductEntity(id));
 			var p = new GenericProductEntity();

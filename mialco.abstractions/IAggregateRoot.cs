@@ -1,4 +1,4 @@
-﻿using mialco.shopping.connector.entities.abstraction;
+﻿using mialco.shopping.entities.abstraction;
 using System;
 using System.Collections.Generic;
 using System.Text;

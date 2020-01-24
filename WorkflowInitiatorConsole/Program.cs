@@ -1,12 +1,10 @@
-﻿using mialco.workflow.initiator;
+﻿using mialco.shopping.connector.Orchestrator;
+using mialco.shopping.connector.StoreFront;
+using mialco.workflow.initiator;
 using mialco.workflow.manager;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using mialco.shopping.connector.frontstore.repositories;
 
 namespace WorkflowInitiatorConsole
 {
@@ -17,8 +15,15 @@ namespace WorkflowInitiatorConsole
 			Console.WriteLine("Workflow Initiator Console startting");
 			CancellationToken _cancelationToken = new CancellationToken(false);
 
-			ProductReporsitoryEF productRepositoryEF = new ProductReporsitoryEF();
-			var prods = productRepositoryEF.GetAll();
+			//ProductReporsitoryEF productRepositoryEF = new ProductReporsitoryEF();
+			//var prods = productRepositoryEF.GetAllInStore(7);
+			//StoreFrontStoreRepositoryEF storerep = new StoreFrontStoreRepositoryEF();
+
+			//var stores = storerep.GetAll();
+			//var store = storerep.GetById(7); 
+
+			var orch = new StoreFrontOrchestratorZero(7);
+			orch.Run();
 
 			WorkflowInitiator wi = new WorkflowInitiator();
 			//wi.RunWorkflowIniator();
@@ -33,6 +38,10 @@ namespace WorkflowInitiatorConsole
 				() => wm.RunWorkflow()
 				);
 			t1.Wait(_cancelationToken);
+
+
 		}
 	}
 }
+	
+

@@ -1,0 +1,9 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\bin\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\bin\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\bin\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.csprojAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.pdb

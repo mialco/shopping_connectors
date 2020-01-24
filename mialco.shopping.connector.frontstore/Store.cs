@@ -1,13 +1,17 @@
-﻿using mialco.shopping.connector.entities.abstraction;
+﻿using mialco.shopping.entities.abstraction;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace mialco.shopping.connector.frontstore
 {
-	//Category
-	public class Store: Entity
+	
+	public class Store //: Entity
 	{
+		public Store()
+		{
+			ProductStores = new List<ProductStore>();
+		}
 		public int StoreID { get; set; }
 		public string ProductionURI { get; set; }
 		public string StagingURI { get; set; }
@@ -19,7 +23,7 @@ namespace mialco.shopping.connector.frontstore
 		public string ProductionPort { get; set; }
 		public string StagingPort { get; set; }
 		public string DevelopmentPort { get; set; }
-		public virtual ICollection<ProductStore> ProductStores { get; set; }
+		public List <ProductStore> ProductStores { get; set; }
 	}
 
 }

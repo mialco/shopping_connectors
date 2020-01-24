@@ -6,4 +6,3 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstractio
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Debug\netstandard2.0\mialco.shopping.entities.abstraction.AssemblyInfo.cs
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Debug\netstandard2.0\mialco.shopping.entities.abstraction.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Debug\netstandard2.0\mialco.shopping.entities.abstraction.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Debug\netstandard2.0\mialco.shopping.entities.abstraction.csprojAssemblyReference.cache

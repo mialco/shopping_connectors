@@ -5,9 +5,10 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\bin\Releas
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\bin\Release\netstandard2.0\mialco.abstractions.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\obj\Release\netstandard2.0\mialco.workflow.entities.csprojResolveAssemblyReference.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\obj\Release\netstandard2.0\mialco.workflow.entities.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\obj\Release\netstandard2.0\mialco.workflow.entities.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\obj\Release\netstandard2.0\mialco.workflow.entities.AssemblyInfo.cs
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\obj\Release\netstandard2.0\mialco.workflow.entities.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\obj\Release\netstandard2.0\mialco.workflow.entities.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\obj\Release\netstandard2.0\mialco.workflow.entities.csprojAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.entities\obj\Release\netstandard2.0\mialco.workflow.entities.csproj.CopyComplete

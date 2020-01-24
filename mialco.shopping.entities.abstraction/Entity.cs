@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace mialco.shopping.connector.entities.abstraction
+namespace mialco.shopping.entities.abstraction
 {
 	public abstract class Entity
 	{
-		private long _id = 0;
+		private int _id = 0;
 
 		public Entity()
 		{
 		}
 
-		public Entity(long id)
+		public Entity(int id)
 		{
 			AssignId(id);
 		}
@@ -21,8 +21,17 @@ namespace mialco.shopping.connector.entities.abstraction
 		public string Description { get; set; }
 		//public string LongDescription { get; set; }
 
+		public int Id
+		{
+			get { return _id; }
 
-		public void AssignId(long id)
+			set
+			{
+				_id = value;
+			}
+		}
+
+		public void AssignId(int id)
 		{
 			if (id <= 0)
 			{

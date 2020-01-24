@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using mialco.shopping.connector.StoreFront;
 using Microsoft.AspNetCore.Mvc;
 
 namespace mialco.shopping.connector.StoreFrontDbService.Controllers
@@ -11,9 +12,12 @@ namespace mialco.shopping.connector.StoreFrontDbService.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Store1> Get()
         {
-            return new string[] { "value1", "value2" };
+			StoreFrontStoreRepositoryEF rp = new StoreFrontStoreRepositoryEF();
+			var stores = rp.GetAll();
+
+			return stores;
         }
 
         // GET api/values/5

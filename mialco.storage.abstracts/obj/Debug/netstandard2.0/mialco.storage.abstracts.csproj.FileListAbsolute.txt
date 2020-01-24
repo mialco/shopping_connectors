@@ -5,10 +5,10 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\bin\Debug\
 C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\bin\Debug\netstandard2.0\mialco.abstractions.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.csprojAssemblyReference.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.csprojAssemblyReference.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.storage.abstracts\obj\Debug\netstandard2.0\mialco.storage.abstracts.csproj.CopyComplete
