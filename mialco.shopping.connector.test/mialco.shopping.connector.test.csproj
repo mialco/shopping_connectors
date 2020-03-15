@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -15,6 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\mialco.shopping.connector.entities\mialco.shopping.connector.entities.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.Orchestrator\mialco.shopping.connector.Orchestrator.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.StoreFront\mialco.shopping.connector.StoreFront.csproj" />
   </ItemGroup>
 
 </Project>

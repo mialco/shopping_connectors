@@ -32,3 +32,13 @@ C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\obj\Debug\
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\obj\Debug\netcoreapp2.1\WorkflowInitiatorConsole.pdb
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.dll
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.pdb
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.shared.dll
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.shared.pdb
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.GoogleAdFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.GoogleAdFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\GoogleAdFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.objectvalues.dll
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\GoogleAdFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.objectvalues.pdb

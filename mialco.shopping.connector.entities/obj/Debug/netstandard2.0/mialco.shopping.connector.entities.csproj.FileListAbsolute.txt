@@ -1,0 +1,14 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\bin\Debug\netstandard2.0\mialco.shopping.connector.entities.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\bin\Debug\netstandard2.0\mialco.shopping.connector.entities.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\bin\Debug\netstandard2.0\mialco.shopping.connector.entities.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\bin\Debug\netstandard2.0\mialco.shopping.connector.intefaces.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\bin\Debug\netstandard2.0\mialco.shopping.connector.intefaces.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\obj\Debug\netstandard2.0\mialco.shopping.connector.entities.csprojAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\obj\Debug\netstandard2.0\mialco.shopping.connector.entities.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\obj\Debug\netstandard2.0\mialco.shopping.connector.entities.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\obj\Debug\netstandard2.0\mialco.shopping.connector.entities.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\obj\Debug\netstandard2.0\mialco.shopping.connector.entities.csproj.CopyComplete
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\obj\Debug\netstandard2.0\mialco.shopping.connector.entities.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.entities\obj\Debug\netstandard2.0\mialco.shopping.connector.entities.pdb

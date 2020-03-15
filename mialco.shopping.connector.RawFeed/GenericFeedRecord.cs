@@ -6,8 +6,13 @@ namespace mialco.shopping.connector.RawFeed
 {
 	public class GenericFeedRecord
 	{
-		public int Id { get; set; } 
-		public List<Dictionary<string, string>> FeedRecord { get;set;}
+		public GenericFeedRecord()
+		{
+			FeedRecord = new Dictionary<string, string>();
+		}
+		public int Id { get; set; }
+		public string ProductId { get; set; }
+		public Dictionary<string, string> FeedRecord { get;set;}
 	}
 
 	public interface IRawFeedRepository

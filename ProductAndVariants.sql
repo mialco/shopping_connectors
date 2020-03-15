@@ -1,12 +1,14 @@
 ﻿/****** Script for SelectTopNRows command from SSMS  ******/
+use irosepetals
 DECLARE @StoreId INT 
 
-SET @StoreId = 1
+SET @StoreId = 33
 
 SELECT TOP (10000000) pr.[ProductID]
+,pv.variantid
 ,st.Name as StoreName
 ,st.ProductionURI
-,pr.[ProductGUID]
+--,pr.[ProductGUID]
       ,pr.[Name]
       ,pr.[SEName]
       ,pr.[Summary]
@@ -130,6 +132,8 @@ SELECT TOP (10000000) pr.[ProductID]
   where pr.Published =1
   and st.Published = 1
   and ps.StoreId=@StoreId
+  and pr.ProductID=20803
+
   
   order by pr.ProductID
   

@@ -1469,6 +1469,26 @@
           "bin/placeholder/mialco.abstractions.dll": {}
         }
       },
+      "mialco.shopping.connector.RawFeed/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/mialco.shopping.connector.RawFeed.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.shopping.connector.RawFeed.dll": {}
+        }
+      },
+      "mialco.shopping.connector.shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/mialco.shopping.connector.shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.shopping.connector.shared.dll": {}
+        }
+      },
       "mialco.shopping.connector.StoreFront/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -5570,6 +5590,16 @@
       "path": "../mialco.abstractions/mialco.abstractions.csproj",
       "msbuildProject": "../mialco.abstractions/mialco.abstractions.csproj"
     },
+    "mialco.shopping.connector.RawFeed/1.0.0": {
+      "type": "project",
+      "path": "../mialco.shopping.connector.RawFeed/mialco.shopping.connector.RawFeed.csproj",
+      "msbuildProject": "../mialco.shopping.connector.RawFeed/mialco.shopping.connector.RawFeed.csproj"
+    },
+    "mialco.shopping.connector.shared/1.0.0": {
+      "type": "project",
+      "path": "../mialco.shopping.connector.shared/mialco.shopping.connector.shared.csproj",
+      "msbuildProject": "../mialco.shopping.connector.shared/mialco.shopping.connector.shared.csproj"
+    },
     "mialco.shopping.connector.StoreFront/1.0.0": {
       "type": "project",
       "path": "../mialco.shopping.connector.StoreFront/mialco.shopping.connector.StoreFront.csproj",
@@ -5585,7 +5615,9 @@
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.NETCore.App >= 2.1.0",
       "mialco.abstractions >= 1.0.0",
-      "mialco.shopping.connector.StoreFront >= 1.0.0"
+      "mialco.shopping.connector.RawFeed >= 1.0.0",
+      "mialco.shopping.connector.StoreFront >= 1.0.0",
+      "mialco.shopping.connector.shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5620,6 +5652,12 @@
           "projectReferences": {
             "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj": {
               "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj"
+            },
+            "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj": {
+              "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj"
+            },
+            "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.shared\\mialco.shopping.connector.shared.csproj": {
+              "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.shared\\mialco.shopping.connector.shared.csproj"
             },
             "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.StoreFront\\mialco.shopping.connector.StoreFront.csproj": {
               "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.StoreFront\\mialco.shopping.connector.StoreFront.csproj"

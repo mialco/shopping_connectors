@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v2.1": {
       "WorkflowInitiatorConsole/1.0.0": {
         "dependencies": {
+          "mialco.shopping.connector.GoogleAdFeed": "1.0.0",
           "mialco.shopping.connector.Orchestrator": "1.0.0",
           "mialco.shopping.connector.StoreFront": "1.0.0",
           "mialco.workflow.initiator": "1.0.0",
@@ -878,6 +879,15 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "GoogleAdFeed/1.0.0": {
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0",
+          "mialco.shopping.objectvalues": "1.0.0"
+        },
+        "runtime": {
+          "GoogleAdFeed.dll": {}
+        }
+      },
       "mialco.abstractions/1.0.0": {
         "dependencies": {
           "mialco.shopping.entities.abstraction": "1.0.0"
@@ -894,13 +904,34 @@
           "mialco.messagehub.dll": {}
         }
       },
+      "mialco.shopping.connector.GoogleAdFeed/1.0.0": {
+        "dependencies": {
+          "GoogleAdFeed": "1.0.0",
+          "mialco.shopping.connector.RawFeed": "1.0.0"
+        },
+        "runtime": {
+          "mialco.shopping.connector.GoogleAdFeed.dll": {}
+        }
+      },
       "mialco.shopping.connector.Orchestrator/1.0.0": {
         "dependencies": {
           "mialco.abstractions": "1.0.0",
-          "mialco.shopping.connector.StoreFront": "1.0.0"
+          "mialco.shopping.connector.RawFeed": "1.0.0",
+          "mialco.shopping.connector.StoreFront": "1.0.0",
+          "mialco.shopping.connector.shared": "1.0.0"
         },
         "runtime": {
           "mialco.shopping.connector.Orchestrator.dll": {}
+        }
+      },
+      "mialco.shopping.connector.RawFeed/1.0.0": {
+        "runtime": {
+          "mialco.shopping.connector.RawFeed.dll": {}
+        }
+      },
+      "mialco.shopping.connector.shared/1.0.0": {
+        "runtime": {
+          "mialco.shopping.connector.shared.dll": {}
         }
       },
       "mialco.shopping.connector.StoreFront/1.0.0": {
@@ -915,6 +946,11 @@
       "mialco.shopping.entities.abstraction/1.0.0": {
         "runtime": {
           "mialco.shopping.entities.abstraction.dll": {}
+        }
+      },
+      "mialco.shopping.objectvalues/1.0.0": {
+        "runtime": {
+          "mialco.shopping.objectvalues.dll": {}
         }
       },
       "mialco.shopping.repositories/1.0.0": {
@@ -1575,6 +1611,11 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
+    "GoogleAdFeed/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "mialco.abstractions/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -1585,7 +1626,22 @@
       "serviceable": false,
       "sha512": ""
     },
+    "mialco.shopping.connector.GoogleAdFeed/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "mialco.shopping.connector.Orchestrator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.shopping.connector.RawFeed/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.shopping.connector.shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1596,6 +1652,11 @@
       "sha512": ""
     },
     "mialco.shopping.entities.abstraction/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.shopping.objectvalues/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

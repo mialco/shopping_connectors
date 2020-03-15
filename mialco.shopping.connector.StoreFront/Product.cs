@@ -19,11 +19,19 @@ namespace mialco.shopping.connector.StoreFront
 		//		AssignId(ProductID);
 		//	}
 		//}
+		public string Name { get; set; }
+		public string Description { get; set; }
 		public Guid ProductGUID { get; set; }
 		public string ProductColor { get; set; }
 		public string Summary { get; set; }
+		public string SEName { get; set; }
 		public byte Published { get; set; }
 		public byte ExcludeFromPriceFeeds { get; set; }
+		public byte IsFeatured { get; set; }
+		public int ShowBuyButton { get; set; }
+		public byte IsAKit { get; set; }
+		public byte TrackInventoryBySizeAndColor { get; set; }
+		public byte RequiresTextOption { get; set; }
 		public virtual List<ProductVariant> ProductVariants { get; set; }
 		public List<ProductStore> ProductStores { get; set; }
 	}
