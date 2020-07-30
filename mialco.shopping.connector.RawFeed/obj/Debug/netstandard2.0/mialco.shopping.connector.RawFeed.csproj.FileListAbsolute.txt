@@ -1,6 +1,7 @@
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.deps.json
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed\obj\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.csprojAssemblyReference.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed\obj\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed\obj\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed\obj\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.AssemblyInfo.cs

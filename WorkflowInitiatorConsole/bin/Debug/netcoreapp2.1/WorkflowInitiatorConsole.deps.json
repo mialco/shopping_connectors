@@ -916,6 +916,7 @@
       "mialco.shopping.connector.Orchestrator/1.0.0": {
         "dependencies": {
           "mialco.abstractions": "1.0.0",
+          "mialco.shopping.connector.GoogleAdFeed": "1.0.0",
           "mialco.shopping.connector.RawFeed": "1.0.0",
           "mialco.shopping.connector.StoreFront": "1.0.0",
           "mialco.shopping.connector.shared": "1.0.0"

@@ -39,7 +39,7 @@ namespace mialco.shopping.connector.test
 			StoreFrontOrchestratorZero orch = new StoreFrontOrchestratorZero(1, WebStoreDeploymentType.Production);
 			string rawProdId = orch.GenerateProductId(productId, variantId, sizeskuModifier, colorSkuModifier);
 			Assert.Equal(rawProdId, expectedResult);
-		}
+			}
 
 
 		[Theory]

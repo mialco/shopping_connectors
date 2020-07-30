@@ -1515,6 +1515,7 @@
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "mialco.abstractions": "1.0.0",
+          "mialco.shopping.connector.GoogleAdFeed": "1.0.0",
           "mialco.shopping.connector.RawFeed": "1.0.0",
           "mialco.shopping.connector.StoreFront": "1.0.0",
           "mialco.shopping.connector.shared": "1.0.0"
@@ -5830,6 +5831,7 @@
   },
   "packageFolders": {
     "C:\\Users\\Mikeo\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -5842,11 +5844,13 @@
       "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\WorkflowInitiatorConsole\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"

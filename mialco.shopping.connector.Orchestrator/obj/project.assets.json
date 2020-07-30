@@ -1456,6 +1456,20 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "GoogleAdFeed/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0",
+          "mialco.shopping.objectvalues": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GoogleAdFeed.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GoogleAdFeed.dll": {}
+        }
+      },
       "mialco.abstractions/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -1467,6 +1481,20 @@
         },
         "runtime": {
           "bin/placeholder/mialco.abstractions.dll": {}
+        }
+      },
+      "mialco.shopping.connector.GoogleAdFeed/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "GoogleAdFeed": "1.0.0",
+          "mialco.shopping.connector.RawFeed": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/mialco.shopping.connector.GoogleAdFeed.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.shopping.connector.GoogleAdFeed.dll": {}
         }
       },
       "mialco.shopping.connector.RawFeed/1.0.0": {
@@ -1511,6 +1539,16 @@
         },
         "runtime": {
           "bin/placeholder/mialco.shopping.entities.abstraction.dll": {}
+        }
+      },
+      "mialco.shopping.objectvalues/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/mialco.shopping.objectvalues.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.shopping.objectvalues.dll": {}
         }
       }
     }
@@ -5585,10 +5623,20 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "GoogleAdFeed/1.0.0": {
+      "type": "project",
+      "path": "../GoogleAdFeed/GoogleAdFeed.csproj",
+      "msbuildProject": "../GoogleAdFeed/GoogleAdFeed.csproj"
+    },
     "mialco.abstractions/1.0.0": {
       "type": "project",
       "path": "../mialco.abstractions/mialco.abstractions.csproj",
       "msbuildProject": "../mialco.abstractions/mialco.abstractions.csproj"
+    },
+    "mialco.shopping.connector.GoogleAdFeed/1.0.0": {
+      "type": "project",
+      "path": "../mialco.shopping.connector.GoogleAdFeed/mialco.shopping.connector.GoogleAdFeed.csproj",
+      "msbuildProject": "../mialco.shopping.connector.GoogleAdFeed/mialco.shopping.connector.GoogleAdFeed.csproj"
     },
     "mialco.shopping.connector.RawFeed/1.0.0": {
       "type": "project",
@@ -5609,12 +5657,18 @@
       "type": "project",
       "path": "../mialco.shopping.entities.abstraction/mialco.shopping.entities.abstraction.csproj",
       "msbuildProject": "../mialco.shopping.entities.abstraction/mialco.shopping.entities.abstraction.csproj"
+    },
+    "mialco.shopping.objectvalues/1.0.0": {
+      "type": "project",
+      "path": "../mialco.shopping.objectvalues/mialco.shopping.objectvalues.csproj",
+      "msbuildProject": "../mialco.shopping.objectvalues/mialco.shopping.objectvalues.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.NETCore.App >= 2.1.0",
       "mialco.abstractions >= 1.0.0",
+      "mialco.shopping.connector.GoogleAdFeed >= 1.0.0",
       "mialco.shopping.connector.RawFeed >= 1.0.0",
       "mialco.shopping.connector.StoreFront >= 1.0.0",
       "mialco.shopping.connector.shared >= 1.0.0"
@@ -5622,6 +5676,7 @@
   },
   "packageFolders": {
     "C:\\Users\\Mikeo\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -5634,11 +5689,13 @@
       "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.Orchestrator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -5652,6 +5709,9 @@
           "projectReferences": {
             "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj": {
               "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj"
+            },
+            "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.GoogleAdFeed\\mialco.shopping.connector.GoogleAdFeed.csproj": {
+              "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.GoogleAdFeed\\mialco.shopping.connector.GoogleAdFeed.csproj"
             },
             "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj": {
               "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj"

@@ -2,9 +2,13 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestra
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.abstractions.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.shared.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.entities.abstraction.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.abstractions.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.shared.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.entities.abstraction.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\obj\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.csprojAssemblyReference.cache
@@ -14,7 +18,9 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestra
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\obj\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\obj\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\obj\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.dll
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.shared.dll
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.shared.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\GoogleAdFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.GoogleAdFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.objectvalues.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.GoogleAdFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\GoogleAdFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.objectvalues.pdb

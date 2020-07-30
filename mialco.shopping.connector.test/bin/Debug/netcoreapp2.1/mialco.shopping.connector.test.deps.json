@@ -9,7 +9,9 @@
       "mialco.shopping.connector.test/1.0.0": {
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "15.5.0",
+          "mialco.shopping.connector.GoogleAdFeed": "1.0.0",
           "mialco.shopping.connector.Orchestrator": "1.0.0",
+          "mialco.shopping.connector.RawFeed": "1.0.0",
           "mialco.shopping.connector.StoreFront": "1.0.0",
           "mialco.shopping.connector.entities": "1.0.0",
           "xunit": "2.3.1",
@@ -1498,6 +1500,15 @@
           "Microsoft.NET.Test.Sdk": "15.5.0"
         }
       },
+      "GoogleAdFeed/1.0.0": {
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0",
+          "mialco.shopping.objectvalues": "1.0.0"
+        },
+        "runtime": {
+          "GoogleAdFeed.dll": {}
+        }
+      },
       "mialco.abstractions/1.0.0": {
         "dependencies": {
           "mialco.shopping.entities.abstraction": "1.0.0"
@@ -1513,6 +1524,15 @@
         },
         "runtime": {
           "mialco.shopping.connector.entities.dll": {}
+        }
+      },
+      "mialco.shopping.connector.GoogleAdFeed/1.0.0": {
+        "dependencies": {
+          "GoogleAdFeed": "1.0.0",
+          "mialco.shopping.connector.RawFeed": "1.0.0"
+        },
+        "runtime": {
+          "mialco.shopping.connector.GoogleAdFeed.dll": {}
         }
       },
       "mialco.shopping.connector.intefaces/1.0.0": {
@@ -1553,6 +1573,11 @@
       "mialco.shopping.entities.abstraction/1.0.0": {
         "runtime": {
           "mialco.shopping.entities.abstraction.dll": {}
+        }
+      },
+      "mialco.shopping.objectvalues/1.0.0": {
+        "runtime": {
+          "mialco.shopping.objectvalues.dll": {}
         }
       }
     }
@@ -2375,12 +2400,22 @@
       "path": "xunit.runner.visualstudio/2.3.1",
       "hashPath": "xunit.runner.visualstudio.2.3.1.nupkg.sha512"
     },
+    "GoogleAdFeed/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "mialco.abstractions/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "mialco.shopping.connector.entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.shopping.connector.GoogleAdFeed/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -2411,6 +2446,11 @@
       "sha512": ""
     },
     "mialco.shopping.entities.abstraction/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.shopping.objectvalues/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
