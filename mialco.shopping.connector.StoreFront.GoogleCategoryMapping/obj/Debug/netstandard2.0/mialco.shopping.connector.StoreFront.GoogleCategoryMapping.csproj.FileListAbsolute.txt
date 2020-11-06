@@ -1,0 +1,9 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\bin\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\bin\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\bin\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csprojAssemblyReference.cache

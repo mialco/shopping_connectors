@@ -34,5 +34,6 @@ namespace mialco.shopping.connector.StoreFront
 		public byte RequiresTextOption { get; set; }
 		public virtual List<ProductVariant> ProductVariants { get; set; }
 		public List<ProductStore> ProductStores { get; set; }
+
 	}
 }

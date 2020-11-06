@@ -53,14 +53,18 @@ namespace mialco.shopping.connector.Orchestrator
 		{
 			int result = 0;
 			// 1. We conect to the database
+			// and extract the data into a list pt Product : _product
 			ExtractData(_storeId);
+
+			// Then we pass the products to the BuildFeed method, which for each product creates a RawFeed.GenericFeed Record
+			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
 			BuildFeed(_store, _products);
 			FeedGenerator feedGenerator = new FeedGenerator();
 
 			//DEBT: The XML Generator writes one singe item for all of the products
-			//Debt. Olmost no matching to the mapping. Just few items
+			//Debt. Almost no matching to the mapping. Just few items
 			// No Sizes or colors are discovered
-			feedGenerator.GenerateXmlFeed(@"C:\data\test.xml",_rawData,new FeedProperties("ResePetalsStore",@"https://www.rosepatalestore.com","The rose prtalStore"));
+			feedGenerator.GenerateXmlFeed(@"C:\data\test.xml", _rawData, new FeedProperties("ResePetalsStore", @"https://www.rosepatalestore.com", "The rose prtalStore"));
 			return result;
 		}
 
@@ -76,8 +80,10 @@ namespace mialco.shopping.connector.Orchestrator
 			_products = prodrep.GetAll(storeId);
 		}
 
+
+		//DEBT:  Move this method into its on class dedicated fro building the Raw Feed frpm the database records
 		//Creates the collection of Raw data
-		private void BuildFeed(Store1 store,IEnumerable<Product> products)
+		private void BuildFeed(Store1 store, IEnumerable<Product> products)
 		{
 			try
 			{
@@ -104,9 +110,8 @@ namespace mialco.shopping.connector.Orchestrator
 						variantNumber++;
 						//id = GenerateProductId
 						//DEBT: Correct the store url to remove the port 0
-						var sizeOptions = GetProductAttributes(variant.Sizes,variant.SizeSKUModifiers,typeof(SizeOption) );
+						var sizeOptions = GetProductAttributes(variant.Sizes, variant.SizeSKUModifiers, typeof(SizeOption));
 						var colorOptions = GetProductAttributes(variant.Colors, variant.ColorSKUModifiers, typeof(ColorOption));
-
 						var productImage = GetProductImage(p.ProductID, storeURI);
 						// Need to fix the collors which was original designed to be exracted from product as a list of tupples
 						// var optionImages = GetOptionImages(colors, p.ProductID, storeURI, colorOptions);
@@ -117,9 +122,11 @@ namespace mialco.shopping.connector.Orchestrator
 							sizeOptions = new List<ProductAttribute> { new SizeOption { Name = String.Empty, AddedPrice = 0, SkuModifier = string.Empty } };
 						if (colorOptions == null || colorOptions.Count == 0)
 							colorOptions = new List<ProductAttribute> { new ColorOption { Name = string.Empty, AddedPrice = 0, SkuModifier = string.Empty } };
-						sizeOptions.ForEach(size => {
+						sizeOptions.ForEach(size =>
+						{
 							sizeOptionCount++;
-							colorOptions.ForEach(color => {
+							colorOptions.ForEach(color =>
+							{
 								colorOptionCount++;
 								try
 								{
@@ -130,9 +137,7 @@ namespace mialco.shopping.connector.Orchestrator
 									rawFeedRecord.ProductId = productId;
 									rawFeedRecord.FeedRecord.Add("ColorOptionCount", colorOptionCount.ToString());
 									rawFeedRecord.FeedRecord.Add("SizeOptionCount", colorOptionCount.ToString());
-									rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString());
 									rawFeedRecord.FeedRecord.Add("Size", size.Name);
-									rawFeedRecord.FeedRecord.Add("Color", color.Name);
 									rawFeedRecord.FeedRecord.Add("SizePriority", size.Priority.ToString());
 									rawFeedRecord.FeedRecord.Add("ColorPriority", color.Priority.ToString());
 									rawFeedRecord.FeedRecord.Add("Title", p.Name ?? "");
@@ -146,13 +151,31 @@ namespace mialco.shopping.connector.Orchestrator
 									// Funny Crazy T-shirts > Fitness Gym T-shirts
 									//DEBT: Add category Logic
 									rawFeedRecord.FeedRecord.Add("Category", "");
-									rawFeedRecord.FeedRecord.Add("SalePrice", variant.SalePrice.ToString());
 									//rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate",)
 									//DEBT: AgeGroup
 									rawFeedRecord.FeedRecord.Add("AgeGroup", "");
 									rawFeedRecord.FeedRecord.Add("ManufaturingPartNumber", variant.ManufacturerPartNumber ?? "");
 									rawFeedRecord.FeedRecord.Add("ItemGroupId", $"{p.ProductID}-{variant.VariantID}");
 									rawFeedRecord.FeedRecord.Add("Weight", variant.Weight.ToString());
+									rawFeedRecord.FeedRecord.Add("Link", GetProductLink(p, _store));//TODO: implement method
+									rawFeedRecord.FeedRecord.Add("ImageLink", GetProductImage(p.ProductID, storeURI));//ToDo: Test Method
+									rawFeedRecord.FeedRecord.Add("Condition", GetContition(variant)); //TODO: Implementation
+									rawFeedRecord.FeedRecord.Add("Availability", GetAvailability(variant)); //TODO: Implementation
+									rawFeedRecord.FeedRecord.Add("AvailabilityDate", GetAvailabilityDate(p.ProductID)); //TODO: Implementation
+									rawFeedRecord.FeedRecord.Add("SalePrice", variant.SalePrice.ToString());
+									rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate", GetSalePriceEffecctiveDate(variant).ToString());
+									rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString());
+									rawFeedRecord.FeedRecord.Add("Gtin", GetGtin(variant)); // TODO: Test data retrieval from the database
+									rawFeedRecord.FeedRecord.Add("Brand", GetBrand(store)); //TODO: Implementation
+									rawFeedRecord.FeedRecord.Add("Mpn", GetMpn(productId,variant)); //TODO: Implementation
+									rawFeedRecord.FeedRecord.Add("Category", GetProductCategory(p.ProductID)); // todo: implement method
+									rawFeedRecord.FeedRecord.Add("ProductType", GetProductType(p.ProductID)); //todo: implement method
+									rawFeedRecord.FeedRecord.Add("ShippingCountry", GetProductType(p.ProductID)); //todo: implement method
+									rawFeedRecord.FeedRecord.Add("ShippingService", GetProductType(p.ProductID)); //todo: implement method
+									rawFeedRecord.FeedRecord.Add("ShippingPrice", GetProductType(p.ProductID)); //todo: implement method
+									rawFeedRecord.FeedRecord.Add("Color", color.Name);
+
+
 
 									//Add Raw Feed Record to the collection
 									_rawData.Add(rawFeedRecord);
@@ -160,9 +183,10 @@ namespace mialco.shopping.connector.Orchestrator
 								catch (Exception ex)
 								{
 									//TODO: Log
-									Console.WriteLine(ex);					
+									Console.WriteLine(ex);
 								}
-							}); });
+							});
+						});
 					}
 				}
 			}
@@ -172,6 +196,157 @@ namespace mialco.shopping.connector.Orchestrator
 				throw;
 			}
 
+		}
+
+		/// <summary>
+		/// This method has no functionality at the time of this implementation. 
+		/// It is put here as a plcaceholder for future development
+		/// </summary>
+		/// <param name="variant"></param>
+		/// <returns></returns>
+		private object GetSalePriceEffecctiveDate(ProductVariant variant)
+		{
+			return string.Empty;
+		}
+
+		private string GetMpn(string productId, ProductVariant variant)
+		{
+			var result = string.Empty;
+			if (variant == null)
+				return result;
+			if (string.IsNullOrEmpty(variant.ManufacturerPartNumber))
+			{
+				result = $"mfg_{productId}";
+			}
+			else
+			{
+				result = variant.ManufacturerPartNumber;
+			}
+			return result;
+		}
+
+		private string GetGtin(ProductVariant variant)
+		{
+			return variant.GTIN ?? string.Empty; //TODO: Test if it gets a value 
+		}
+
+		/// <summary>
+		/// At the implemenatonion time, the Brand was not a known value for the product 
+		/// Becasue this is a rquired field, we will HARD-CODE the return 
+		/// https://support.google.com/merchants/answer/6324351?hl=en&ref_topic=6324338
+		/// max Size : 70 characters
+		/// </summary>
+		/// <param name="productID"></param>
+		/// <returns></returns>
+		private string GetBrand(Store1 store)
+		{
+			//TODO: Veify if it returns the proper value 
+			var brand = string.Empty;
+			if (store != null)
+			{
+				brand = store.Name.Trim();
+				if (brand.Length > 70) brand = brand.Substring(0, 70);
+			}
+			// Possible that the current implementation of the sorefront engine is using Store.Name for this field
+			return brand;
+		}
+
+		/// <summary>
+		/// This is not a required fiedld so we return empty for now
+		/// The field is defined for a preorder case
+		/// https://support.google.com/merchants/answer/6324470
+		/// </summary>
+		/// <param name="productID"></param>
+		/// <returns></returns>
+		private string GetAvailabilityDate(int productID)
+		{
+			var result = string.Empty;
+			return result;
+		}
+
+		/// <summary>
+		/// This is a required field
+		/// Supported values in Google: in_stock, out_of_stock, preorder
+		/// We will return the vakue based in the inventory field
+		/// </summary>
+		/// <param name="productID"></param>
+		/// <returns></returns>
+		private string GetAvailability(ProductVariant variant)
+		{
+			const string InStock = "in_stock";
+			const string OutOfStock = "out_of_stock";
+
+			//TODO = Make this function return a generic integer 
+			//and have the feed specific function interpred the code and retur the string approprite to the respective feed
+
+			var result = string.Empty;
+			if (variant == null) return OutOfStock;
+
+			if (variant.Inventory > 0)
+				result = InStock;
+			else
+				result = OutOfStock;
+			return result;
+		}
+
+		private string GetContition(ProductVariant variant)
+		{
+			return "new";
+		}
+
+		private string GetProductType(int productId)
+		{
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
+		/// This function is mapping the goolgle product categories 
+		/// with the categories used by storefront 
+		/// Mapped categories are publisher dependent so we will have a specific map for Google
+		/// Implemented in the GoogleAdFeed Assembly
+		/// Google Caegories are provided by google in either xml format or plain text format
+		/// Example text entry: 
+		///		2271
+		//			or
+		//		Apparel & Accessories > Clothing > Dresses
+		// The user of the application will have to provide a mapping as well and also a default category in case the name is not matched
+		// A separate appication and also  will give a chance the user to map either:
+		// Map individual products to specific categories or
+		// Map specifi paths on storefront categories with Google categories
+		// Map each segment of a category path in store front to a path in Google 
+		/// </summary>
+		/// <param name="productID"></param>
+		/// <returns></returns>
+		private string GetProductCategory(int productID)
+		{
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
+		/// The link is composed of :
+		///		Store url
+		///		letter "p"
+		///		product id 
+		///		SEName field of the product table
+		/// </summary>
+		/// <param name="product"></param>
+		/// <param name="store"></param>
+		/// <returns></returns>
+		private string GetProductLink(Product product, Store1 store)
+		{
+			const string  particle  = "p";
+			const string ending = ".aspx";
+			string result = string.Empty;
+			if (product == null)
+				throw new Exception("GetProductLink() function received a null product");
+			if (store == null)
+				throw new Exception("GetProductLink() function received a null store");
+
+			string productid = product.ProductID.ToString();
+			string seName = product.SEName ?? string.Empty;
+
+			result = $"{store.ProductionURI}/{particle}-{seName}{ending}";
+			return result;
 		}
 
 		private object GetOptionImages(List<Tuple<string, decimal, string>> colors, int productID, object storeURI, object colorOptions)
@@ -213,34 +388,68 @@ namespace mialco.shopping.connector.Orchestrator
 			throw new NotImplementedException();
 		}
 
-		public List<ProductAttribute> GetProductAttributes(string attributeOptions, 
+		public List<ProductAttribute> GetProductAttributes(string attributeOptions,
 			string skuModifiers, Type attributeType)
 		{
-			ProductAttributeAbstractFactory fact;
-			if (attributeType == typeof (ColorOption))
+			if (attributeType == null)
+			{
+				var ex = new ArgumentNullException("The attribute type parameter cannot be null");
+				throw ex;
+			}
+
+			ProductAttributeAbstractFactory fact = null;
+			if (attributeType == typeof(ColorOption))
 				fact = new ColorOptionsFactory();
 			if (attributeType == typeof(SizeOption))
 				fact = new SizeOptionsFactory();
+
+
+			if (fact == null)
+			{
+				var ex = new NotImplementedException("There i no implementation for aatributes of type " + attributeType.FullName);
+				throw ex;
+			}
 
 
 			var result = new List<ProductAttribute>();
 			var addedprices = new List<string>();
 			var modifiersList = new List<string>();
 			var maxAttrCount = 0;
+			var namesCount = 0;
+			var skuModifiersCount = 0;
+
+			var attrNames = new string[] { }; ;
+			var skuModifiersCollection = new string[] { };
 
 			//Split The attributes string 
 			if (!string.IsNullOrEmpty(attributeOptions))
 			{
-				var attrNames =attributeOptions.Trim().Split(new char[] { ',' },StringSplitOptions.RemoveEmptyEntries);
-				maxAttrCount = attrNames.Length;
-
+				attrNames = attributeOptions.Trim().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+				namesCount = attrNames.Length;
+				maxAttrCount = namesCount;
 			}
+
 			if (!string.IsNullOrEmpty(skuModifiers))
 			{
-				var skuModifiersCollection = skuModifiers.Trim().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-				maxAttrCount = maxAttrCount > skuModifiersCollection.Length ? maxAttrCount : skuModifiersCollection.Length;
+				skuModifiersCollection = skuModifiers.Trim().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+				skuModifiersCount = skuModifiersCollection.Length;
+				maxAttrCount = maxAttrCount > skuModifiersCount ? maxAttrCount : skuModifiersCount;
 			}
-			
+
+
+			//DEBT: Finish this function to return the product attributes
+			// We create a product attribute for each of the attrName and we add the sku mofifier from the 
+			// Correspondent element from the sku modifiers list
+			if (namesCount < 1)
+				return result;
+
+			for (int i = 0; i < namesCount; i++)
+			{
+				var attrb = fact.GetAttribute();
+				(attrb.Name, attrb.AddedPrice) = GetPriceFromAttributeString(attrNames[i]).ToValueTuple();
+				attrb.SkuModifier = i < skuModifiersCount ? skuModifiersCollection[i] : string.Empty;
+				result.Add(attrb);
+			}
 
 			return result;
 		}
@@ -253,12 +462,12 @@ namespace mialco.shopping.connector.Orchestrator
 		/// <returns></returns>
 		public Tuple<string, decimal> GetPriceFromAttributeString(string attributeString)
 		{
-			string name=string.Empty;
+			string name = string.Empty;
 			decimal price = 0.0m;
-			attributeString = attributeString ??"";
+			attributeString = attributeString ?? "";
 
 			var rx = new Regex(@"\s*(?<attr>.*)\s*\[\s*(?<price>[[0-9]*\.{0,1}[0-9]*)\s*\]");
-			Match match =  rx.Match(attributeString);
+			Match match = rx.Match(attributeString);
 			if (match.Success)
 			{
 				name = match.Groups["attr"].Value;
@@ -355,12 +564,12 @@ namespace mialco.shopping.connector.Orchestrator
 			throw new NotImplementedException();
 		}
 
-		private object GenerateId(Product p)
-		{
-			int result = 0;
+		//private object GenerateId(Product p)
+		//{
+		//	int result = 0;
 
-			return result;
-		}
+		//	return result;
+		//}
 
 		/// <summary>
 		/// This is the identifier for the product - Unique across a set of data
@@ -418,7 +627,7 @@ namespace mialco.shopping.connector.Orchestrator
 			{
 				if (obj == null)
 					return false;
-				var obj1 =  obj as ProductAttribute;
+				var obj1 = obj as ProductAttribute;
 				return (obj1.Name == this.Name
 					&& obj1.Priority == this.Priority
 					&& obj1.SkuModifier == this.SkuModifier
@@ -428,21 +637,21 @@ namespace mialco.shopping.connector.Orchestrator
 
 			public override int GetHashCode()
 			{
-				const int p  = 29;
+				const int p = 29;
 				int hash = p;
 				hash = hash * p + AddedPrice.GetHashCode();
 				hash = hash * p + (Name ?? "").GetHashCode();
 				hash = hash * p + (SkuModifier ?? "").GetHashCode();
 				hash = hash * p + Priority.GetHashCode();
-				return hash; 
+				return hash;
 			}
 		}
 
-		public class SizeOption:ProductAttribute
+		public class SizeOption : ProductAttribute
 		{
 		}
 
-		public class ColorOption: ProductAttribute
+		public class ColorOption : ProductAttribute
 		{
 		}
 

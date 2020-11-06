@@ -31,14 +31,19 @@ namespace mialco.shopping.connector.GoogleAdFeed
 			//by google shopping feed  
 			using (GoogleXmlFileWriter xmlw = new GoogleXmlFileWriter(fileName))
 			{
+				var counter = 0;
 				xmlw.OpenFeed(GooglePrefix,GoogleNamepace);
-				xmlw.StartItem();
+				//xmlw.StartItem();
 				/* StporeFrontGoogleFeedMap is a class which maps the fields extracted from the 
 				 * Storefront shopping cart to the filelds of the google feed xml file*/
 				StoreFrontGoogleFeedMap storeFrontGoolgeFeedMap = new StoreFrontGoogleFeedMap();
 				/* We write each reord of feedRecords (passed as parameter) to the google feed XML file */
 				foreach (var rec in feedRecords)
 				{
+
+					//TODO: REMOVE AFTER TESTING
+					counter++;
+					if (counter > 500) break;
 					var value = string.Empty;
 					//We write the record id first
 					//xmlw.WriteItemElement("id", rec.ProductId, GooglePrefix, GoogleNamepace);
@@ -49,6 +54,7 @@ namespace mialco.shopping.connector.GoogleAdFeed
 					 * current source (which in this case contains the data from the StoreFront database).
 					 * For each propery, we look up for the field vale 
 					* to the the name of the google feed field  */
+					xmlw.StartItem();
 					foreach (DictionaryEntry item in storeFrontGoolgeFeedMap)
 					{
 						//TODO take the try outside the loop with the option of continuing the loop in ase of error

@@ -10,12 +10,14 @@ namespace GoogleAdFeed
 	public class StoreFrontGoogleFeedMap : MialcoValueObject, IEnumerable
 	{
 		OrderedDictionary _propertyMapping;
-		
+
 		/// <summary>.HasPrincipalKey(pk => pk.ProductID).
 		/// Instantiates the Class
 		/// Instantiated the mapping values as a dictionary having the 
 		/// keys the feed properties and as values the name of the source table 
 		/// properties correpondent to the feed field
+		/// The mapping is based on Google Specifications
+		/// https://support.google.com/merchants/answer/7052112?hl=en
 		/// </summary>
 		public StoreFrontGoogleFeedMap():base()
 		{
@@ -33,29 +35,37 @@ namespace GoogleAdFeed
 			_propertyMapping.Add("additional_image_link","AdditionalImageLink");
 			_propertyMapping.Add("mobile_link", "MobileLink");
 			_propertyMapping.Add("availability", "Availability");
-			_propertyMapping.Add("availability_date", "AcvailabilityDate");
+			_propertyMapping.Add("availability_date", "AvailabilityDate");
+			_propertyMapping.Add("price", "Price");
+			_propertyMapping.Add("gtin", "Gtin");
+			_propertyMapping.Add("brand", "Brand");
+			_propertyMapping.Add("mpn", "MPN");
+
+			//("Shipping", ""); 
+			_propertyMapping.Add("shipping/country", "");
+			_propertyMapping.Add("shipping/service", "");
+			_propertyMapping.Add("shipping/price", "");
+
+			//"Product category", "");
+			//"You can use these attributes to organize your advertising campaigns in Google Ads.", "");
+
+			// 2 of the following 3 attributes are required fot this item according to the Unique Product Identifier Rules
+			_propertyMapping.Add("google_product_category", "Category");
+			_propertyMapping.Add("product_type", "ProductType");
+
 			_propertyMapping.Add("cost_of_goods_sold", "CostOfGoodsSold");
 			_propertyMapping.Add("expiration_date", "ExpirationDate");
-			_propertyMapping.Add("price", "Price");
 			_propertyMapping.Add("sale_price", "SalePrice");
-			_propertyMapping.Add("sale_price_effective_date", "");
+			_propertyMapping.Add("sale_price_effective_date", "SalePriceEffectiveDate");
 			_propertyMapping.Add("unit_pricing_measure", "");
 			_propertyMapping.Add("unit_pricing_base_measure", "");
 			_propertyMapping.Add("installment", "");
 			_propertyMapping.Add("subscription_cost", "");
 			_propertyMapping.Add("loyalty_points", "");
 
-			//"Product category", "");
-			//"You can use these attributes to organize your advertising campaigns in Google Ads.", "");
-
-			_propertyMapping.Add("google_product_category", "Category");
-			_propertyMapping.Add("product_type", "");
 
 			//"Product identifiers", "");
 
-			_propertyMapping.Add("brand", "");
-			_propertyMapping.Add("gtin", "");
-			_propertyMapping.Add("MPN", "");
 			_propertyMapping.Add("identifier_exists", "");
 
 			//"Detailed product description", "");
@@ -67,11 +77,11 @@ namespace GoogleAdFeed
 			_propertyMapping.Add("min_energy_efficiency_class", "");
 			_propertyMapping.Add("max_energy_efficiency_class", "");
 			_propertyMapping.Add("age_group", "");
-			_propertyMapping.Add("color", "");
+			_propertyMapping.Add("color", "Color");
 			_propertyMapping.Add("gender", "");
 			_propertyMapping.Add("material", "");
 			_propertyMapping.Add("pattern", "");
-			_propertyMapping.Add("size", "");
+			_propertyMapping.Add("size", "Size");
 			_propertyMapping.Add("size_type", "");
 			_propertyMapping.Add("size_system", "");
 			_propertyMapping.Add("item_group_id", "");
@@ -90,7 +100,7 @@ namespace GoogleAdFeed
 			//("Shipping", "");
 			_propertyMapping.Add("shipping", "");
 			_propertyMapping.Add("shipping_label", "");
-			_propertyMapping.Add("shipping_weight", "");
+			_propertyMapping.Add("shipping_weight", "Weight");
 			_propertyMapping.Add("shipping_length", "");
 			_propertyMapping.Add("shipping_width", "");
 			_propertyMapping.Add("transit_time_label", "");

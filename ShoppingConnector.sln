@@ -79,7 +79,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowInitiatorConsole", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.Orchestrator", "mialco.shopping.connector.Orchestrator\mialco.shopping.connector.Orchestrator.csproj", "{10B90649-436E-4EE4-94AB-D7C6BEC0D782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.shared", "mialco.shopping.connector.shared\mialco.shopping.connector.shared.csproj", "{13004686-F93B-49F5-AEE8-36D5D79EEDF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.shared", "mialco.shopping.connector.shared\mialco.shopping.connector.shared.csproj", "{13004686-F93B-49F5-AEE8-36D5D79EEDF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.StoreFront.GoogleCategoryMapping", "mialco.shopping.connector.StoreFront.GoogleCategoryMapping\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj", "{D950ED96-7F05-42BE-A123-FEEA793C4446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.test.integration", "mialco.shopping.connector.test.integration\mialco.shopping.connector.test.integration.csproj", "{6F13605D-3989-42AA-BEE4-2CE1FA376417}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -191,6 +195,14 @@ Global
 		{13004686-F93B-49F5-AEE8-36D5D79EEDF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13004686-F93B-49F5-AEE8-36D5D79EEDF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13004686-F93B-49F5-AEE8-36D5D79EEDF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D950ED96-7F05-42BE-A123-FEEA793C4446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D950ED96-7F05-42BE-A123-FEEA793C4446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D950ED96-7F05-42BE-A123-FEEA793C4446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D950ED96-7F05-42BE-A123-FEEA793C4446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F13605D-3989-42AA-BEE4-2CE1FA376417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F13605D-3989-42AA-BEE4-2CE1FA376417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F13605D-3989-42AA-BEE4-2CE1FA376417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F13605D-3989-42AA-BEE4-2CE1FA376417}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

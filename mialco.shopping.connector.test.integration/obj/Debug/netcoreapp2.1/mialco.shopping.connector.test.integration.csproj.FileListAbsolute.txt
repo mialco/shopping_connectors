@@ -1,0 +1,17 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.deps.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.runtimeconfig.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.runtimeconfig.dev.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.csprojAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.csproj.CoreCompileInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.AssemblyInfoInputs.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.csproj.CopyComplete
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.pdb

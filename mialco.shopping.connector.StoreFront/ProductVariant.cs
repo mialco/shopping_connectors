@@ -21,6 +21,7 @@ namespace mialco.shopping.connector.StoreFront
 		public string SizeSKUModifiers { get; set; }
 		public string ManufacturerPartNumber { get; set; }
 		public string Dimensions { get; set; }
+		public string GTIN { get; set; }
 		public decimal? Weight { get; set; }
 		public decimal? MSRP { get; set; }
 		public decimal? Cost { get; set; }
@@ -30,6 +31,7 @@ namespace mialco.shopping.connector.StoreFront
 		public byte Published { get; set; }
 		public byte Condition { get; set; }
 		public int ProductID { get; set; }
+		public int Inventory { get; set; }
 		public virtual Product Product { get; set; }
 		
 	}

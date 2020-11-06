@@ -13,6 +13,7 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("mialco.shopping.connector.RawFeed")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute(@"This assembly provides the core of the processing logic for producing data placed the output feed, from the data extracted from the database. Here you will find logic very specific to each type of input like infering the links for the images and products, extracting products colors and sizes")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("mialco.shopping.connector.RawFeed")]

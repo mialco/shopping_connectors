@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>This assembly provides the core of the processing logic for producing data placed the output feed, from the data extracted from the database. Here you will find logic very specific to each type of input like infering the links for the images and products, extracting products colors and sizes</Description>
   </PropertyGroup>
 
 </Project>
