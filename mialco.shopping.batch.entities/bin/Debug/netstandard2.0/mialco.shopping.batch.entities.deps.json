@@ -23,12 +23,23 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
+      "mialco.abstractions/1.0.0": {
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0"
+        },
+        "runtime": {
+          "mialco.abstractions.dll": {}
+        }
+      },
       "mialco.shopping.entities.abstraction/1.0.0": {
         "runtime": {
           "mialco.shopping.entities.abstraction.dll": {}
         }
       },
       "mialco.shopping.objectvalues/1.0.0": {
+        "dependencies": {
+          "mialco.abstractions": "1.0.0"
+        },
         "runtime": {
           "mialco.shopping.objectvalues.dll": {}
         }
@@ -54,6 +65,11 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "mialco.abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "mialco.shopping.entities.abstraction/1.0.0": {
       "type": "project",

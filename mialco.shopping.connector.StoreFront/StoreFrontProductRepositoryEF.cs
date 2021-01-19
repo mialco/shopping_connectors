@@ -18,6 +18,9 @@ namespace mialco.shopping.connector.StoreFront
 				&& x.ProductStores.Any(ps => ps.StoreID == storeId
 				))
 	  .Include(p => p.ProductVariants)
+	  .Include(p=>p.ProductCategories)
+	  .Include(p=>p.ProductType)
+	  
 	  .ToList();
 				return prods;
 

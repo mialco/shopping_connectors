@@ -81,9 +81,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.shared", "mialco.shopping.connector.shared\mialco.shopping.connector.shared.csproj", "{13004686-F93B-49F5-AEE8-36D5D79EEDF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.StoreFront.GoogleCategoryMapping", "mialco.shopping.connector.StoreFront.GoogleCategoryMapping\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj", "{D950ED96-7F05-42BE-A123-FEEA793C4446}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.StoreFront.GoogleCategoryMapping", "mialco.shopping.connector.StoreFront.GoogleCategoryMapping\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj", "{D950ED96-7F05-42BE-A123-FEEA793C4446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.test.integration", "mialco.shopping.connector.test.integration\mialco.shopping.connector.test.integration.csproj", "{6F13605D-3989-42AA-BEE4-2CE1FA376417}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.test.integration", "mialco.shopping.connector.test.integration\mialco.shopping.connector.test.integration.csproj", "{6F13605D-3989-42AA-BEE4-2CE1FA376417}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2FEEC3B3-F733-4FAB-9CDB-D66D2F081D71}"
+	ProjectSection(SolutionItems) = preProject
+		ShoppingConnectorAPI.yaml = ShoppingConnectorAPI.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.RawFeed.StoreFront", "mialco.shopping.connector.RawFeed.StoreFront\mialco.shopping.connector.RawFeed.StoreFront.csproj", "{A348B635-5AF5-491C-8416-82886D0B8A65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -203,6 +210,10 @@ Global
 		{6F13605D-3989-42AA-BEE4-2CE1FA376417}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F13605D-3989-42AA-BEE4-2CE1FA376417}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F13605D-3989-42AA-BEE4-2CE1FA376417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A348B635-5AF5-491C-8416-82886D0B8A65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A348B635-5AF5-491C-8416-82886D0B8A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A348B635-5AF5-491C-8416-82886D0B8A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A348B635-5AF5-491C-8416-82886D0B8A65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

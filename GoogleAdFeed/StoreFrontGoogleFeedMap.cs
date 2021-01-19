@@ -26,13 +26,14 @@ namespace GoogleAdFeed
 		}
 
 		private void DictionaryInit()
-		{
-			_propertyMapping.Add("id", "SKU");
+		{    
+			//         maps     (xmlTag, RawFeedProperty)   
+			_propertyMapping.Add("id", "Id");
 			_propertyMapping.Add("title", "Title");
 			_propertyMapping.Add("description", "Description");
 			_propertyMapping.Add("link", "Link");
 			_propertyMapping.Add("image_link", "ImageLink");
-			_propertyMapping.Add("additional_image_link","AdditionalImageLink");
+			_propertyMapping.Add("additional_image_link", "AdditionalImageLink");
 			_propertyMapping.Add("mobile_link", "MobileLink");
 			_propertyMapping.Add("availability", "Availability");
 			_propertyMapping.Add("availability_date", "AvailabilityDate");
@@ -42,9 +43,9 @@ namespace GoogleAdFeed
 			_propertyMapping.Add("mpn", "MPN");
 
 			//("Shipping", ""); 
-			_propertyMapping.Add("shipping/country", "");
-			_propertyMapping.Add("shipping/service", "");
-			_propertyMapping.Add("shipping/price", "");
+			_propertyMapping.Add("shipping_country", "");
+			_propertyMapping.Add("shipping_service", "");
+			_propertyMapping.Add("shipping_price", "");
 
 			//"Product category", "");
 			//"You can use these attributes to organize your advertising campaigns in Google Ads.", "");

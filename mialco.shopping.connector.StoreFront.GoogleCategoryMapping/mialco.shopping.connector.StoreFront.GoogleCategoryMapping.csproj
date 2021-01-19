@@ -9,4 +9,18 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\mialco.shopping.objectvalues\mialco.shopping.objectvalues.csproj" />
+    <ProjectReference Include="..\mialco.utilities\mialco.utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="StoreFrontCategoryMappingDb.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="StoreFrontCategoryMappingDb_log.ldf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

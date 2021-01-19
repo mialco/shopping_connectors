@@ -1,6 +1,10 @@
 ﻿/****** Script for SelectTopNRows command from SSMS  ******/
 SELECT TOP (1000) c0.[CategoryID]
       --,[CategoryGUID]
+	  ,c0.ParentCategoryID as parentid0
+	  ,c1.ParentCategoryID as parentid1
+	  ,c2.ParentCategoryID as parentid2
+	  ,c3.ParentCategoryID as parentid3
 	  ,c3.Name as parentCategory3
 	  ,c2.Name as parentCategory2
       ,c1.Name as parentCategory1
@@ -41,4 +45,5 @@ SELECT TOP (1000) c0.[CategoryID]
   left join dbo.Category c2 on c1.ParentCategoryID = c2.CategoryID
   left join dbo.Category c3 on c2.ParentCategoryID = c3.CategoryID
 
-  order by c3.name , c2.Name,c1.Name 
+ --  order by c3.name , c2.Name,c1.Name 
+ order by c0.ParentCategoryID,  c1.ParentCategoryID, c2.ParentCategoryID, c3.ParentCategoryID

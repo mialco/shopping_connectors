@@ -9,6 +9,7 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 	/// </summary>
 	class CategoryItemPath
 	{
+		//ToDo: Make This a value object
 		public int CategoryId { get; set; }
 		public string CategoryPath { get; set; }
 	}

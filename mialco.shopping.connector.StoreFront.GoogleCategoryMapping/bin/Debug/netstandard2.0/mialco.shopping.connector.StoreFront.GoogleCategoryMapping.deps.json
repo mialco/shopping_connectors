@@ -11,7 +11,9 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "3.1.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.9",
-          "NETStandard.Library": "2.0.3"
+          "NETStandard.Library": "2.0.3",
+          "mialco.shopping.objectvalues": "1.0.0",
+          "mialco.utilities": "1.0.0"
         },
         "runtime": {
           "mialco.shopping.connector.StoreFront.GoogleCategoryMapping.dll": {}
@@ -1240,6 +1242,35 @@
             "fileVersion": "4.6.24705.1"
           }
         }
+      },
+      "mialco.abstractions/1.0.0": {
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0"
+        },
+        "runtime": {
+          "mialco.abstractions.dll": {}
+        }
+      },
+      "mialco.shopping.entities.abstraction/1.0.0": {
+        "runtime": {
+          "mialco.shopping.entities.abstraction.dll": {}
+        }
+      },
+      "mialco.shopping.objectvalues/1.0.0": {
+        "dependencies": {
+          "mialco.abstractions": "1.0.0"
+        },
+        "runtime": {
+          "mialco.shopping.objectvalues.dll": {}
+        }
+      },
+      "mialco.utilities/1.0.0": {
+        "dependencies": {
+          "mialco.abstractions": "1.0.0"
+        },
+        "runtime": {
+          "mialco.utilities.dll": {}
+        }
       }
     }
   },
@@ -2032,6 +2063,26 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "mialco.abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.shopping.entities.abstraction/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.shopping.objectvalues/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.utilities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

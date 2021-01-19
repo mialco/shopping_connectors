@@ -10,6 +10,7 @@ namespace mialco.shopping.connector.StoreFront
 		{
 			ProductVariants = new List<ProductVariant>();
 			ProductStores = new List<ProductStore>();
+			ProductCategories = new List<ProductCategory>();
 		}
 		private IEnumerable<ProductVariant> _productVariants;
 		public int ProductID { get; set; }
@@ -29,11 +30,13 @@ namespace mialco.shopping.connector.StoreFront
 		public byte ExcludeFromPriceFeeds { get; set; }
 		public byte IsFeatured { get; set; }
 		public int ShowBuyButton { get; set; }
+		public int ProductTypeID { get; set; }
 		public byte IsAKit { get; set; }
 		public byte TrackInventoryBySizeAndColor { get; set; }
 		public byte RequiresTextOption { get; set; }
 		public virtual List<ProductVariant> ProductVariants { get; set; }
 		public List<ProductStore> ProductStores { get; set; }
-
+		public virtual List<ProductCategory> ProductCategories { get; set;} 
+		public ProductType ProductType { get; set; }
 	}
 }

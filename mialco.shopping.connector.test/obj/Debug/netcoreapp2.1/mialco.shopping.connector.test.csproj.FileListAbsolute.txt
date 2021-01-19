@@ -1,3 +1,5 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\testhost.exe
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\testhost.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
@@ -17,11 +19,13 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.entities.abstraction.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.objectvalues.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.utilities.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.entities.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.GoogleAdFeed.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.Orchestrator.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.utilities.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\GoogleAdFeed.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.abstractions.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.intefaces.pdb

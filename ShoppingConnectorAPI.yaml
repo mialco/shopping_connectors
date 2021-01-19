@@ -1,0 +1,41 @@
+openapi: 3.0.0
+info: API for GGA Automation for XEH - XCeptor runtime control
+description: Commands and queries for controlling XEH - XCeptor runtime
+version:  0.1.1
+
+servers:
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+
+paths:
+  /admin/client/list:
+    get:
+
+  /admin/client/{client_id}:
+
+  /admin/client/appinstance/list:
+    get:
+	  summary: Lists all the application instances for all clients, handled by this API
+	  
+  /admin/client/apinnstance/{client_id}
+    get:
+	  summary: Lists all the application instances for the client  having client_id, handled by this API
+
+
+  /admin/categories/store/list/{feedid}/{instance_id}{store_id}:
+    get:
+	  summary: Returns a list of categories associated with a store
+    responses:
+	  '200':
+
+	  '400':
+  
+  /admin/categories/publisher/{publisher_id}
+    get:
+      summary: Returns a list of categories associated with a publisher (Amazon, Google etc)  
+  
+    put: 
+	  summary: Updates the categories associated with the publisher 
+  /admin 

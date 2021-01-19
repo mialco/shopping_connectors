@@ -3,6 +3,7 @@ using mialco.shopping.connector.Orchestrator;
 using mialco.shopping.connector.RawFeed;
 using mialco.shopping.connector.shared;
 using mialco.shopping.connector.StoreFront;
+using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
 using mialco.workflow.initiator;
 using mialco.workflow.manager;
 using System;
@@ -19,14 +20,7 @@ namespace WorkflowInitiatorConsole
 		static void Main(string[] args)
 		{
 
-			OrderedDictionary od = new OrderedDictionary {
-				{"z" ,"1"},{"t","2" },{"s","3" },{ "a","4"}
-			};
 			
-			foreach (DictionaryEntry item in od)
-			{
-				Console.WriteLine($" Key: {item.Key} Val: {item.Value}");
-			}
 			FeedGenerator fg = new FeedGenerator();
 			FeedProperties fp = new FeedProperties("Amore T-shirts", "http://www.amoretees.com/", "Amore T-shirts");
 
@@ -35,7 +29,7 @@ namespace WorkflowInitiatorConsole
 			orch.Run();
 
 
-			var recordDict = new Dictionary<string, string> {
+				var recordDict = new Dictionary<string, string> {
 				{ "Title", "New Bride and Groom Wedding Baseball Caps-Black" },
 				{ "Description","You are getting both the Bride and the Groom Cap.Have fun with these.One size fits all.Great wedding gift.Fun to wear prior to the wedding to parties and at the reception for the honeymoon and bachelor party.They are made 100 % cotton, with a beautiful embroidery" },
 				{ "ProductType", "Blowout Sale!" },
@@ -54,17 +48,12 @@ namespace WorkflowInitiatorConsole
 			var feedRecord = new GenericFeedRecord { Id = 1, ProductId = "1", FeedRecord = recordDict };
 			var feedRecords = new List<GenericFeedRecord> { feedRecord };
 
-
+			GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
+			googleCategoryMapping.Initialize();
 			fg.GenerateXmlFeed(@"C:\data\test.xml",feedRecords, fp);
 			
 			Console.WriteLine("Workflow Initiator Console startting");
 			CancellationToken _cancelationToken = new CancellationToken(false);
-			//ProductReporsitoryEF productRepositoryEF = new ProductReporsitoryEF();
-			//var prods = productRepositoryEF.GetAllInStore(7);
-			//StoreFrontStoreRepositoryEF storerep = new StoreFrontStoreRepositoryEF();
-
-			//var stores = storerep.GetAll();
-			//var store = storerep.GetById(7); 
 
 
 			WorkflowInitiator wi = new WorkflowInitiator();
@@ -80,6 +69,30 @@ namespace WorkflowInitiatorConsole
 				() => wm.RunWorkflow()
 				);
 			t1.Wait(_cancelationToken);
+
+		}
+
+		static void RunMyTests()
+		{
+			OrderedDictionary od = new OrderedDictionary {
+				{"z" ,"1"},{"t","2" },{"s","3" },{ "a","4"}
+			};
+
+			foreach (DictionaryEntry item in od)
+			{
+				Console.WriteLine($" Key: {item.Key} Val: {item.Value}");
+			}
+
+
+			//var gt = new GenericTreeTest();
+			//gt.ShouldGetTheCorrectcategories();
+
+			//ProductReporsitoryEF productRepositoryEF = new ProductReporsitoryEF();
+			//var prods = productRepositoryEF.GetAllInStore(7);
+			//StoreFrontStoreRepositoryEF storerep = new StoreFrontStoreRepositoryEF();
+
+			//var stores = storerep.GetAll();
+			//var store = storerep.GetById(7); 
 
 
 		}

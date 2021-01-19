@@ -25,6 +25,29 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "mialco.abstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/mialco.abstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.abstractions.dll": {}
+        }
+      },
+      "mialco.shopping.entities.abstraction/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/mialco.shopping.entities.abstraction.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.shopping.entities.abstraction.dll": {}
+        }
       }
     }
   },
@@ -169,11 +192,22 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "mialco.abstractions/1.0.0": {
+      "type": "project",
+      "path": "../mialco.abstractions/mialco.abstractions.csproj",
+      "msbuildProject": "../mialco.abstractions/mialco.abstractions.csproj"
+    },
+    "mialco.shopping.entities.abstraction/1.0.0": {
+      "type": "project",
+      "path": "../mialco.shopping.entities.abstraction/mialco.shopping.entities.abstraction.csproj",
+      "msbuildProject": "../mialco.shopping.entities.abstraction/mialco.shopping.entities.abstraction.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.3"
+      "NETStandard.Library >= 2.0.3",
+      "mialco.abstractions >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -208,7 +242,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj": {
+              "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

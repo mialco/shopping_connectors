@@ -2,11 +2,13 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdF
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.GoogleAdFeed.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.GoogleAdFeed.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\GoogleAdFeed.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.abstractions.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.objectvalues.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\GoogleAdFeed.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.abstractions.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.objectvalues.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\obj\Debug\netstandard2.0\mialco.shopping.connector.GoogleAdFeed.csprojAssemblyReference.cache
@@ -16,3 +18,9 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdF
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\obj\Debug\netstandard2.0\mialco.shopping.connector.GoogleAdFeed.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\obj\Debug\netstandard2.0\mialco.shopping.connector.GoogleAdFeed.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\obj\Debug\netstandard2.0\mialco.shopping.connector.GoogleAdFeed.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\StoreFrontCategoryMappingDb.mdf
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\StoreFrontCategoryMappingDb_log.ldf
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.utilities.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.GoogleAdFeed\bin\Debug\netstandard2.0\mialco.utilities.pdb

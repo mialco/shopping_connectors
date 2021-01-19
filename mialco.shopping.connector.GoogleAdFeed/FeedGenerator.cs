@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
+using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
 
 namespace mialco.shopping.connector.GoogleAdFeed
 {
@@ -60,7 +61,8 @@ namespace mialco.shopping.connector.GoogleAdFeed
 						//TODO take the try outside the loop with the option of continuing the loop in ase of error
 						try
 						{
-							xmlw.WriteItemElement(item.Key.ToString(), GetFeedValueFromGenericRecord(rec, item.Value.ToString()), GooglePrefix, GoogleNamepace);
+							var feedValue = GetFeedValueFromGenericRecord(rec, item.Value.ToString());
+							xmlw.WriteItemElement(item.Key.ToString(), feedValue, GooglePrefix, GoogleNamepace);
 						}
 						catch (Exception ex)
 						{

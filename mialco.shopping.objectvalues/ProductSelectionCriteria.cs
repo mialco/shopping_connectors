@@ -4,6 +4,7 @@ using System.Text;
 
 namespace mialco.shopping.objectvalues
 {
+	//TODO: this belongs to a a project where it is used not the generic object values
     public class ProductSelectionCriteria: MialcoValueObject
     {
 		bool ? IsActive { get; set; }

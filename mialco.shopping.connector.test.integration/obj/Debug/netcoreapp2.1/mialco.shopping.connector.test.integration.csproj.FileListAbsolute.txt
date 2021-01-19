@@ -1,3 +1,5 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\testhost.exe
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\testhost.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
@@ -15,3 +17,5 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.inte
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\StoreFrontCategoryMappingDb.mdf
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\StoreFrontCategoryMappingDb_log.ldf

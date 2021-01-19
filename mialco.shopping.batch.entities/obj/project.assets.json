@@ -26,6 +26,19 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "mialco.abstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/mialco.abstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.abstractions.dll": {}
+        }
+      },
       "mialco.shopping.entities.abstraction/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -39,6 +52,9 @@
       "mialco.shopping.objectvalues/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "mialco.abstractions": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/mialco.shopping.objectvalues.dll": {}
         },
@@ -189,6 +205,11 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "mialco.abstractions/1.0.0": {
+      "type": "project",
+      "path": "../mialco.abstractions/mialco.abstractions.csproj",
+      "msbuildProject": "../mialco.abstractions/mialco.abstractions.csproj"
     },
     "mialco.shopping.entities.abstraction/1.0.0": {
       "type": "project",

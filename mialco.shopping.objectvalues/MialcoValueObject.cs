@@ -4,7 +4,8 @@ using System.Text;
 
 namespace mialco.shopping.objectvalues
 {
-    public abstract class MialcoValueObject
+	//todo: refactor - Move this under abstractions folder or project
+	public abstract class MialcoValueObject
     {
 		public override bool Equals(object obj)
 		{

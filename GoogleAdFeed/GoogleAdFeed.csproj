@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj" />
     <ProjectReference Include="..\mialco.shopping.entities.abstraction\mialco.shopping.entities.abstraction.csproj" />
     <ProjectReference Include="..\mialco.shopping.objectvalues\mialco.shopping.objectvalues.csproj" />
   </ItemGroup>

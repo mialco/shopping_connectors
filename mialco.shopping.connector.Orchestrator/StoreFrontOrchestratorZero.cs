@@ -7,23 +7,33 @@ using System.Text;
 using mialco.shopping.connector.shared;
 using System.Text.RegularExpressions;
 using mialco.shopping.connector.GoogleAdFeed;
+using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
+using mialco.shopping.connector.RawFeed.StoreFront;
+using mialco.utilities;
+using System.IO;
 
 namespace mialco.shopping.connector.Orchestrator
 {
 	public class StoreFrontOrchestratorZero : IRunable
 	{
+		private const string OutputFileName = "OutputFeed.xml";
 		private IEnumerable<Product> _products;
 		private readonly int _storeId;
 		private readonly WebStoreDeploymentType _deploymentType;
 		private readonly List<GenericFeedRecord> _rawData;
 		private Store1 _store;
-
+		RawFeedBuilder _rawFeedBuilder;
+		GoogleCategoryMapping _googleCategoryMapping;
+		
 
 		public StoreFrontOrchestratorZero(int storeId, WebStoreDeploymentType deploymentType)
 		{
 			_storeId = storeId;
 			_deploymentType = deploymentType;
+			_rawFeedBuilder = new RawFeedBuilder();
 			_rawData = new List<GenericFeedRecord>();
+
+			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 		}
 
 
@@ -37,8 +47,12 @@ namespace mialco.shopping.connector.Orchestrator
 		/// <returns></returns>
 		public int Run()
 		{
-			RunBatchesInOneLoop();
+			
+
+			RunAllActionsInOneBigLoop();
 			//ExtractData(33);
+			// ToDo - Load Categories from the database 
+			// ToDo - Load Categories Mapping from Goole 
 			//ExportRawData();
 			return 0;
 		}
@@ -49,22 +63,38 @@ namespace mialco.shopping.connector.Orchestrator
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public int RunBatchesInOneLoop()
+		public int RunAllActionsInOneBigLoop()
 		{
+
+			
 			int result = 0;
 			// 1. We conect to the database
 			// and extract the data into a list pt Product : _product
+			Console.WriteLine("Connecting to database to extract the list of products");
 			ExtractData(_storeId);
+
+			//Create an initialize an instance of google category mapping
+			//GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
+			//googleCategoryMapping.Initialize();
+
+			_rawFeedBuilder.LoadCategories();
+
+
 
 			// Then we pass the products to the BuildFeed method, which for each product creates a RawFeed.GenericFeed Record
 			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
-			BuildFeed(_store, _products);
+			Console.WriteLine("Starting Building Feed from the product data"); 
+
+			BuildFeed(_store, _products, _googleCategoryMapping);
 			FeedGenerator feedGenerator = new FeedGenerator();
 
+
+			Console.WriteLine("Starting writing the products to the output feed for Google ");
 			//DEBT: The XML Generator writes one singe item for all of the products
 			//Debt. Almost no matching to the mapping. Just few items
 			// No Sizes or colors are discovered
-			feedGenerator.GenerateXmlFeed(@"C:\data\test.xml", _rawData, new FeedProperties("ResePetalsStore", @"https://www.rosepatalestore.com", "The rose prtalStore"));
+			var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
+			feedGenerator.GenerateXmlFeed(outputFile, _rawData, new FeedProperties("ResePetalsStore", @"https://www.rosepatalestore.com", "The rose petalStore"));
 			return result;
 		}
 
@@ -80,11 +110,13 @@ namespace mialco.shopping.connector.Orchestrator
 			_products = prodrep.GetAll(storeId);
 		}
 
-
-		//DEBT:  Move this method into its on class dedicated fro building the Raw Feed frpm the database records
+		
+		//TODO: DEBT
+		//DEBT:  Move this method into its on class dedicated for building the Raw Feed from the database records
 		//Creates the collection of Raw data
-		private void BuildFeed(Store1 store, IEnumerable<Product> products)
+		private void BuildFeed(Store1 store, IEnumerable<Product> products, GoogleCategoryMapping googleCategoryMapping)
 		{
+			
 			try
 			{
 				foreach (var p in products)
@@ -112,7 +144,7 @@ namespace mialco.shopping.connector.Orchestrator
 						//DEBT: Correct the store url to remove the port 0
 						var sizeOptions = GetProductAttributes(variant.Sizes, variant.SizeSKUModifiers, typeof(SizeOption));
 						var colorOptions = GetProductAttributes(variant.Colors, variant.ColorSKUModifiers, typeof(ColorOption));
-						var productImage = GetProductImage(p.ProductID, storeURI);
+						var productImage = _rawFeedBuilder.GetProductImage(p.ProductID, store);
 						// Need to fix the collors which was original designed to be exracted from product as a list of tupples
 						// var optionImages = GetOptionImages(colors, p.ProductID, storeURI, colorOptions);
 						var colorOptionCount = 0;
@@ -135,6 +167,7 @@ namespace mialco.shopping.connector.Orchestrator
 									id++; //The Id we are just incrementing the previous id
 									var productId = GenerateProductId(p.ProductID, variant.VariantID, size.SkuModifier, color.SkuModifier);
 									rawFeedRecord.ProductId = productId;
+									rawFeedRecord.FeedRecord.Add("Id", productId);
 									rawFeedRecord.FeedRecord.Add("ColorOptionCount", colorOptionCount.ToString());
 									rawFeedRecord.FeedRecord.Add("SizeOptionCount", colorOptionCount.ToString());
 									rawFeedRecord.FeedRecord.Add("Size", size.Name);
@@ -150,29 +183,28 @@ namespace mialco.shopping.connector.Orchestrator
 									// Parent Category > Category
 									// Funny Crazy T-shirts > Fitness Gym T-shirts
 									//DEBT: Add category Logic
-									rawFeedRecord.FeedRecord.Add("Category", "");
 									//rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate",)
 									//DEBT: AgeGroup
 									rawFeedRecord.FeedRecord.Add("AgeGroup", "");
 									rawFeedRecord.FeedRecord.Add("ManufaturingPartNumber", variant.ManufacturerPartNumber ?? "");
 									rawFeedRecord.FeedRecord.Add("ItemGroupId", $"{p.ProductID}-{variant.VariantID}");
 									rawFeedRecord.FeedRecord.Add("Weight", variant.Weight.ToString());
-									rawFeedRecord.FeedRecord.Add("Link", GetProductLink(p, _store));//TODO: implement method
-									rawFeedRecord.FeedRecord.Add("ImageLink", GetProductImage(p.ProductID, storeURI));//ToDo: Test Method
-									rawFeedRecord.FeedRecord.Add("Condition", GetContition(variant)); //TODO: Implementation
-									rawFeedRecord.FeedRecord.Add("Availability", GetAvailability(variant)); //TODO: Implementation
-									rawFeedRecord.FeedRecord.Add("AvailabilityDate", GetAvailabilityDate(p.ProductID)); //TODO: Implementation
+									rawFeedRecord.FeedRecord.Add("Link", _rawFeedBuilder.GetProductLink(p, _store));  //todo: test method
+									rawFeedRecord.FeedRecord.Add("ImageLink", _rawFeedBuilder.GetProductImage(p.ProductID, store));//ToDo: Test Method
+									rawFeedRecord.FeedRecord.Add("Condition", GetContition(variant)); //TODO: Improve method
+									rawFeedRecord.FeedRecord.Add("Availability", GetAvailability(variant)); //TODO: improve method -currently hard-coded value
+									rawFeedRecord.FeedRecord.Add("AvailabilityDate", GetAvailabilityDate(p.ProductID)); 
 									rawFeedRecord.FeedRecord.Add("SalePrice", variant.SalePrice.ToString());
 									rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate", GetSalePriceEffecctiveDate(variant).ToString());
-									rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString());
+									rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString() );
 									rawFeedRecord.FeedRecord.Add("Gtin", GetGtin(variant)); // TODO: Test data retrieval from the database
-									rawFeedRecord.FeedRecord.Add("Brand", GetBrand(store)); //TODO: Implementation
-									rawFeedRecord.FeedRecord.Add("Mpn", GetMpn(productId,variant)); //TODO: Implementation
-									rawFeedRecord.FeedRecord.Add("Category", GetProductCategory(p.ProductID)); // todo: implement method
-									rawFeedRecord.FeedRecord.Add("ProductType", GetProductType(p.ProductID)); //todo: implement method
-									rawFeedRecord.FeedRecord.Add("ShippingCountry", GetProductType(p.ProductID)); //todo: implement method
-									rawFeedRecord.FeedRecord.Add("ShippingService", GetProductType(p.ProductID)); //todo: implement method
-									rawFeedRecord.FeedRecord.Add("ShippingPrice", GetProductType(p.ProductID)); //todo: implement method
+									rawFeedRecord.FeedRecord.Add("Brand", GetBrand(store)); 
+									rawFeedRecord.FeedRecord.Add("Mpn", GetMpn(productId,variant)); 
+									rawFeedRecord.FeedRecord.Add("Category", _rawFeedBuilder.GetGoogleProductCategory(p)); 
+									rawFeedRecord.FeedRecord.Add("ProductType", _rawFeedBuilder.GetProductType(p)); //todo: implement method
+									//todo: rawFeedRecord.FeedRecord.Add("ShippingCountry", GetProductType(p.ProductID)); //todo: implement method
+									//todo: rawFeedRecord.FeedRecord.Add("ShippingService", GetProductType(p.ProductID)); //todo: implement method
+									//todo: rawFeedRecord.FeedRecord.Add("ShippingPrice", GetProductType(p.ProductID)); //todo: implement method
 									rawFeedRecord.FeedRecord.Add("Color", color.Name);
 
 
@@ -260,6 +292,7 @@ namespace mialco.shopping.connector.Orchestrator
 		/// <returns></returns>
 		private string GetAvailabilityDate(int productID)
 		{
+			//todo: Implement 
 			var result = string.Empty;
 			return result;
 		}
@@ -294,11 +327,6 @@ namespace mialco.shopping.connector.Orchestrator
 			return "new";
 		}
 
-		private string GetProductType(int productId)
-		{
-			throw new NotImplementedException();
-		}
-
 		/// <summary>
 		/// This function is mapping the goolgle product categories 
 		/// with the categories used by storefront 
@@ -317,71 +345,72 @@ namespace mialco.shopping.connector.Orchestrator
 		/// </summary>
 		/// <param name="productID"></param>
 		/// <returns></returns>
-		private string GetProductCategory(int productID)
+		private string GetProductCategory(Product product)
 		{
+			
 			throw new NotImplementedException();
 		}
 
-		/// <summary>
-		/// The link is composed of :
-		///		Store url
-		///		letter "p"
-		///		product id 
-		///		SEName field of the product table
-		/// </summary>
-		/// <param name="product"></param>
-		/// <param name="store"></param>
-		/// <returns></returns>
-		private string GetProductLink(Product product, Store1 store)
-		{
-			const string  particle  = "p";
-			const string ending = ".aspx";
-			string result = string.Empty;
-			if (product == null)
-				throw new Exception("GetProductLink() function received a null product");
-			if (store == null)
-				throw new Exception("GetProductLink() function received a null store");
+		///// <summary>
+		///// The link is composed of :
+		/////		Store url
+		/////		letter "p"
+		/////		product id 
+		/////		SEName field of the product table
+		///// </summary>
+		///// <param name="product"></param>
+		///// <param name="store"></param>
+		///// <returns></returns>
+		//private string GetProductLink(Product product, Store1 store)
+		//{
+		//	const string  particle  = "p";
+		//	const string ending = ".aspx";
+		//	string result = string.Empty;
+		//	if (product == null)
+		//		throw new Exception("GetProductLink() function received a null product");
+		//	if (store == null)
+		//		throw new Exception("GetProductLink() function received a null store");
 
-			string productid = product.ProductID.ToString();
-			string seName = product.SEName ?? string.Empty;
+		//	string productid = product.ProductID.ToString();
+		//	string seName = product.SEName ?? string.Empty;
 
-			result = $"{store.ProductionURI}/{particle}-{seName}{ending}";
-			return result;
-		}
+		//	result = $"{store.ProductionURI}/{particle}-{seName}{ending}";
+		//	return result;
+		//}
 
 		private object GetOptionImages(List<Tuple<string, decimal, string>> colors, int productID, object storeURI, object colorOptions)
 		{
 			throw new NotImplementedException();
 		}
 
-		/// <summary>
-		/// This method builds the Image url based on product id and store url
-		/// This may vary from one implementation of the stre to another
-		/// Therefore may be suitable in the future to adda a plugin function that we could replace 
-		/// based on the store implementation
-		/// Sample image url: https://www.wickedteesofny.com/images/product/large/5413_1_.jpg
-		/// {stoteUrl}/images/product/{large|medium|small}/{productid}_{picture_number}_.jpg
-		/// TODO:
-		/// On this version developed on July 2020 we do not know the rules of how the images url are build on the server
-		/// We will need to come up with a way to store the image information in the database so we can return the accurate url
-		/// as this method has chances to be incuarate
-		/// </summary>
-		/// <param name="productID"></param>
-		/// <param name="storeURI"></param>
-		/// <returns></returns>
-		private string GetProductImage(int productID, string storeURI)
-		{
-			var result = string.Empty;
-			storeURI = storeURI ?? string.Empty;
-			var url = new StringBuilder(storeURI);
-			if (!storeURI.EndsWith('/')) url.Append('/');
-			url.Append("images/product/");
-			url.Append("large/");
-			url.Append(productID);
-			url.Append("_1_.jpg");
-			result = url.ToString();
-			return result;
-		}
+		///// <summary>
+		///// This method builds the Image url based on product id and store url
+		///// This may vary from one implementation of the stre to another
+		///// Therefore may be suitable in the future to adda a plugin function that we could replace 
+		///// based on the store implementation
+		///// Sample image url: https://www.wickedteesofny.com/images/product/large/5413_1_.jpg
+		///// {stoteUrl}/images/product/{large|medium|small}/{productid}_{picture_number}_.jpg
+		///// TODO:
+		///// On this version developed on July 2020 we do not know the rules of how the images url are build on the server
+		///// We will need to come up with a way to store the image information in the database so we can return the accurate url
+		///// as this method has chances to be incuarate
+		///// </summary>
+		///// <param name="productID"></param>
+		///// <param name="storeURI"></param>
+		///// <returns></returns>
+		//private string GetProductImage(int productID, string storeURI)
+		//{
+		//	var result = string.Empty;
+		//	storeURI = storeURI ?? string.Empty;
+		//	var url = new StringBuilder(storeURI);
+		//	if (!storeURI.EndsWith('/')) url.Append('/');
+		//	url.Append("images/product/");
+		//	url.Append("large/");
+		//	url.Append(productID);
+		//	url.Append("_1_.jpg");
+		//	result = url.ToString();
+		//	return result;
+		//}
 
 		private List<ColorOption> GetColorOptions(Product p)
 		{
