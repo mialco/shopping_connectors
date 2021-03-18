@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BizConnector-cli": {
+      "commandName": "Project",
+      "commandLineArgs": "run_full_feed"
+    }
+  }
+}

@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\mialco.storage.abstracts\mialco.storage.abstracts.csproj" />
+  </ItemGroup>
+
 </Project>

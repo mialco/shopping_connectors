@@ -16,7 +16,9 @@ namespace mialco.shopping.entities.abstraction
 			AssignId(id);
 		}
 
+#pragma warning disable CS0169 // The field 'Entity.a' is never used
 		private string a;
+#pragma warning restore CS0169 // The field 'Entity.a' is never used
 		public string Name { get; set;}
 		public string Description { get; set; }
 		//public string LongDescription { get; set; }

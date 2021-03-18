@@ -39,3 +39,12 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\obj\
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\StoreFrontCategoryMappingDb.mdf
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\StoreFrontCategoryMappingDb_log.ldf
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.StoreFront.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.StoreFront.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.configuration.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\mialco.configuration.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test\bin\Debug\netcoreapp2.1\ShoppingConnectorConfig.json

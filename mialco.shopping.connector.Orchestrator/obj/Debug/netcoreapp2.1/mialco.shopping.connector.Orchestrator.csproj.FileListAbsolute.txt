@@ -32,3 +32,8 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestra
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.utilities.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.StoreFront.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.StoreFront.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.configuration.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.configuration.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\ShoppingConnectorConfig.json
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.storage.abstracts.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.Orchestrator\bin\Debug\netcoreapp2.1\mialco.storage.abstracts.pdb

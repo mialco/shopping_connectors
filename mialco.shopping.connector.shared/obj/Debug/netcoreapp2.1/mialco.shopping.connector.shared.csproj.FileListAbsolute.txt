@@ -7,3 +7,10 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\ob
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\obj\Debug\netcoreapp2.1\mialco.shopping.connector.shared.AssemblyInfo.cs
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\obj\Debug\netcoreapp2.1\mialco.shopping.connector.shared.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\obj\Debug\netcoreapp2.1\mialco.shopping.connector.shared.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\bin\Debug\netcoreapp2.1\mialco.abstractions.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\bin\Debug\netcoreapp2.1\mialco.shopping.entities.abstraction.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\bin\Debug\netcoreapp2.1\mialco.storage.abstracts.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\bin\Debug\netcoreapp2.1\mialco.storage.abstracts.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\bin\Debug\netcoreapp2.1\mialco.abstractions.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\bin\Debug\netcoreapp2.1\mialco.shopping.entities.abstraction.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.shared\obj\Debug\netcoreapp2.1\mialco.shopping.connector.shared.csproj.CopyComplete

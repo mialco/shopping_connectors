@@ -3,6 +3,10 @@ using System.Text;
 using mialco.shopping.connector.RawFeed;
 using mialco.shopping.connector.StoreFront;
 using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
+using mialco.shopping.connector.RawFeed.StoreFront.ImageLookup;
+using mialco.configuration;
+
+using System.IO;
 
 namespace mialco.shopping.connector.RawFeed.StoreFront
 {
@@ -11,18 +15,27 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 	/// </summary>
 	public class RawFeedBuilder
 	{
+		const int ApplicationInstanceId = 0;
+		private const string ImagesFileName = "StoreFrontImagesList.txt";
 		GoogleCategoryMapping _googleCategoryMapping;
+		ImageLookup.StoreFrontImagesLookupUtility _imageLookupUtility;
+		configuration.ShoppingConnectorConfiguration _shoppingConnectorConfiguration;
 
 		//Create an initialize an instance of google category mapping
 
 		public RawFeedBuilder()
 		{
-
+			_shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
 		}
 
 		public GoogleCategoryMapping GoogleCategoryMapping
 		{
 			get => _googleCategoryMapping;
+		}
+
+		public StoreFrontImagesLookupUtility ImagesLookupUtility
+		{
+			get => _imageLookupUtility;
 		}
 
 		public void LoadCategories()
@@ -126,22 +139,28 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		/// <param name="productID"></param>
 		/// <param name="storeURI"></param>
 		/// <returns></returns>
-		public string GetProductImage(int productID, Store1 store)
+		public string GetProductImage(int productID, Store1 store,  out string additionalImage)
 		{
 			if (store == null)
 				throw new Exception("GetProductLink() function received a null store");
 
+			if (_imageLookupUtility == null)
+				throw new Exception("RawFeedBuilder::ImageLookupUtility is not loaded. Please make sure that you call first RawFeedBuilder.LoadImageLookup()");
+
 			var result = string.Empty;
 			var storeURI = store.ProductionURI;
 			storeURI = storeURI ?? string.Empty;
-			var url = new StringBuilder(storeURI);
-			if (!storeURI.EndsWith("/")) url.Append("/");
-			url.Append("images/product/");
-			url.Append("large/");
-			url.Append(productID);
-			//url.Append("_1_.jpg");
-			url.Append(".jpg");
+
+			var additionalImageRelativePath = string.Empty;
+			var imageRelativePath = _imageLookupUtility.GetImagePath(productID, out additionalImageRelativePath);
+			imageRelativePath = imageRelativePath ?? string.Empty;
+			additionalImageRelativePath = additionalImageRelativePath ?? string.Empty;
+
+			var url = $"{storeURI}/{imageRelativePath}";
+			additionalImage = $"{storeURI}/{additionalImageRelativePath}";
+
 			result = url.ToString();
+
 			return result;
 		}
 
@@ -156,6 +175,78 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 
 			return null;
 		}
+
+		public string GetSalePrice(ProductVariant variant )
+		{
+			var result = string.Empty;
+			var defaultCurrency = _shoppingConnectorConfiguration.GetValue("");
+			if (variant == null) return result;
+			var salePrice = variant.SalePrice.HasValue ? variant.SalePrice.Value : variant.Price;
+			if (salePrice <= 0) salePrice = variant.Price;
+			result = $"{salePrice} {defaultCurrency}";
+			return result;
+		}
+
+		/// <summary>
+		/// Your product’s Global Trade Item Number (GTIN)
+		/// Exclude dashes and spaces
+		///Submit only valid GTINs as defined in the official GS1 validation guide, which includes these requirements:
+		/// </summary>
+		/// <param name="variant"></param>
+		/// <returns></returns>
+		public string GetGtin(ProductVariant variant)
+		{
+			return variant.GTIN ?? string.Empty; //TODO: Test if it gets a value 
+		}
+
+		/// <summary>
+		/// Returns Manufacturing Part Number
+		/// </summary>
+		/// <param name="productId"></param>
+		/// <param name="variant"></param>
+		/// <returns></returns>
+		public string GetMpn(string productId, ProductVariant variant)
+		{
+			var result = string.Empty;
+			if (variant == null)
+				return result;
+			if (!string.IsNullOrEmpty(variant.ManufacturerPartNumber))
+			{
+				result = variant.ManufacturerPartNumber;
+			}
+			else if (!string.IsNullOrEmpty(variant.Product.ManufacturerPartNumber))
+			{
+				result = variant.Product.ManufacturerPartNumber.Trim();
+			}
+			else
+			{
+				result = $"mfg_{productId}";
+			}
+
+			return result;
+		}
+
+		public bool LoadImagesLookup()
+		{
+			var result = false;
+			var appPath = utilities.AppUtilities.GetApplicationDataPath();
+			var imagesListFileName = Path.Combine(appPath, ImagesFileName);
+			try
+			{
+		
+				_imageLookupUtility = new StoreFrontImagesLookupUtility(ApplicationInstanceId);
+				_imageLookupUtility.LoadImagesFromFile(imagesListFileName);
+			}
+			catch (Exception)
+			{
+				//todo: write error to the log
+				result = false;
+			}
+
+
+			return result;
+		}
+
 
 
 	}

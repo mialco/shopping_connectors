@@ -1,0 +1,26 @@
+{
+	"Application": {
+		"Instances": 
+		[
+			{
+				"Name": "Dev Instance",
+				"Description": "Used in development",
+				"ConnecttionString": "sadasdasdasd"
+			},
+			{
+
+				"Name": "Prod Instance",
+				"Description": "Used in development",
+				"ConnecttionString": "sadasdasdasd"
+			}
+		]
+},
+	"RawFeedBuilderSettings": {
+		"DefaultCurrency": "USD"
+
+	},
+	"CategoriesSettings": {
+		"DefaultGoogleCategory": "asdsfas"
+
+	}
+}

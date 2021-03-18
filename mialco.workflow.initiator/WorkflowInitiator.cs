@@ -10,11 +10,17 @@ using System.Threading;
 
 namespace mialco.workflow.initiator
 {
+	/// <summary>
+	/// Workflow initiator role is to cycle through all the workflow definitions 
+	/// and start each worflow by sending a message to the message queue with the respective queue id and stepid=1
+	/// </summary>
    public  class WorkflowInitiator
     {
 		public CancellationToken _cancelationToken = new CancellationToken(false);
 		private static object _padlock = new object();
+#pragma warning disable CS0169 // The field 'WorkflowInitiator._activeThreads' is never used
 		private static int _activeThreads;
+#pragma warning restore CS0169 // The field 'WorkflowInitiator._activeThreads' is never used
 		private IMessageHub _messageHub;
 		private IRepository<WorkflowDefinition> _workflowDefinitionsRepository;
 
@@ -23,7 +29,7 @@ namespace mialco.workflow.initiator
 			_messageHub = MialcoInMemoryMessageHub.GetInstance();
 			_workflowDefinitionsRepository = new WorkflowDefinitionInMemoryRepository();
 		}
-		public void RunWorkflowIniator()
+		public void RunWorkflowIntiator()
 		{
 			Console.WriteLine($"Starting workflow initiator");
 
@@ -44,7 +50,8 @@ namespace mialco.workflow.initiator
 					foreach (var wfd in wfdfs)
 					{
 						Console.WriteLine($"Invoking StartFirstStep for worflow {wfd.Name}");
-						StartFirstStep(wfd);
+						MialcoProcessingMessage mpm = new MialcoProcessingMessage(wfd.Id, 1);
+						_messageHub.PushMessage(mpm);
 					}
 					// Record the 
 
@@ -70,12 +77,6 @@ namespace mialco.workflow.initiator
 			}
 
 
-		}
-
-		private void  StartFirstStep(WorkflowDefinition wd)
-		{
-			MialcoProcessingMessage mpm = new MialcoProcessingMessage(1,1);
-			_messageHub.PushMessage(mpm);
 		}
 	}
 }

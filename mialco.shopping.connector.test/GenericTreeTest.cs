@@ -16,7 +16,9 @@ namespace mialco.shopping.connector.test
 		//public void ShouldGetTheCorrectcategories(TreeTestData testData)
 		public void ShouldGetTheCorrectcategories()
 		{
+#pragma warning disable CS0219 // The variable 'x' is assigned but its value is never used
 			var x = 1;
+#pragma warning restore CS0219 // The variable 'x' is assigned but its value is never used
 			//Create the root node
 			IEnumerable<object[]> x1 = GetTreeTestData() ;
 			//var x2 = (TreeTestData) x1. ;
@@ -50,7 +52,9 @@ namespace mialco.shopping.connector.test
 
 		public static IEnumerable<object[]> GetTreeTestData()
 		{
+#pragma warning disable CS0168 // The variable 'obj' is declared but never used
 			object[] obj ;
+#pragma warning restore CS0168 // The variable 'obj' is declared but never used
 			List<object[]> result = new List<object[]>();
 
 			var td = new TreeTestData();

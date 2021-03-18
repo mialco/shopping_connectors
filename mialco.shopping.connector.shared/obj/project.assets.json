@@ -207,6 +207,42 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "mialco.abstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/mialco.abstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.abstractions.dll": {}
+        }
+      },
+      "mialco.shopping.entities.abstraction/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/mialco.shopping.entities.abstraction.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.shopping.entities.abstraction.dll": {}
+        }
+      },
+      "mialco.storage.abstracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "mialco.abstractions": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/mialco.storage.abstracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/mialco.storage.abstracts.dll": {}
+        }
       }
     }
   },
@@ -680,11 +716,27 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "mialco.abstractions/1.0.0": {
+      "type": "project",
+      "path": "../mialco.abstractions/mialco.abstractions.csproj",
+      "msbuildProject": "../mialco.abstractions/mialco.abstractions.csproj"
+    },
+    "mialco.shopping.entities.abstraction/1.0.0": {
+      "type": "project",
+      "path": "../mialco.shopping.entities.abstraction/mialco.shopping.entities.abstraction.csproj",
+      "msbuildProject": "../mialco.shopping.entities.abstraction/mialco.shopping.entities.abstraction.csproj"
+    },
+    "mialco.storage.abstracts/1.0.0": {
+      "type": "project",
+      "path": "../mialco.storage.abstracts/mialco.storage.abstracts.csproj",
+      "msbuildProject": "../mialco.storage.abstracts/mialco.storage.abstracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Microsoft.NETCore.App >= 2.1.0"
+      "Microsoft.NETCore.App >= 2.1.0",
+      "mialco.storage.abstracts >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -719,7 +771,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.storage.abstracts\\mialco.storage.abstracts.csproj": {
+              "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.storage.abstracts\\mialco.storage.abstracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -72,6 +72,8 @@ namespace mialco.workflow.manager
 					}
 			}
 		}
+
+		
 		//public IEnumerable<
 		public void ThreadpoolTask(object stateInfo)
 		{
@@ -80,7 +82,7 @@ namespace mialco.workflow.manager
 			if (msg != null)
 			{
 				Console.WriteLine("********** Got a new message from the queue");
-				Console.WriteLine("Processing the message retrieved from the queu");
+				Console.WriteLine("Processing the message retrieved from the queue");
 				//ToDO: Execute the OPeration
 				//After Operation is executed Go to the workflow definitions
 				// and retrieve the next task ans send a message to the queue

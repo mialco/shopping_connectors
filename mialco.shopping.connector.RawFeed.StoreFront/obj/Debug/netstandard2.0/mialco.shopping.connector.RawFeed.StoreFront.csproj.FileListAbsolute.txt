@@ -22,3 +22,6 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.S
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Debug\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\bin\Debug\netstandard2.0\mialco.configuration.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\bin\Debug\netstandard2.0\mialco.configuration.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\bin\Debug\netstandard2.0\ShoppingConnectorConfig.json

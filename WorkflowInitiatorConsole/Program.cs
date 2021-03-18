@@ -62,7 +62,7 @@ namespace WorkflowInitiatorConsole
 			Task t1 = Task.Factory.StartNew(
 				() =>
 				{
-					wi.RunWorkflowIniator();
+					wi.RunWorkflowIntiator();
 				}
 			);
 			Task t2 = Task.Factory.StartNew(

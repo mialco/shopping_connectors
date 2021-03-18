@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>biz_connector_cli</RootNamespace>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\mialco.shopping.connector.GoogleAdFeed\mialco.shopping.connector.GoogleAdFeed.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.Orchestrator\mialco.shopping.connector.Orchestrator.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.RawFeed\mialco.shopping.connector.RawFeed.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.shared\mialco.shopping.connector.shared.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.StoreFront\mialco.shopping.connector.StoreFront.csproj" />
+    <ProjectReference Include="..\mialco.utilities\mialco.utilities.csproj" />
+    <ProjectReference Include="..\mialco.workflow.initiator\mialco.workflow.initiator.csproj" />
+    <ProjectReference Include="..\mialco.workflow.manager\mialco.workflow.manager.csproj" />
+  </ItemGroup>
+
+</Project>

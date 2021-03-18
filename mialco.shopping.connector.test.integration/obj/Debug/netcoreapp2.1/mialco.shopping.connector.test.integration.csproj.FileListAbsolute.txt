@@ -19,3 +19,11 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.inte
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\obj\Debug\netcoreapp2.1\mialco.shopping.connector.test.integration.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\StoreFrontCategoryMappingDb.mdf
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\StoreFrontCategoryMappingDb_log.ldf
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.abstractions.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.entities.abstraction.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.objectvalues.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.utilities.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.abstractions.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.entities.abstraction.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.shopping.objectvalues.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.test.integration\bin\Debug\netcoreapp2.1\mialco.utilities.pdb

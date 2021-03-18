@@ -52,7 +52,9 @@ namespace mialco.utilities
 		public GenericTree<T> GetChild(int index)
 		{
 			GenericTree<T> result = null;
+#pragma warning disable CS0642 // Possible mistaken empty statement
 			if (index < 0 || index >= _children.Count) ;
+#pragma warning restore CS0642 // Possible mistaken empty statement
 			foreach (var gt in _children)
 			{
 				if (index == 0)

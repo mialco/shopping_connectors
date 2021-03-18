@@ -19,12 +19,19 @@ namespace mialco.shopping.connector.RawFeed.StoreFront.ImageLookup
 				// Folder Priorities
 				_folderPriorities = new Dictionary<string, int>();
 				_folderPriorities.Add(@"images\product", 0);
+				_folderPriorities.Add(@"\images\product", 0);
 				_folderPriorities.Add(@"images\product\medium", 1);
+				_folderPriorities.Add(@"\images\product\medium", 1);
 				_folderPriorities.Add(@"images\product\small", 2);
+				_folderPriorities.Add(@"\images\product\small", 2);
 				_folderPriorities.Add(@"images\product\large", 3);
+				_folderPriorities.Add(@"\images\product\large", 3);
 				_folderPriorities.Add(@"images\product\micro", 4);
+				_folderPriorities.Add(@"\images\product\micro", 4);
 				_folderPriorities.Add(@"images\product\icon", 5);
+				_folderPriorities.Add(@"\images\product\icon", 5);
 				_folderPriorities.Add(@"images\product\swatch", 6);
+				_folderPriorities.Add(@"\images\product\swatch", 6);
 
 
 				_attributesPriorities = new Dictionary<string, int>();
@@ -57,6 +64,14 @@ namespace mialco.shopping.connector.RawFeed.StoreFront.ImageLookup
 
 				case ImageElementsType.Folder:
 					result = (_folderPriorities.ContainsKey(elementName)) ? _folderPriorities[elementName] : result;
+					if (_folderPriorities.ContainsKey(elementName))
+					{
+						if (!elementName.Contains("icon"))
+						{
+							int stophere = 0;
+						}
+						result = _folderPriorities[elementName];
+					}
 					break;
 
 				case ImageElementsType.Extension:

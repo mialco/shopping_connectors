@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "biz-connector-cli": {
+      "commandName": "Project",
+      "commandLineArgs": "feed full-feed --store-id 33"
+    }
+  }
+}

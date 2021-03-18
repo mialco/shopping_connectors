@@ -15,7 +15,9 @@ namespace mialco.shopping.connector.frontstore
 			ProductVariants =  new List<ProductVariant>();
 			ProductStores = new List<ProductStore>();
 		}
+#pragma warning disable CS0169 // The field 'Product._productVariants' is never used
 		private IEnumerable<ProductVariant> _productVariants;
+#pragma warning restore CS0169 // The field 'Product._productVariants' is never used
 		public int ProductID { get; set; }
 		//{ get => base.Id; 
 		//	set

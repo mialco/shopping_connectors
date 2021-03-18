@@ -11,7 +11,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront.ImageLookup
 	abstract class ImageElementBase
 	{
 		protected int _highestPriority;
-		private int _priority;
+		protected int _priority;
 		protected string _name;
 		protected bool _isHighestPriority;
 

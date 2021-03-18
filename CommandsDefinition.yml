@@ -1,0 +1,71 @@
+#shopping connector command definition file
+applications: # Application incorporated in the current solution
+  - shopping-connector
+  - affiliate-connector
+  - fin-connector # Application to connect and manipulate data, with focus on financial systems
+keywords: 
+  - default
+  - none
+platforms:
+  - platform: asp.net:
+      description : asp.net shopping cart store
+      application : shopping-connector
+command_types:
+  - run_full_feed
+  - verify_applictation
+instances:
+  - instance :
+      name : dev installation
+      store_connection_string: Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;
+persistence:
+  product_persistence:
+    type:
+      share:
+        path: c:\data\temp\
+      mongodb:
+        connection_string: sdasasdsdasds
+      s3:
+        url: http://asdasasda/asdas/asd/
+        credentials: asdasdasdasd' sdasdasd'
+  feed_persistence:
+    type: file
+    path: 
+variant_filter_types:
+  - main_variant # this outputs only one variant, usually firs one
+  - first_color # this filter will pick up only first color variant
+  - first_size # this filter will pick up only first size variant
+  - last_color # this filter will pick up only last color variant
+  - last_size # this filter will pick up only last size variant
+  - color_priority # this filter will pick up 
+  - size_priority
+   
+commands:
+  - command
+    type : run_full_feed:
+    platform: asp.net
+    name: Run feed store 33 petals  manual upload
+    description: Run asp.et store in single pass with filters on petals and simple variant
+    params:
+      instance_name : dev installation
+      store_id: 33
+      product_persistence:
+        type: none
+      product_filters:
+        - filter : 
+          category:
+            ids: "12,13,15, 17,19 , 25,28, 47,95,96"
+            names :
+              - petals
+              - wedding flowers
+      variant_filters:
+        - filter:
+          type: main_variant # this outputs only one variant, usually firs one
+      raw_feed_persistence: 
+        type: xml
+        path : default
+      feed_persistence: 
+
+
+
+
+      

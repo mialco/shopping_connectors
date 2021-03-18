@@ -18,6 +18,7 @@ namespace mialco.shopping.connector.frontstore
 		public string SkuSuffix { get; set; }
 		public string ColorSKUModifiers { get; set; }
 		public string SizeSKUModifiers { get; set; }
+		public int IsDefault { get; set; }
 
 		public int ProductID { get; set; }
 		public virtual Product Product {get; set;}

@@ -8,6 +8,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront.ImageLookup
 	{
 		public FolderElement(string name, int priority, int highestPriority) : base(name, priority, highestPriority)
 		{
+			//if (string.IsNullOrEmpty(name) ) 
 		}
 	}
 }

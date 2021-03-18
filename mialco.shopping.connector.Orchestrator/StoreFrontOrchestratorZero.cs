@@ -11,6 +11,8 @@ using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
 using mialco.shopping.connector.RawFeed.StoreFront;
 using mialco.utilities;
 using System.IO;
+using System.Linq;
+using mialco.configuration;
 
 namespace mialco.shopping.connector.Orchestrator
 {
@@ -21,9 +23,11 @@ namespace mialco.shopping.connector.Orchestrator
 		private readonly int _storeId;
 		private readonly WebStoreDeploymentType _deploymentType;
 		private readonly List<GenericFeedRecord> _rawData;
+		private readonly ShoppingConnectorConfiguration _shoppingConnectorConfiguration;
 		private Store1 _store;
 		RawFeedBuilder _rawFeedBuilder;
 		GoogleCategoryMapping _googleCategoryMapping;
+
 		
 
 		public StoreFrontOrchestratorZero(int storeId, WebStoreDeploymentType deploymentType)
@@ -33,6 +37,16 @@ namespace mialco.shopping.connector.Orchestrator
 			_rawFeedBuilder = new RawFeedBuilder();
 			_rawData = new List<GenericFeedRecord>();
 
+			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
+		}
+
+		public StoreFrontOrchestratorZero(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration)
+		{
+			_storeId = storeId;
+			//_deploymentType = deploymentType;
+			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
+			_rawFeedBuilder = new RawFeedBuilder();
+			_rawData = new List<GenericFeedRecord>();
 			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 		}
 
@@ -66,7 +80,11 @@ namespace mialco.shopping.connector.Orchestrator
 		public int RunAllActionsInOneBigLoop()
 		{
 
+			//Get Application settings
+			var shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
+			var appSettings = shoppingConnectorConfiguration.GetApplicationSettings();
 			
+
 			int result = 0;
 			// 1. We conect to the database
 			// and extract the data into a list pt Product : _product
@@ -78,14 +96,15 @@ namespace mialco.shopping.connector.Orchestrator
 			//googleCategoryMapping.Initialize();
 
 			_rawFeedBuilder.LoadCategories();
-
+			_rawFeedBuilder.LoadImagesLookup();
+			var imageLookup = _rawFeedBuilder.ImagesLookupUtility;
 
 
 			// Then we pass the products to the BuildFeed method, which for each product creates a RawFeed.GenericFeed Record
 			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
 			Console.WriteLine("Starting Building Feed from the product data"); 
 
-			BuildFeed(_store, _products, _googleCategoryMapping);
+			BuildFeed(_store, _products, _googleCategoryMapping, true);
 			FeedGenerator feedGenerator = new FeedGenerator();
 
 
@@ -94,7 +113,10 @@ namespace mialco.shopping.connector.Orchestrator
 			//Debt. Almost no matching to the mapping. Just few items
 			// No Sizes or colors are discovered
 			var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
-			feedGenerator.GenerateXmlFeed(outputFile, _rawData, new FeedProperties("ResePetalsStore", @"https://www.rosepatalestore.com", "The rose petalStore"));
+
+
+
+			feedGenerator.GenerateXmlFeed(outputFile, _rawData, new FeedProperties("RosePetalsStore", @"https://www.rosepatalestore.com", "The rose petalStore"));
 			return result;
 		}
 
@@ -110,11 +132,15 @@ namespace mialco.shopping.connector.Orchestrator
 			_products = prodrep.GetAll(storeId);
 		}
 
+		private void ExtractData(int storeId, IDataFilterValues<int> filters)
+		{
+
+		}
 		
 		//TODO: DEBT
 		//DEBT:  Move this method into its on class dedicated for building the Raw Feed from the database records
 		//Creates the collection of Raw data
-		private void BuildFeed(Store1 store, IEnumerable<Product> products, GoogleCategoryMapping googleCategoryMapping)
+		private void BuildFeed(Store1 store, IEnumerable<Product> products, GoogleCategoryMapping googleCategoryMapping , bool defaultVariantOnly )
 		{
 			
 			try
@@ -135,16 +161,32 @@ namespace mialco.shopping.connector.Orchestrator
 					}
 
 
+
 					//DEBT remove if possible the try block from within the loop. It is indroducing a  lot of inneficiency
 					//We build products for each variant, color and size 
+					//var categoryFilter = new List<int> { 12,13,15, 17,19 , 25,28, 47,95,96};
+					//var categoryFilter = new List<int> { 28, 129, 17, 47, 25, 59, 93 }; // 200Petals Wedding Petals Feed
+					var categoryFilter = new List<int> { 217, 218 };
 					foreach (var variant in p.ProductVariants)
 					{
+						var categoryFilteredCount =  p.ProductCategories.Count(x => categoryFilter.Contains(x.CategoryID));
+						if (categoryFilteredCount == 0)
+							continue;
 						variantNumber++;
+						if (defaultVariantOnly && variant.IsDefault != 1)
+						{
+							continue;
+						}
+						if (defaultVariantOnly && variantNumber > 1)
+						{
+							continue;
+						}
+
+
 						//id = GenerateProductId
 						//DEBT: Correct the store url to remove the port 0
 						var sizeOptions = GetProductAttributes(variant.Sizes, variant.SizeSKUModifiers, typeof(SizeOption));
 						var colorOptions = GetProductAttributes(variant.Colors, variant.ColorSKUModifiers, typeof(ColorOption));
-						var productImage = _rawFeedBuilder.GetProductImage(p.ProductID, store);
 						// Need to fix the collors which was original designed to be exracted from product as a list of tupples
 						// var optionImages = GetOptionImages(colors, p.ProductID, storeURI, colorOptions);
 						var colorOptionCount = 0;
@@ -157,66 +199,77 @@ namespace mialco.shopping.connector.Orchestrator
 						sizeOptions.ForEach(size =>
 						{
 							sizeOptionCount++;
+							colorOptionCount = 0;
 							colorOptions.ForEach(color =>
 							{
 								colorOptionCount++;
-								try
+								if (!(defaultVariantOnly && (sizeOptionCount > 1 || colorOptionCount > 1)))
 								{
-									// Create New Raw Product for each variant, size and color
-									var rawFeedRecord = new GenericFeedRecord();
-									id++; //The Id we are just incrementing the previous id
-									var productId = GenerateProductId(p.ProductID, variant.VariantID, size.SkuModifier, color.SkuModifier);
-									rawFeedRecord.ProductId = productId;
-									rawFeedRecord.FeedRecord.Add("Id", productId);
-									rawFeedRecord.FeedRecord.Add("ColorOptionCount", colorOptionCount.ToString());
-									rawFeedRecord.FeedRecord.Add("SizeOptionCount", colorOptionCount.ToString());
-									rawFeedRecord.FeedRecord.Add("Size", size.Name);
-									rawFeedRecord.FeedRecord.Add("SizePriority", size.Priority.ToString());
-									rawFeedRecord.FeedRecord.Add("ColorPriority", color.Priority.ToString());
-									rawFeedRecord.FeedRecord.Add("Title", p.Name ?? "");
-									rawFeedRecord.FeedRecord.Add("Description", p.Description ?? "");
-									// The category from the store Front will be mapped to the
-									// Google field product_type
-									// The Value will be created by listing the entire path of a category with its 
-									// parent categories delimited by ">" 
-									// for Exampe
-									// Parent Category > Category
-									// Funny Crazy T-shirts > Fitness Gym T-shirts
-									//DEBT: Add category Logic
-									//rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate",)
-									//DEBT: AgeGroup
-									rawFeedRecord.FeedRecord.Add("AgeGroup", "");
-									rawFeedRecord.FeedRecord.Add("ManufaturingPartNumber", variant.ManufacturerPartNumber ?? "");
-									rawFeedRecord.FeedRecord.Add("ItemGroupId", $"{p.ProductID}-{variant.VariantID}");
-									rawFeedRecord.FeedRecord.Add("Weight", variant.Weight.ToString());
-									rawFeedRecord.FeedRecord.Add("Link", _rawFeedBuilder.GetProductLink(p, _store));  //todo: test method
-									rawFeedRecord.FeedRecord.Add("ImageLink", _rawFeedBuilder.GetProductImage(p.ProductID, store));//ToDo: Test Method
-									rawFeedRecord.FeedRecord.Add("Condition", GetContition(variant)); //TODO: Improve method
-									rawFeedRecord.FeedRecord.Add("Availability", GetAvailability(variant)); //TODO: improve method -currently hard-coded value
-									rawFeedRecord.FeedRecord.Add("AvailabilityDate", GetAvailabilityDate(p.ProductID)); 
-									rawFeedRecord.FeedRecord.Add("SalePrice", variant.SalePrice.ToString());
-									rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate", GetSalePriceEffecctiveDate(variant).ToString());
-									rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString() );
-									rawFeedRecord.FeedRecord.Add("Gtin", GetGtin(variant)); // TODO: Test data retrieval from the database
-									rawFeedRecord.FeedRecord.Add("Brand", GetBrand(store)); 
-									rawFeedRecord.FeedRecord.Add("Mpn", GetMpn(productId,variant)); 
-									rawFeedRecord.FeedRecord.Add("Category", _rawFeedBuilder.GetGoogleProductCategory(p)); 
-									rawFeedRecord.FeedRecord.Add("ProductType", _rawFeedBuilder.GetProductType(p)); //todo: implement method
-									//todo: rawFeedRecord.FeedRecord.Add("ShippingCountry", GetProductType(p.ProductID)); //todo: implement method
-									//todo: rawFeedRecord.FeedRecord.Add("ShippingService", GetProductType(p.ProductID)); //todo: implement method
-									//todo: rawFeedRecord.FeedRecord.Add("ShippingPrice", GetProductType(p.ProductID)); //todo: implement method
-									rawFeedRecord.FeedRecord.Add("Color", color.Name);
+									try
+									{
+										// Create New Raw Product for each variant, size and color
+										var rawFeedRecord = new GenericFeedRecord();
+										id++; //The Id we are just incrementing the previous id
+										var productId = GenerateProductId(p.ProductID, variant.VariantID, size.SkuModifier, color.SkuModifier);
+										rawFeedRecord.ProductId = productId;
+										rawFeedRecord.FeedRecord.Add("Id", productId);
+										rawFeedRecord.FeedRecord.Add("ColorOptionCount", colorOptionCount.ToString());
+										rawFeedRecord.FeedRecord.Add("SizeOptionCount", colorOptionCount.ToString());
+										rawFeedRecord.FeedRecord.Add("Size", size.Name);
+										rawFeedRecord.FeedRecord.Add("SizePriority", size.Priority.ToString());
+										rawFeedRecord.FeedRecord.Add("ColorPriority", color.Priority.ToString());
+										rawFeedRecord.FeedRecord.Add("Title", p.Name ?? "");
+										rawFeedRecord.FeedRecord.Add("Description", p.Description ?? "");
+										// The category from the store Front will be mapped to the
+										// Google field product_type
+										// The Value will be created by listing the entire path of a category with its 
+										// parent categories delimited by ">" 
+										// for Exampe
+										// Parent Category > Category
+										// Funny Crazy T-shirts > Fitness Gym T-shirts
+										//DEBT: Add category Logic
+										//rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate",)
+										//DEBT: AgeGroup
+										rawFeedRecord.FeedRecord.Add("AgeGroup", "");
+										rawFeedRecord.FeedRecord.Add("ManufaturingPartNumber", variant.ManufacturerPartNumber ?? "");
+										rawFeedRecord.FeedRecord.Add("ItemGroupId", $"{p.ProductID}-{variant.VariantID}");
+										rawFeedRecord.FeedRecord.Add("Weight", variant.Weight.ToString());
+										rawFeedRecord.FeedRecord.Add("Link", _rawFeedBuilder.GetProductLink(p, _store));  //todo: test method
+										var additionalImage = string.Empty;
+										rawFeedRecord.FeedRecord.Add("ImageLink", _rawFeedBuilder.GetProductImage(p.ProductID, store, out additionalImage));//ToDo: Test Method
+										rawFeedRecord.FeedRecord.Add("AdditionalImageLink", additionalImage);
+										rawFeedRecord.FeedRecord.Add("Condition", GetContition(variant)); //TODO: Improve method
+										rawFeedRecord.FeedRecord.Add("Availability", GetAvailability(variant)); //TODO: improve method -currently hard-coded value
+										rawFeedRecord.FeedRecord.Add("AvailabilityDate", GetAvailabilityDate(p.ProductID));
+										rawFeedRecord.FeedRecord.Add("SalePrice", _rawFeedBuilder.GetSalePrice(variant )); //TODO: Hardcoded currency 
+										rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate", GetSalePriceEffecctiveDate(variant).ToString());
+										rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString() + " USD");
+										rawFeedRecord.FeedRecord.Add("Gtin", _rawFeedBuilder.GetGtin(variant)); // TODO: Test data retrieval from the database
+										rawFeedRecord.FeedRecord.Add("Brand", GetBrand(store));
+										rawFeedRecord.FeedRecord.Add("MPN", _rawFeedBuilder.GetMpn(productId, variant));
+										rawFeedRecord.FeedRecord.Add("Category", _rawFeedBuilder.GetGoogleProductCategory(p));
+										rawFeedRecord.FeedRecord.Add("ProductType", _rawFeedBuilder.GetProductType(p)); //todo: implement method
+																														//todo: rawFeedRecord.FeedRecord.Add("ShippingCountry", GetProductType(p.ProductID)); //todo: implement method
+																														//todo: rawFeedRecord.FeedRecord.Add("ShippingService", GetProductType(p.ProductID)); //todo: implement method
+																														//todo: rawFeedRecord.FeedRecord.Add("ShippingPrice", GetProductType(p.ProductID)); //todo: implement method
+										rawFeedRecord.FeedRecord.Add("Color", color.Name);
 
 
 
-									//Add Raw Feed Record to the collection
-									_rawData.Add(rawFeedRecord);
+										//Add Raw Feed Record to the collection
+										_rawData.Add(rawFeedRecord);
+									}
+									catch (Exception ex)
+									{
+										//TODO: Log
+										Console.WriteLine(ex);
+									}
 								}
-								catch (Exception ex)
+								else
 								{
-									//TODO: Log
-									Console.WriteLine(ex);
+									Console.WriteLine("adasasd");
 								}
+
 							});
 						});
 					}
@@ -241,26 +294,7 @@ namespace mialco.shopping.connector.Orchestrator
 			return string.Empty;
 		}
 
-		private string GetMpn(string productId, ProductVariant variant)
-		{
-			var result = string.Empty;
-			if (variant == null)
-				return result;
-			if (string.IsNullOrEmpty(variant.ManufacturerPartNumber))
-			{
-				result = $"mfg_{productId}";
-			}
-			else
-			{
-				result = variant.ManufacturerPartNumber;
-			}
-			return result;
-		}
 
-		private string GetGtin(ProductVariant variant)
-		{
-			return variant.GTIN ?? string.Empty; //TODO: Test if it gets a value 
-		}
 
 		/// <summary>
 		/// At the implemenatonion time, the Brand was not a known value for the product 
@@ -306,6 +340,7 @@ namespace mialco.shopping.connector.Orchestrator
 		/// <returns></returns>
 		private string GetAvailability(ProductVariant variant)
 		{
+			//todo: Read the values from the configuration. These are values specific to google 
 			const string InStock = "in_stock";
 			const string OutOfStock = "out_of_stock";
 

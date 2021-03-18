@@ -48,3 +48,6 @@ C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.pdb
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.StoreFront.dll
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.shopping.connector.RawFeed.StoreFront.pdb
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.configuration.dll
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\mialco.configuration.pdb
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowInitiatorConsole\bin\Debug\netcoreapp2.1\ShoppingConnectorConfig.json

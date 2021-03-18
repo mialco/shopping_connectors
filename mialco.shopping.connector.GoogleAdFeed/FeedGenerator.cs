@@ -44,7 +44,7 @@ namespace mialco.shopping.connector.GoogleAdFeed
 
 					//TODO: REMOVE AFTER TESTING
 					counter++;
-					if (counter > 500) break;
+					//if (counter > 500) break;
 					var value = string.Empty;
 					//We write the record id first
 					//xmlw.WriteItemElement("id", rec.ProductId, GooglePrefix, GoogleNamepace);

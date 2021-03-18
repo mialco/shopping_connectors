@@ -1,0 +1,52 @@
+{
+	"ApplicationSettings": {
+		"ApplicationInstances": [
+			{
+				"Name": "StoreFront_Dev",
+				"Description": "Store Front Based Used in development",
+				"ConnecttionString": "sadasdasdasd",
+				"DeploymentType": "Development"
+
+			},
+			{
+				"Name": "StoreFront_Dev",
+				"Description": "Store Front Based Used in development",
+				"ConnecttionString": "sadasdasdasd",
+				"DeploymentType": "Development"
+
+			},
+
+			{
+
+
+				"Name": "StoreFront_Prod",
+				"Description": "Used in development",
+				"ConnecttionString": "sadasdasdasd",
+				"DeploymentType": "production"
+
+			}
+		],
+		"Folders": {
+			"InputFolder": "C:\\Data\\Mialco\\Development\\ShoppingConnectorResources\\Data\\Input",
+			"OutputFolder": "C:\\Data\\Mialco\\Development\\ShoppingConnectorResources\\Data\\Output"
+		},
+		"Files": {
+			"CategoriesBaseFile": "IRosePetalsCategories.csv",
+			"CategoryMappingBase": "StoreFront-Google-Category-mapping.csv",
+			"MarketingPlatformCategoriesBase": "taxonomy-with-ids.en-US.txt",
+			"ImageListBase": "StoreFrontImagesList.txt",
+			"XmlOutputFeedBase": "OutputFeed.xml",
+			"InputDataFilterBase": "InputDataFilter.json"
+		},
+		"CreateFolders": "true",
+		"DefaultInstance": "StoreFront_Dev"
+	},
+	"CategoriesSettings": {
+		"DefaultGoogleCategory": "asdsfas"
+
+	},
+	"RawFeedBuilderSettings": {
+		"DefaultCurrency": "USD"
+
+	}
+}
