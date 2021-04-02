@@ -7,9 +7,17 @@ namespace mialco.shopping.connector.StoreFront
 {
 	public class StoreFrontDbContext : DbContext
 	{
+		private string _connectionString;
+
+
+		public StoreFrontDbContext(string connectionString ) : base()
+		{
+			_connectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;";
+		}
+
 		public StoreFrontDbContext() : base()
 		{
-
+			_connectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;";
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

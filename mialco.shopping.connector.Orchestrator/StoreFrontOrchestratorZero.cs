@@ -24,11 +24,25 @@ namespace mialco.shopping.connector.Orchestrator
 		private readonly WebStoreDeploymentType _deploymentType;
 		private readonly List<GenericFeedRecord> _rawData;
 		private readonly ShoppingConnectorConfiguration _shoppingConnectorConfiguration;
+		private readonly ApplicationInstanceSettings _applicationInstanceSettings;
+		private readonly ApplicationSettings _applicationSettings;
+		private readonly IdentifiersFilters _identifiersFilters;
 		private Store1 _store;
 		RawFeedBuilder _rawFeedBuilder;
 		GoogleCategoryMapping _googleCategoryMapping;
 
-		
+
+		public StoreFrontOrchestratorZero(int storeId, ApplicationInstanceSettings applicationInstanceSettings)
+		{
+			_storeId = storeId;
+			_applicationInstanceSettings = applicationInstanceSettings;
+			_deploymentType = ShoppingConnectorUtills.DeploymentTypeFromString (applicationInstanceSettings.DeploymentType);
+			_rawFeedBuilder = new RawFeedBuilder();
+			_rawData = new List<GenericFeedRecord>();
+
+			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
+		}
+
 
 		public StoreFrontOrchestratorZero(int storeId, WebStoreDeploymentType deploymentType)
 		{
@@ -40,6 +54,7 @@ namespace mialco.shopping.connector.Orchestrator
 			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 		}
 
+
 		public StoreFrontOrchestratorZero(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration)
 		{
 			_storeId = storeId;
@@ -48,6 +63,20 @@ namespace mialco.shopping.connector.Orchestrator
 			_rawFeedBuilder = new RawFeedBuilder();
 			_rawData = new List<GenericFeedRecord>();
 			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
+		}
+
+
+		public StoreFrontOrchestratorZero(int storeId, ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings, IdentifiersFilters identifiersFilters)
+		{
+			_storeId = storeId;
+			//_deploymentType = deploymentType;
+			_applicationSettings = applicationSettings;
+			_applicationInstanceSettings = applicationInstanceSettings;
+			_identifiersFilters = identifiersFilters;
+			_rawFeedBuilder = new RawFeedBuilder();
+			_rawData = new List<GenericFeedRecord>();
+			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
+
 		}
 
 
@@ -64,12 +93,64 @@ namespace mialco.shopping.connector.Orchestrator
 			
 
 			RunAllActionsInOneBigLoop();
+			//RunAllActionsInOneBigLoop(_storeId,  _applicationInstanceSettings,_applicationSettings, _identifiersFilters);
 			//ExtractData(33);
 			// ToDo - Load Categories from the database 
 			// ToDo - Load Categories Mapping from Goole 
 			//ExportRawData();
 			return 0;
 		}
+
+		/// <summary>
+		/// It executes the extraction from the database, filteredByCategory if the filter exsits  then 
+		/// loops through each record it directly to the Google feed xml file
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public int RunAllActionsInOneBigLoop(int storeId, ApplicationInstanceSettings applicationInstanceSettings ,IdentifiersFilters categoryFilter = null)
+		{
+
+			//Get Application settings
+			var shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
+			var appSettings = shoppingConnectorConfiguration.GetApplicationSettings();
+
+
+			int result = 0;
+			// 1. We conect to the database
+			// and extract the data into a list pt Product : _product
+			Console.WriteLine("Connecting to database to extract the list of products");
+			ExtractData(_storeId,  categoryFilter); ;
+
+			//Create an initialize an instance of google category mapping
+			//GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
+			//googleCategoryMapping.Initialize();
+
+			_rawFeedBuilder.LoadCategories();
+			_rawFeedBuilder.LoadImagesLookup();
+			var imageLookup = _rawFeedBuilder.ImagesLookupUtility;
+
+
+			// Then we pass the products to the BuildFeed method, which for each product creates a RawFeed.GenericFeed Record
+			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
+			Console.WriteLine("Starting Building Feed from the product data");
+
+			BuildFeed(_store, _products, _googleCategoryMapping, true);
+			FeedGenerator feedGenerator = new FeedGenerator();
+
+
+			Console.WriteLine("Starting writing the products to the output feed for Google ");
+			//DEBT: The XML Generator writes one singe item for all of the products
+			//Debt. Almost no matching to the mapping. Just few items
+			// No Sizes or colors are discovered
+			var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
+
+
+
+			feedGenerator.GenerateXmlFeed(outputFile, _rawData, new FeedProperties("RosePetalsStore", @"https://www.rosepatalestore.com", "The rose petalStore"));
+			return result;
+		}
+
+
 
 		/// <summary>
 		/// It executes the extraction from the database in batches then 
@@ -81,8 +162,8 @@ namespace mialco.shopping.connector.Orchestrator
 		{
 
 			//Get Application settings
-			var shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
-			var appSettings = shoppingConnectorConfiguration.GetApplicationSettings();
+			//var shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
+			//var appSettings = shoppingConnectorConfiguration.GetApplicationSettings();
 			
 
 			int result = 0;
@@ -90,7 +171,6 @@ namespace mialco.shopping.connector.Orchestrator
 			// and extract the data into a list pt Product : _product
 			Console.WriteLine("Connecting to database to extract the list of products");
 			ExtractData(_storeId);
-
 			//Create an initialize an instance of google category mapping
 			//GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
 			//googleCategoryMapping.Initialize();
@@ -130,13 +210,28 @@ namespace mialco.shopping.connector.Orchestrator
 			_store = sfsr.GetById(storeId);
 			var prodrep = new StoreFrontProductRepositoryEF();
 			_products = prodrep.GetAll(storeId);
+			_products = prodrep.GetAllFilteredByCategory(storeId,_identifiersFilters.GetFilter("Categories"));
+		}
+
+		private void ExtractData(int storeId, string connectionString)
+		{
+			StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF(connectionString);
+			_store = sfsr.GetById(storeId);
+			var prodrep = new StoreFrontProductRepositoryEF(connectionString);
+			_products = prodrep.GetAll(storeId);
 		}
 
 		private void ExtractData(int storeId, IDataFilterValues<int> filters)
 		{
+			var connectionString = _applicationInstanceSettings.ConnecttionString;
+			StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF(connectionString);
+			_store = sfsr.GetById(storeId);
+			var prodrep = new StoreFrontProductRepositoryEF(connectionString);
+			_products = prodrep.GetAll(storeId);
+			//prodrep.ge
 
 		}
-		
+
 		//TODO: DEBT
 		//DEBT:  Move this method into its on class dedicated for building the Raw Feed from the database records
 		//Creates the collection of Raw data

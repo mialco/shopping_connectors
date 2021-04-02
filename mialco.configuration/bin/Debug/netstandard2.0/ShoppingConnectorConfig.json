@@ -4,7 +4,7 @@
 			{
 				"Name": "StoreFront_Dev",
 				"Description": "Store Front Based Used in development",
-				"ConnecttionString": "sadasdasdasd",
+				"ConnecttionString": "Server =.\\SQLExpress; Database = irosepetals; Trusted_Connection = True;",
 				"DeploymentType": "Development"
 
 			},

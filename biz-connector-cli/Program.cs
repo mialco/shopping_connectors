@@ -13,7 +13,6 @@ namespace biz_connector_cli
 		static void Main(string[] args)
 		{
 			var errors = new List<Error> { };
-
 		
 			Func<IFeedOptions, string> feed = fopts =>
 			{
@@ -28,24 +27,23 @@ namespace biz_connector_cli
 					fopts.InputParametersErrors.Add($"***  Command scope received {fopts.CommandScope} is not one of the accepted commands\n\tAccepted commands are: {commandsInScopeString}");
 					return fresult;
 				}
-				if (fopts.StoreId.HasValue)
-				{
+				//if (fopts.StoreId.HasValue)
+				//{
 					var applicationSettings = mialco.configuration.ShoppingConnectorConfiguration.GetConfiguration();
-					var runFullFeed = new StoreFrontFullFeed(fopts.StoreId.Value, applicationSettings);
+					var runFullFeed = new StoreFrontFullFeed(fopts.StoreId, applicationSettings, fopts.InstanceName);
 					runFullFeed.Run();
-				}
-				else
-				{
-					Console.WriteLine("StoreId is mising");
-					fresult = "StoreId is missing";
-				}
+				//}
+				//else
+				//{
+				//	Console.WriteLine("StoreId is mising");
+				//	fresult = "StoreId is missing";
+				//}
 
 				return fresult;
 			};
 
 			Func<IStoreOptions, string> storecmd = sopts =>
 			{
-
 				var fresult = string.Empty;
 				if (!sopts.AcceptedCommandScopes.Contains(sopts.CommandScope))
 				{
@@ -55,8 +53,6 @@ namespace biz_connector_cli
 					sopts.InputParametersErrors.Add($"***  Command scope received {sopts.CommandScope} is not one of the accepted commands\n\tAccepted commands are: {commandsInScopeString}");
 					return fresult;
 				}
-
-
 				return fresult;
 			};
 
@@ -67,12 +63,14 @@ namespace biz_connector_cli
 			//Use the Command Line Parser to read the input parametes
 			//var result1 = Parser.Default.ParseArguments<FeedCommandOptions>(args);
 			//var result2 = Parser.Default.ParseArguments<StoreCommandOptions>(args);
-			var result = Parser.Default.ParseArguments<FeedCommandOptions, StoreCommandOptions>(args);
-			//var result = Parser.Default.ParseArguments<FeedCommandOptions>(args);
+			//var result = Parser.Default.ParseArguments<FeedCommandOptions, StoreCommandOptions>(args);
+			var result = Parser.Default.ParseArguments<FeedCommandOptions>(args);
+			//result.MapResult((FeedCommandOptions cmdopts) => feed(cmdopts),
+			//(StoreCommandOptions sopts) => storecmd(sopts),
+			//	_ => MakeError());
 			result.MapResult((FeedCommandOptions cmdopts) => feed(cmdopts),
-				(StoreCommandOptions sopts) => storecmd(sopts),
 				_ => MakeError());
-			result.WithNotParsed<object>((errs) => CustomErrors(errs, out argsErrors));
+			//result.WithNotParsed<object>((errs) => CustomErrors(errs, out argsErrors));
 
 			result.WithParsed<FeedCommandOptions>(cmdoption => ParametersErrors(cmdoption.InputParametersErrors, out argsErrors));
 
@@ -80,8 +78,8 @@ namespace biz_connector_cli
 			{
 				var newArgs = new List<string> { "", "", "", "" };
 				//result = Parser.Default.ParseArguments<FeedCommandOptions,StoreCommandOptions>(newArgs);
-				//result.MapResult((FeedCommandOptions cmdopts) => feed(cmdopts),
-				//	_ => MakeError());
+				result.MapResult((FeedCommandOptions cmdopts) => feed(cmdopts),
+					_ => MakeError());
 				//result.MapResult((StoreCommandOptions sopts) => store(sopts), _=>MakeError());
 			}
 

@@ -10,9 +10,20 @@ namespace mialco.shopping.connector.StoreFront
 {
 	public class StoreFrontStoreRepositoryEF
 	{
+		string _connectionString;
+		public StoreFrontStoreRepositoryEF()
+		{
+			_connectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;";
+		}
+
+		public StoreFrontStoreRepositoryEF(string connectionString)
+		{
+			_connectionString = connectionString;
+		}
+
 		public IEnumerable<Store1> GetAll()
 		{
-			using (var ctx = new StoreFrontDbContext())
+			using (var ctx = new StoreFrontDbContext(_connectionString))
 			{
 
 				// var stores = ctx.Store.Where(x => 1 == 1).ToList();

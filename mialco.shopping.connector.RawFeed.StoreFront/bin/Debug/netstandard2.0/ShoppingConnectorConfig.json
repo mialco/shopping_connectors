@@ -2,24 +2,16 @@
 	"ApplicationSettings": {
 		"ApplicationInstances": [
 			{
-				"Name": "StoreFront_Dev",
+				"Name": "StoreFront-Dev",
 				"Description": "Store Front Based Used in development",
-				"ConnecttionString": "sadasdasdasd",
-				"DeploymentType": "Development"
+				"ConnecttionString": "Server =.\\SQLExpress; Database = irosepetals; Trusted_Connection = True;",
+				"DeploymentType": "Production"
 
 			},
 			{
-				"Name": "StoreFront_Dev",
-				"Description": "Store Front Based Used in development",
-				"ConnecttionString": "sadasdasdasd",
-				"DeploymentType": "Development"
-
-			},
-
-			{
 
 
-				"Name": "StoreFront_Prod",
+				"Name": "StoreFront-Prod",
 				"Description": "Used in development",
 				"ConnecttionString": "sadasdasdasd",
 				"DeploymentType": "production"
