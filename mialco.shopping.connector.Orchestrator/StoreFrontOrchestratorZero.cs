@@ -44,6 +44,11 @@ namespace mialco.shopping.connector.Orchestrator
 		}
 
 
+		/// <summary>
+		/// Deprecated
+		/// </summary>
+		/// <param name="storeId"></param>
+		/// <param name="deploymentType"></param>
 		public StoreFrontOrchestratorZero(int storeId, WebStoreDeploymentType deploymentType)
 		{
 			_storeId = storeId;
@@ -55,6 +60,11 @@ namespace mialco.shopping.connector.Orchestrator
 		}
 
 
+		/// <summary>
+		/// Deprecated
+		/// </summary>
+		/// <param name="storeId"></param>
+		/// <param name="shoppingConnectorConfiguration"></param>
 		public StoreFrontOrchestratorZero(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration)
 		{
 			_storeId = storeId;
@@ -69,7 +79,7 @@ namespace mialco.shopping.connector.Orchestrator
 		public StoreFrontOrchestratorZero(int storeId, ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings, IdentifiersFilters identifiersFilters)
 		{
 			_storeId = storeId;
-			//_deploymentType = deploymentType;
+			_deploymentType = ShoppingConnectorUtills.DeploymentTypeFromString(applicationInstanceSettings.DeploymentType); 
 			_applicationSettings = applicationSettings;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_identifiersFilters = identifiersFilters;
@@ -92,8 +102,8 @@ namespace mialco.shopping.connector.Orchestrator
 		{
 			
 
-			RunAllActionsInOneBigLoop();
-			//RunAllActionsInOneBigLoop(_storeId,  _applicationInstanceSettings,_applicationSettings, _identifiersFilters);
+			//RunAllActionsInOneBigLoop();
+			RunAllActionsInOneBigLoop(_storeId,_applicationSettings,_applicationInstanceSettings ,_identifiersFilters);
 			//ExtractData(33);
 			// ToDo - Load Categories from the database 
 			// ToDo - Load Categories Mapping from Goole 
@@ -107,7 +117,7 @@ namespace mialco.shopping.connector.Orchestrator
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		public int RunAllActionsInOneBigLoop(int storeId, ApplicationInstanceSettings applicationInstanceSettings ,IdentifiersFilters categoryFilter = null)
+		public int RunAllActionsInOneBigLoop(int storeId,ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings ,IdentifiersFilters categoryFilter = null)
 		{
 
 			//Get Application settings
@@ -119,7 +129,7 @@ namespace mialco.shopping.connector.Orchestrator
 			// 1. We conect to the database
 			// and extract the data into a list pt Product : _product
 			Console.WriteLine("Connecting to database to extract the list of products");
-			ExtractData(_storeId,  categoryFilter); ;
+			ExtractData(_storeId, _applicationInstanceSettings.ConnecttionString, categoryFilter); ;
 
 			//Create an initialize an instance of google category mapping
 			//GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
@@ -142,7 +152,9 @@ namespace mialco.shopping.connector.Orchestrator
 			//DEBT: The XML Generator writes one singe item for all of the products
 			//Debt. Almost no matching to the mapping. Just few items
 			// No Sizes or colors are discovered
-			var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
+			//var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
+			var outputFile = Path.Combine( _applicationSettings.Folders.OutputFolder, OutputFileName);
+
 
 
 
@@ -170,7 +182,7 @@ namespace mialco.shopping.connector.Orchestrator
 			// 1. We conect to the database
 			// and extract the data into a list pt Product : _product
 			Console.WriteLine("Connecting to database to extract the list of products");
-			ExtractData(_storeId);
+			//ExtractData(_storeId);
 			//Create an initialize an instance of google category mapping
 			//GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
 			//googleCategoryMapping.Initialize();
@@ -204,14 +216,14 @@ namespace mialco.shopping.connector.Orchestrator
 		/// Extracts data from the storefront database
 		/// </summary>
 		/// <param name="storeId"></param>
-		private void ExtractData(int storeId)
-		{
-			StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF();
-			_store = sfsr.GetById(storeId);
-			var prodrep = new StoreFrontProductRepositoryEF();
-			_products = prodrep.GetAll(storeId);
-			_products = prodrep.GetAllFilteredByCategory(storeId,_identifiersFilters.GetFilter("Categories"));
-		}
+		//private void ExtractData(int storeId)
+		//{
+		//	StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF();
+		//	_store = sfsr.GetById(storeId);
+		//	var prodrep = new StoreFrontProductRepositoryEF();
+		//	_products = prodrep.GetAll(storeId);
+		//	_products = prodrep.GetAllFilteredByCategory(storeId,_identifiersFilters.GetFilter("Categories"));
+		//}
 
 		private void ExtractData(int storeId, string connectionString)
 		{
@@ -221,15 +233,12 @@ namespace mialco.shopping.connector.Orchestrator
 			_products = prodrep.GetAll(storeId);
 		}
 
-		private void ExtractData(int storeId, IDataFilterValues<int> filters)
+		private void ExtractData(int storeId,string connectionString, IDataFilterValues<int> filters)
 		{
-			var connectionString = _applicationInstanceSettings.ConnecttionString;
 			StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF(connectionString);
 			_store = sfsr.GetById(storeId);
 			var prodrep = new StoreFrontProductRepositoryEF(connectionString);
-			_products = prodrep.GetAll(storeId);
-			//prodrep.ge
-
+			_products = prodrep.GetAllFilteredByCategory(storeId, _identifiersFilters.GetFilter("Categories"));
 		}
 
 		//TODO: DEBT

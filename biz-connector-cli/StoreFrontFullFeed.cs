@@ -86,8 +86,9 @@ namespace biz_connector_cli
 			//var storeId = 33; //wickedTees
 			//storeId = 1; //irosepetals
 
-			var orch = new StoreFrontOrchestratorZero(_storeId, WebStoreDeploymentType.Production);
-
+			var orch = new StoreFrontOrchestratorZero(_storeId,_appSettings, _appInstanceSettings,_identifiersFilters);
+			
+			orch.RunAllActionsInOneBigLoop(_storeId,_appSettings, _appInstanceSettings, _identifiersFilters);
 			orch.Run();
 
 		}

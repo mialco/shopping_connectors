@@ -32,6 +32,7 @@ namespace biz_connector_cli
 					var applicationSettings = mialco.configuration.ShoppingConnectorConfiguration.GetConfiguration();
 					var runFullFeed = new StoreFrontFullFeed(fopts.StoreId, applicationSettings, fopts.InstanceName);
 					runFullFeed.Run();
+
 				//}
 				//else
 				//{

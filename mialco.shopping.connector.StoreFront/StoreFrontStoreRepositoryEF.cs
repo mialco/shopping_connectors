@@ -11,10 +11,10 @@ namespace mialco.shopping.connector.StoreFront
 	public class StoreFrontStoreRepositoryEF
 	{
 		string _connectionString;
-		public StoreFrontStoreRepositoryEF()
-		{
-			_connectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;";
-		}
+		//public StoreFrontStoreRepositoryEF()
+		//{
+		//	_connectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;";
+		//}
 
 		public StoreFrontStoreRepositoryEF(string connectionString)
 		{

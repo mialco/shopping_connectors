@@ -14,7 +14,7 @@ namespace mialco.shopping.connector.StoreFrontDbService.Controllers
         [HttpGet]
         public IEnumerable<Store1> Get()
         {
-			StoreFrontStoreRepositoryEF rp = new StoreFrontStoreRepositoryEF();
+			StoreFrontStoreRepositoryEF rp = new StoreFrontStoreRepositoryEF("Needs connection String");
 			var stores = rp.GetAll();
 
 			return stores;
