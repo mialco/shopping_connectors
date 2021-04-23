@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "xpkVMMD8QGWxHVj1moUrk4xtce5ZgRCTaYvZZB+qE1B9ukXEZFQOspiQ77jfzwyFSPXGgNUqeqj4Y3ApbeDfuA==",
+  "success": true,
+  "projectFilePath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.intefaces\\mialco.shopping.connector.intefaces.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mikeo\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

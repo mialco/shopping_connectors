@@ -1,9 +1,14 @@
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Release\netstandard2.0\mialco.shopping.objectvalues.deps.json
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Release\netstandard2.0\mialco.shopping.objectvalues.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Release\netstandard2.0\mialco.shopping.objectvalues.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Release\netstandard2.0\mialco.shopping.objectvalues.csprojResolveAssemblyReference.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Release\netstandard2.0\mialco.shopping.objectvalues.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Release\netstandard2.0\mialco.shopping.objectvalues.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Release\netstandard2.0\mialco.shopping.objectvalues.AssemblyInfo.cs
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Release\netstandard2.0\mialco.shopping.objectvalues.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Release\netstandard2.0\mialco.shopping.objectvalues.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Release\netstandard2.0\mialco.abstractions.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.dll
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Release\netstandard2.0\mialco.abstractions.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Release\netstandard2.0\mialco.shopping.objectvalues.csprojAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.objectvalues\obj\Release\netstandard2.0\mialco.shopping.objectvalues.csproj.CopyComplete

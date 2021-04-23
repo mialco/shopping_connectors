@@ -16,17 +16,20 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 	public class RawFeedBuilder
 	{
 		const int ApplicationInstanceId = 0;
-		private const string ImagesFileName = "StoreFrontImagesList.txt";
+		private ApplicationInstanceSettings _applicationInstanceSettings;
 		GoogleCategoryMapping _googleCategoryMapping;
 		ImageLookup.StoreFrontImagesLookupUtility _imageLookupUtility;
 		configuration.ShoppingConnectorConfiguration _shoppingConnectorConfiguration;
 
 		//Create an initialize an instance of google category mapping
 
-		public RawFeedBuilder()
+		public RawFeedBuilder(ApplicationInstanceSettings applicationInstanceSettings)
 		{
+			_applicationInstanceSettings = applicationInstanceSettings;
 			_shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
 		}
+
+
 
 		public GoogleCategoryMapping GoogleCategoryMapping
 		{
@@ -40,7 +43,10 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 
 		public void LoadCategories()
 		{
-			_googleCategoryMapping= new GoogleCategoryMapping();
+			var googleCategoryMappingFileName = Path.Combine(_shoppingConnectorConfiguration.GetApplicationSettings().Folders.InputFolder,
+				_applicationInstanceSettings.GoogleCategoryMappingFileName);
+			var defaultCategory = _applicationInstanceSettings.DefaultGoogleCategory;
+			_googleCategoryMapping = new GoogleCategoryMapping(_applicationInstanceSettings.ConnecttionString,googleCategoryMappingFileName,defaultCategory);
 			_googleCategoryMapping.Initialize();
 		}
 
@@ -226,15 +232,20 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 			return result;
 		}
 
+		/// <summary>
+		/// Loads in memory the list of all the images available to the application 
+		/// The list is a flat file where each line is the file name of an image file with the relative path to the images folder of the application.
+		/// </summary>
+		/// <param name="imagesFileName"></param>
+		/// <returns></returns>
 		public bool LoadImagesLookup()
 		{
 			var result = false;
-			var appPath = utilities.AppUtilities.GetApplicationDataPath();
-			var imagesListFileName = Path.Combine(appPath, ImagesFileName);
+			var inputPath = _shoppingConnectorConfiguration.GetApplicationSettings().Folders.InputFolder;
+			var imagesListFileName = Path.Combine(inputPath, _applicationInstanceSettings.ImagesListFileName);
 			try
 			{
-		
-				_imageLookupUtility = new StoreFrontImagesLookupUtility(ApplicationInstanceId);
+				_imageLookupUtility = new StoreFrontImagesLookupUtility(_applicationInstanceSettings.ImagesListFileName);
 				_imageLookupUtility.LoadImagesFromFile(imagesListFileName);
 			}
 			catch (Exception)
@@ -246,7 +257,6 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 
 			return result;
 		}
-
 
 
 	}

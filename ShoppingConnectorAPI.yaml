@@ -24,7 +24,7 @@ paths:
 	  summary: Lists all the application instances for the client  having client_id, handled by this API
 
 
-  /admin/categories/store/list/{feedid}/{instance_id}{store_id}:
+  /admin/categories/store/list/{feedid}/{instance_id}/{store_id}:
     get:
 	  summary: Returns a list of categories associated with a store
     responses:
@@ -32,10 +32,43 @@ paths:
 
 	  '400':
   
-  /admin/categories/publisher/{publisher_id}
+  /admin/categories/publisher/{publisher_id}:
     get:
       summary: Returns a list of categories associated with a publisher (Amazon, Google etc)  
   
     put: 
 	  summary: Updates the categories associated with the publisher 
-  /admin 
+
+  /admin/config/default_category:
+    get:
+	  summary: Returns the configuration category
+    responses: 
+	  '200':
+
+      '400':
+    put:
+	  summary: Sets the google default category for this API installation
+
+  /admin/config/instance/list:
+    get:
+	  summary: 
+    responses: 
+	  '200':
+
+      '400':
+
+  /admin/config/instance/{instanceName}:
+    get:
+	  summary: Re
+    responses: 
+	  '200':
+
+      '400':
+
+  /admin/config/instance/default_category/{instanceName}:
+    get:
+	  summary: Re
+    responses: 
+	  '200':
+
+      '400':

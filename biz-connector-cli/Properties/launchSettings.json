@@ -2,7 +2,7 @@
   "profiles": {
     "biz-connector-cli": {
       "commandName": "Project",
-      "commandLineArgs": "feed full-feed -s 33 -i StoreFront-Dev"
+      "commandLineArgs": "feed full-feed -s 30 -i StoreFront-Dev"
     }
   }
 }

@@ -6341,6 +6341,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "projectReferences": {
             "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj": {
               "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj"
@@ -6359,6 +6360,7 @@
     },
     "frameworks": {
       "netstandard2.0": {
+        "targetAlias": "netstandard2.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -6376,10 +6378,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
       }
     }
   }

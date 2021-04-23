@@ -42,7 +42,7 @@ namespace biz_connector_cli
 			GetFilters();
 			var orch = new StoreFrontOrchestratorZero(_storeId,_appSettings,_appInstanceSettings, _identifiersFilters);
 
-			orch.Run();
+			//orch.Run();
 		}
 
 		public StoreFrontFullFeed(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration, string appInstanceName, string filterJSON)
@@ -89,7 +89,7 @@ namespace biz_connector_cli
 			var orch = new StoreFrontOrchestratorZero(_storeId,_appSettings, _appInstanceSettings,_identifiersFilters);
 			
 			orch.RunAllActionsInOneBigLoop(_storeId,_appSettings, _appInstanceSettings, _identifiersFilters);
-			orch.Run();
+			//orch.Run();
 
 		}
 

@@ -19,18 +19,16 @@ namespace mialco.shopping.connector.RawFeed.StoreFront.ImageLookup
 		private Dictionary<int, StoreFrontImage> _imageDictionary;
 		private Dictionary<int, StoreFrontImage> _alternantImageDictionary;
 
-		public StoreFrontImagesLookupUtility(int applicationInstanceId)
+		public StoreFrontImagesLookupUtility(string imagesFullFileName)
 		{
-			this._applicationInstanceId = applicationInstanceId;
+			_imagesFileName = imagesFullFileName;
 			_imagesLoaded = false;
 			var appPath = utilities.AppUtilities.GetApplicationDataPath();
 			var imagesListFileName = Path.Combine(appPath, ImagesFileName);
-			//LoadImagesFromFile(imagesListFileName);
 		}
 
-		public int ApplicationInstanceId => _applicationInstanceId;
 
-
+		private string _imagesFileName;
 
 		/// <summary>
 		/// Loads images from an external file into internal images dictionary.

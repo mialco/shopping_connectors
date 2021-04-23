@@ -1,0 +1,556 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.GoogleAdFeed\\mialco.shopping.connector.GoogleAdFeed.csproj": {}
+  },
+  "projects": {
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\GoogleAdFeed\\GoogleAdFeed.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\GoogleAdFeed\\GoogleAdFeed.csproj",
+        "projectName": "GoogleAdFeed",
+        "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\GoogleAdFeed\\GoogleAdFeed.csproj",
+        "packagesPath": "C:\\Users\\Mikeo\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\GoogleAdFeed\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj"
+              },
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.entities.abstraction\\mialco.shopping.entities.abstraction.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.entities.abstraction\\mialco.shopping.entities.abstraction.csproj"
+              },
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj",
+        "projectName": "mialco.abstractions",
+        "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj",
+        "packagesPath": "C:\\Users\\Mikeo\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.entities.abstraction\\mialco.shopping.entities.abstraction.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.entities.abstraction\\mialco.shopping.entities.abstraction.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.GoogleAdFeed\\mialco.shopping.connector.GoogleAdFeed.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.GoogleAdFeed\\mialco.shopping.connector.GoogleAdFeed.csproj",
+        "projectName": "mialco.shopping.connector.GoogleAdFeed",
+        "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.GoogleAdFeed\\mialco.shopping.connector.GoogleAdFeed.csproj",
+        "packagesPath": "C:\\Users\\Mikeo\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.GoogleAdFeed\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\GoogleAdFeed\\GoogleAdFeed.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\GoogleAdFeed\\GoogleAdFeed.csproj"
+              },
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj",
+        "projectName": "mialco.shopping.connector.RawFeed",
+        "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\mialco.shopping.connector.RawFeed.csproj",
+        "packagesPath": "C:\\Users\\Mikeo\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.RawFeed\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj",
+        "projectName": "mialco.shopping.connector.StoreFront.GoogleCategoryMapping",
+        "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj",
+        "packagesPath": "C:\\Users\\Mikeo\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj"
+              },
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.utilities\\mialco.utilities.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.utilities\\mialco.utilities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.entities.abstraction\\mialco.shopping.entities.abstraction.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.entities.abstraction\\mialco.shopping.entities.abstraction.csproj",
+        "projectName": "mialco.shopping.entities.abstraction",
+        "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.entities.abstraction\\mialco.shopping.entities.abstraction.csproj",
+        "packagesPath": "C:\\Users\\Mikeo\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.entities.abstraction\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj",
+        "projectName": "mialco.shopping.objectvalues",
+        "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\mialco.shopping.objectvalues.csproj",
+        "packagesPath": "C:\\Users\\Mikeo\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.objectvalues\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.utilities\\mialco.utilities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.utilities\\mialco.utilities.csproj",
+        "projectName": "mialco.utilities",
+        "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.utilities\\mialco.utilities.csproj",
+        "packagesPath": "C:\\Users\\Mikeo\\.nuget\\packages\\",
+        "outputPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.utilities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mikeo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {
+              "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj": {
+                "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.abstractions\\mialco.abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.10.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

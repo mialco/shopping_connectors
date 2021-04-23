@@ -37,7 +37,7 @@ namespace mialco.shopping.connector.Orchestrator
 			_storeId = storeId;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_deploymentType = ShoppingConnectorUtills.DeploymentTypeFromString (applicationInstanceSettings.DeploymentType);
-			_rawFeedBuilder = new RawFeedBuilder();
+			_rawFeedBuilder = new RawFeedBuilder(_applicationInstanceSettings);
 			_rawData = new List<GenericFeedRecord>();
 
 			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
@@ -53,7 +53,7 @@ namespace mialco.shopping.connector.Orchestrator
 		{
 			_storeId = storeId;
 			_deploymentType = deploymentType;
-			_rawFeedBuilder = new RawFeedBuilder();
+			_rawFeedBuilder = new RawFeedBuilder(_applicationInstanceSettings);
 			_rawData = new List<GenericFeedRecord>();
 
 			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
@@ -70,7 +70,7 @@ namespace mialco.shopping.connector.Orchestrator
 			_storeId = storeId;
 			//_deploymentType = deploymentType;
 			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
-			_rawFeedBuilder = new RawFeedBuilder();
+			_rawFeedBuilder = new RawFeedBuilder(_applicationInstanceSettings);
 			_rawData = new List<GenericFeedRecord>();
 			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 		}
@@ -83,7 +83,7 @@ namespace mialco.shopping.connector.Orchestrator
 			_applicationSettings = applicationSettings;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_identifiersFilters = identifiersFilters;
-			_rawFeedBuilder = new RawFeedBuilder();
+			_rawFeedBuilder = new RawFeedBuilder(_applicationInstanceSettings);
 			_rawData = new List<GenericFeedRecord>();
 			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 
@@ -120,6 +120,8 @@ namespace mialco.shopping.connector.Orchestrator
 		public int RunAllActionsInOneBigLoop(int storeId,ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings ,IdentifiersFilters categoryFilter = null)
 		{
 
+			//TODO: Add verification for all paths and folders of the application, be
+
 			//Get Application settings
 			var shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
 			var appSettings = shoppingConnectorConfiguration.GetApplicationSettings();
@@ -136,6 +138,7 @@ namespace mialco.shopping.connector.Orchestrator
 			//googleCategoryMapping.Initialize();
 
 			_rawFeedBuilder.LoadCategories();
+
 			_rawFeedBuilder.LoadImagesLookup();
 			var imageLookup = _rawFeedBuilder.ImagesLookupUtility;
 
@@ -153,7 +156,9 @@ namespace mialco.shopping.connector.Orchestrator
 			//Debt. Almost no matching to the mapping. Just few items
 			// No Sizes or colors are discovered
 			//var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
-			var outputFile = Path.Combine( _applicationSettings.Folders.OutputFolder, OutputFileName);
+			var timeStamp = $"{DateTime.Now.Year}{DateTime.Now.Month.ToString("00")}{DateTime.Now.Day.ToString("00")}{DateTime.Now.Hour.ToString("00")}{DateTime.Now.Minute.ToString("00")}{DateTime.Now.Second.ToString("00")}";
+			var outputFileName =$"{_applicationInstanceSettings.Name}_{timeStamp}_{applicationSettings.Files.XmlOutputFeedBase}";
+			var outputFile = Path.Combine( _applicationSettings.Folders.OutputFolder, outputFileName);
 
 
 
@@ -238,7 +243,7 @@ namespace mialco.shopping.connector.Orchestrator
 			StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF(connectionString);
 			_store = sfsr.GetById(storeId);
 			var prodrep = new StoreFrontProductRepositoryEF(connectionString);
-			_products = prodrep.GetAllFilteredByCategory(storeId, _identifiersFilters.GetFilter("Categories"));
+			_products = prodrep.GetAllFilteredByCategory(storeId, _identifiersFilters.GetFilter("Categories")); //todo: Fix Null filters
 		}
 
 		//TODO: DEBT

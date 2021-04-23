@@ -31,7 +31,18 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 		private Dictionary<int, CategoryItemPath> _storeCategories;
 		private Dictionary<int, CategoryMappingItem> _categoryMapping;
 
-		
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="storeConnectionString"></param>
+		/// <param name="categoryMappingFile"></param>
+		/// <param name="defaultCategory"></param>
+		public GoogleCategoryMapping(string storeConnectionString, string categoryMappingFile, string defaultCategory)
+		{
+
+		}
+
 
 		/// <summary>
 		/// This method will "warm" up the data for fur future operations.

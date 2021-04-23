@@ -48,9 +48,9 @@ namespace WorkflowInitiatorConsole
 			var feedRecord = new GenericFeedRecord { Id = 1, ProductId = "1", FeedRecord = recordDict };
 			var feedRecords = new List<GenericFeedRecord> { feedRecord };
 
-			GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
-			googleCategoryMapping.Initialize();
-			fg.GenerateXmlFeed(@"C:\data\test.xml",feedRecords, fp);
+			//GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
+			//googleCategoryMapping.Initialize();
+			//fg.GenerateXmlFeed(@"C:\data\test.xml",feedRecords, fp);
 			
 			Console.WriteLine("Workflow Initiator Console startting");
 			CancellationToken _cancelationToken = new CancellationToken(false);

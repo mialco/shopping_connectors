@@ -51,3 +51,4 @@ C:\Data\Mialco\Development\ShoppingConnector\biz-connector-cli\bin\Debug\netcore
 C:\Data\Mialco\Development\ShoppingConnector\biz-connector-cli\obj\Debug\netcoreapp2.1\biz-connector-cli.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\biz-connector-cli\obj\Debug\netcoreapp2.1\biz-connector-cli.dll
 C:\Data\Mialco\Development\ShoppingConnector\biz-connector-cli\obj\Debug\netcoreapp2.1\biz-connector-cli.pdb
+C:\Data\Mialco\Development\ShoppingConnector\biz-connector-cli\obj\Debug\netcoreapp2.1\biz-connector-cli.genruntimeconfig.cache

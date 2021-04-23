@@ -5,17 +5,23 @@
 				"Name": "StoreFront-Dev",
 				"Description": "Store Front Based Used in development",
 				"ConnecttionString": "Server =.\\SQLExpress; Database = irosepetals; Trusted_Connection = True;",
-				"DeploymentType": "Production"
-
+				"DeploymentType": "Production",
+				"ImagesListFileName": "StoreFrontImagesList.txt",
+				"DefaultGoogleCategory": "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers",
+				"DefaultCurrency": "USD",
+				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv"
 			},
 			{
 
 
 				"Name": "StoreFront-Prod",
 				"Description": "Used in development",
-				"ConnecttionString": "sadasdasdasd",
-				"DeploymentType": "production"
-
+				"ConnecttionString": "server=localhost\\SQLEXPRESS; database=irosepetals; user id=irosepetals; password=z2nuSpag; providerName=\"System.Data.SqlClient\"",
+				"DeploymentType": "Production",
+				"ImagesListFileName": "StoreFrontImagesList.txt",
+				"DefaultGoogleCategory": "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers",
+				"DefaultCurrency": "USD",
+				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv"
 			}
 		],
 		"Folders": {
