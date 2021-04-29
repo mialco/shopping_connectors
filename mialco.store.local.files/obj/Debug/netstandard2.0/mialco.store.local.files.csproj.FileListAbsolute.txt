@@ -1,8 +1,0 @@
-C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\bin\Debug\netstandard2.0\mialco.store.local.files.deps.json
-C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\bin\Debug\netstandard2.0\mialco.store.local.files.dll
-C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\bin\Debug\netstandard2.0\mialco.store.local.files.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Debug\netstandard2.0\mialco.store.local.files.AssemblyInfoInputs.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Debug\netstandard2.0\mialco.store.local.files.AssemblyInfo.cs
-C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Debug\netstandard2.0\mialco.store.local.files.csproj.CoreCompileInputs.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Debug\netstandard2.0\mialco.store.local.files.dll
-C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Debug\netstandard2.0\mialco.store.local.files.pdb

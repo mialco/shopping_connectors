@@ -1,5 +1,0 @@
-C:\Data\Mialco\Development\ShoppingConnector\testconsole\bin\Release\netcoreapp3.1\publish\testconsole.exe
-C:\Data\Mialco\Development\ShoppingConnector\testconsole\bin\Release\netcoreapp3.1\publish\testconsole.dll
-C:\Data\Mialco\Development\ShoppingConnector\testconsole\bin\Release\netcoreapp3.1\publish\testconsole.deps.json
-C:\Data\Mialco\Development\ShoppingConnector\testconsole\bin\Release\netcoreapp3.1\publish\testconsole.runtimeconfig.json
-C:\Data\Mialco\Development\ShoppingConnector\testconsole\bin\Release\netcoreapp3.1\publish\testconsole.pdb
