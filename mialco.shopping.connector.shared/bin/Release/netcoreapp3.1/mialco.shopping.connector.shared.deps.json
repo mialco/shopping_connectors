@@ -1,0 +1,62 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "mialco.shopping.connector.shared/1.0.0": {
+        "dependencies": {
+          "mialco.storage.abstracts": "1.0.0"
+        },
+        "runtime": {
+          "mialco.shopping.connector.shared.dll": {}
+        }
+      },
+      "mialco.abstractions/1.0.0": {
+        "dependencies": {
+          "mialco.shopping.entities.abstraction": "1.0.0"
+        },
+        "runtime": {
+          "mialco.abstractions.dll": {}
+        }
+      },
+      "mialco.shopping.entities.abstraction/1.0.0": {
+        "runtime": {
+          "mialco.shopping.entities.abstraction.dll": {}
+        }
+      },
+      "mialco.storage.abstracts/1.0.0": {
+        "dependencies": {
+          "mialco.abstractions": "1.0.0"
+        },
+        "runtime": {
+          "mialco.storage.abstracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "mialco.shopping.connector.shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.shopping.entities.abstraction/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mialco.storage.abstracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

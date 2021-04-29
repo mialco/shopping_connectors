@@ -130,7 +130,10 @@ namespace mialco.shopping.connector.Orchestrator
 			int result = 0;
 			// 1. We conect to the database
 			// and extract the data into a list pt Product : _product
-			Console.WriteLine("Connecting to database to extract the list of products");
+			var filterString=categoryFilter==null ? "Null Filter" : "Filter Exists";
+			Console.WriteLine($"Category Filter : {filterString}");
+			Console.WriteLine($"Connecting to database to extract the list of products\nStoreId: {+storeId} - ConnectionString {_applicationInstanceSettings.ConnecttionString}");
+
 			ExtractData(_storeId, _applicationInstanceSettings.ConnecttionString, categoryFilter); ;
 
 			//Create an initialize an instance of google category mapping
@@ -376,7 +379,7 @@ namespace mialco.shopping.connector.Orchestrator
 								}
 								else
 								{
-									Console.WriteLine("adasasd");
+									//Console.WriteLine("adasasd");
 								}
 
 							});

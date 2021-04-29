@@ -16,9 +16,9 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\bin\Relea
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\bin\Release\netstandard2.0\mialco.abstractions.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\obj\Release\netstandard2.0\mialco.workflow.initiator.csprojAssemblyReference.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\obj\Release\netstandard2.0\mialco.workflow.initiator.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\obj\Release\netstandard2.0\mialco.workflow.initiator.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\obj\Release\netstandard2.0\mialco.workflow.initiator.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\obj\Release\netstandard2.0\mialco.workflow.initiator.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\obj\Release\netstandard2.0\mialco.workflow.initiator.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\obj\Release\netstandard2.0\mialco.workflow.initiator.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.workflow.initiator\obj\Release\netstandard2.0\mialco.workflow.initiator.pdb

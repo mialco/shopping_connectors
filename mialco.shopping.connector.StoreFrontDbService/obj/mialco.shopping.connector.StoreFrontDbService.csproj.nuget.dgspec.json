@@ -259,15 +259,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.0": {
-            "targetAlias": "netcoreapp2.0",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
               "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.entities\\mialco.shopping.connector.entities.csproj": {
                 "projectPath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.entities\\mialco.shopping.connector.entities.csproj"
@@ -288,19 +288,9 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.0": {
-          "targetAlias": "netcoreapp2.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "Microsoft.AspNetCore.All": {
-              "target": "Package",
-              "version": "[2.0.5, )"
-            },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.0, )",
-              "autoReferenced": true
-            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[2.0.2, )"
@@ -316,6 +306,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.13, 3.1.13]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }

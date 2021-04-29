@@ -107,8 +107,9 @@ C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\bin\Release\mialco.
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\bin\Release\mialco.abstractions.pdb
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\bin\Release\mialco.messagehub.pdb
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\bin\Release\mialco.shopping.entities.abstraction.pdb
-C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\obj\Release\WorkflowConsole.csprojResolveAssemblyReference.cache
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\obj\Release\WorkflowConsole.exe.config
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\obj\Release\WorkflowConsole.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\obj\Release\WorkflowConsole.exe
 C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\obj\Release\WorkflowConsole.pdb
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\obj\Release\WorkflowConsole.csprojAssemblyReference.cache
+C:\Data\Mialco\Development\ShoppingConnector\WorkflowConsole\obj\Release\WorkflowConsole.csproj.CopyComplete

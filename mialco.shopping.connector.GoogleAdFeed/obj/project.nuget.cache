@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8o0jsSQSp/6Tgi4fJH+JxfTMAr7/YOTJqG/fLLo2Ag6oK9qdEeTcELWou9ieQBmkqwGrFXOcQNR5qA/noWifGA==",
+  "dgSpecHash": "xMlhD45qBDzxcZ/aO2oQ8sd0bEBzU9uD5J1dhsE2RBMpAvboSxfLcxc80FT6lM3mb/5dlUcWpbkVxV4cSu6FOw==",
   "success": true,
   "projectFilePath": "C:\\Data\\Mialco\\Development\\ShoppingConnector\\mialco.shopping.connector.GoogleAdFeed\\mialco.shopping.connector.GoogleAdFeed.csproj",
   "expectedPackageFiles": [
@@ -48,8 +48,6 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-    "C:\\Users\\Mikeo\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
-    "C:\\Users\\Mikeo\\.nuget\\packages\\serilog.sinks.console\\3.1.1\\serilog.sinks.console.3.1.1.nupkg.sha512",
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
@@ -61,7 +59,6 @@
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.componentmodel.primitives\\4.3.0\\system.componentmodel.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.componentmodel.typeconverter\\4.3.0\\system.componentmodel.typeconverter.4.3.0.nupkg.sha512",
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.configuration.configurationmanager\\4.5.0\\system.configuration.configurationmanager.4.5.0.nupkg.sha512",
-    "C:\\Users\\Mikeo\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "C:\\Users\\Mikeo\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",

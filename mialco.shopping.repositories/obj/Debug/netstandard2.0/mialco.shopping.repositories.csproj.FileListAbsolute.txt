@@ -8,9 +8,9 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\bin\De
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\bin\Debug\netstandard2.0\mialco.workflow.entities.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\bin\Debug\netstandard2.0\mialco.shopping.entities.abstraction.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\obj\Debug\netstandard2.0\mialco.shopping.repositories.csprojAssemblyReference.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\obj\Debug\netstandard2.0\mialco.shopping.repositories.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\obj\Debug\netstandard2.0\mialco.shopping.repositories.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\obj\Debug\netstandard2.0\mialco.shopping.repositories.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\obj\Debug\netstandard2.0\mialco.shopping.repositories.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\obj\Debug\netstandard2.0\mialco.shopping.repositories.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\obj\Debug\netstandard2.0\mialco.shopping.repositories.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.repositories\obj\Debug\netstandard2.0\mialco.shopping.repositories.pdb

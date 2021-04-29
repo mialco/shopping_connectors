@@ -14,9 +14,9 @@ C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Release\netstandar
 C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Release\netstandard2.0\mialco.abstractions.pdb
 C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\bin\Release\netstandard2.0\mialco.utilities.pdb
 C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Release\netstandard2.0\GoogleAdFeed.csprojAssemblyReference.cache
-C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Release\netstandard2.0\GoogleAdFeed.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Release\netstandard2.0\GoogleAdFeed.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Release\netstandard2.0\GoogleAdFeed.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Release\netstandard2.0\GoogleAdFeed.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Release\netstandard2.0\GoogleAdFeed.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Release\netstandard2.0\GoogleAdFeed.dll
 C:\Data\Mialco\Development\ShoppingConnector\GoogleAdFeed\obj\Release\netstandard2.0\GoogleAdFeed.pdb

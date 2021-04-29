@@ -12,9 +12,9 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFron
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\bin\Release\netstandard2.0\mialco.abstractions.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csprojAssemblyReference.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.pdb

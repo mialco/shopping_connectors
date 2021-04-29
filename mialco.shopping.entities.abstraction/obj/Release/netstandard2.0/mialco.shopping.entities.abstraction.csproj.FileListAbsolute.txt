@@ -1,9 +1,8 @@
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.deps.json
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\bin\Release\netstandard2.0\mialco.shopping.entities.abstraction.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Release\netstandard2.0\mialco.shopping.entities.abstraction.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Release\netstandard2.0\mialco.shopping.entities.abstraction.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Release\netstandard2.0\mialco.shopping.entities.abstraction.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Release\netstandard2.0\mialco.shopping.entities.abstraction.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Release\netstandard2.0\mialco.shopping.entities.abstraction.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Release\netstandard2.0\mialco.shopping.entities.abstraction.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.entities.abstraction\obj\Release\netstandard2.0\mialco.shopping.entities.abstraction.csprojAssemblyReference.cache

@@ -6,3 +6,4 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Releas
 C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Release\netstandard2.0\mialco.store.local.files.AssemblyInfo.cs
 C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Release\netstandard2.0\mialco.store.local.files.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Release\netstandard2.0\mialco.store.local.files.pdb
+C:\Data\Mialco\Development\ShoppingConnector\mialco.store.local.files\obj\Release\netstandard2.0\mialco.store.local.files.csprojAssemblyReference.cache

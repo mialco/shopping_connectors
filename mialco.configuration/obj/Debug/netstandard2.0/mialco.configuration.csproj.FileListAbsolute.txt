@@ -1,10 +1,10 @@
+C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\bin\Debug\netstandard2.0\ShoppingConnectorConfig.json
 C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\bin\Debug\netstandard2.0\mialco.configuration.deps.json
 C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\bin\Debug\netstandard2.0\mialco.configuration.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\bin\Debug\netstandard2.0\mialco.configuration.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\obj\Debug\netstandard2.0\mialco.configuration.csprojAssemblyReference.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\obj\Debug\netstandard2.0\mialco.configuration.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\obj\Debug\netstandard2.0\mialco.configuration.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\obj\Debug\netstandard2.0\mialco.configuration.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\obj\Debug\netstandard2.0\mialco.configuration.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\obj\Debug\netstandard2.0\mialco.configuration.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\obj\Debug\netstandard2.0\mialco.configuration.pdb
-C:\Data\Mialco\Development\ShoppingConnector\mialco.configuration\bin\Debug\netstandard2.0\ShoppingConnectorConfig.json

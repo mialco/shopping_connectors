@@ -2,8 +2,8 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFron
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\bin\Release\netstandard2.0\mialco.shopping.connector.StoreFront.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\bin\Release\netstandard2.0\mialco.shopping.connector.StoreFront.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.csprojAssemblyReference.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.StoreFront.pdb

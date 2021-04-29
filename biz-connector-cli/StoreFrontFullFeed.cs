@@ -33,14 +33,36 @@ namespace biz_connector_cli
 		IdentifiersFilters _identifiersFilters;
 		WebStoreDeploymentType _deploymentType;
 
+		
+		
+
 		public StoreFrontFullFeed(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration , string appInstanceName)
 		{
+			string thisMethod = "StoreFrontFullFeed.Constructor";
 			this._storeId = storeId;
 			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
 			_appSettings = _shoppingConnectorConfiguration.GetApplicationSettings();			
 			var hasInstanceSettings = _appSettings.ApplicationInstances.TryGetValue(appInstanceName, out _appInstanceSettings);
 			GetFilters();
 			var orch = new StoreFrontOrchestratorZero(_storeId,_appSettings,_appInstanceSettings, _identifiersFilters);
+
+			//Early validation Validation of the configurations, to make sure that they are loaded
+			var appSettingsLoaded = _appSettings != null;
+			var appInstanceSettingsLoaded = _appInstanceSettings != null;
+			Console.WriteLine($"[{thisMethod}] appSetings Loaded: {appSettingsLoaded}  ");
+			Console.WriteLine($"[{thisMethod}] app Instance Seting sLoaded: {appInstanceSettingsLoaded}  ");
+
+			if (appSettingsLoaded)
+			{
+				Console.WriteLine($"[{thisMethod}] InputFolder: {_appSettings.Folders.InputFolder}  ");
+				Console.WriteLine($"[{thisMethod}] OutputFolder: {_appSettings.Folders.OutputFolder}  ");
+			}
+
+			if (appInstanceSettingsLoaded)
+			{
+				Console.WriteLine($"[{thisMethod}] ConnectionString: {_appInstanceSettings.ConnecttionString ?? "NULL" }  ");
+				Console.WriteLine($"[{thisMethod}] OutputFolder: {_appInstanceSettings.DeploymentType?? "NULL"}  ");
+			}
 
 			//orch.Run();
 		}

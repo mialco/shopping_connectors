@@ -19,9 +19,9 @@ C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.S
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\bin\Release\netstandard2.0\mialco.shopping.objectvalues.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\bin\Release\netstandard2.0\mialco.utilities.pdb
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.csprojAssemblyReference.cache
-C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.AssemblyInfoInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.AssemblyInfo.cs
+C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.csproj.CoreCompileInputs.cache
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.csproj.CopyComplete
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.dll
 C:\Data\Mialco\Development\ShoppingConnector\mialco.shopping.connector.RawFeed.StoreFront\obj\Release\netstandard2.0\mialco.shopping.connector.RawFeed.StoreFront.pdb
