@@ -16,20 +16,45 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 	public class RawFeedBuilder
 	{
 		const int ApplicationInstanceId = 0;
+		private ApplicationSettings _applicationSettings;
 		private ApplicationInstanceSettings _applicationInstanceSettings;
 		GoogleCategoryMapping _googleCategoryMapping;
 		ImageLookup.StoreFrontImagesLookupUtility _imageLookupUtility;
 		configuration.ShoppingConnectorConfiguration _shoppingConnectorConfiguration;
+		private Store1 _store;
+		private string _storeUrl;
 
 		//Create an initialize an instance of google category mapping
 
-		public RawFeedBuilder(ApplicationInstanceSettings applicationInstanceSettings)
+		public RawFeedBuilder(Store1 store ,ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings)
 		{
+			_applicationSettings = applicationSettings;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
+			_store = store;
+			//Determining the store url
+			switch (_applicationInstanceSettings.DeploymentType.ToLower())
+			{
+				case "production":
+					_storeUrl = _store.ProductionURI;
+					break;
+				case "development":
+					_storeUrl = _store.DevelopmentURI;
+					break; ;
+				case "staging":
+					_storeUrl = _store.StagingURI;
+					break;
+			default:
+					_storeUrl = "";
+					break;
+			}
+
 		}
 
-
+		public string StoreUrl
+		{
+			get => _storeUrl;
+		}
 
 		public GoogleCategoryMapping GoogleCategoryMapping
 		{
@@ -43,10 +68,14 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 
 		public void LoadCategories()
 		{
-			var googleCategoryMappingFileName = Path.Combine(_shoppingConnectorConfiguration.GetApplicationSettings().Folders.InputFolder,
-				_applicationInstanceSettings.GoogleCategoryMappingFileName);
+			var appDataFolder = _applicationSettings.Folders.InputFolder;
+			var googleCategoriesFileName = Path.Combine(appDataFolder, $"Google_{_applicationSettings.Files.MarketingPlatformCategoriesBase}");
+			var storeFrontGoogleCategoryMappingFileName = Path.Combine(appDataFolder, _applicationInstanceSettings.GoogleCategoryMappingFileName);
+			var defaultGoogleCategory = _applicationInstanceSettings.DefaultGoogleCategory;
+			var googleCategoryMappingFileName = Path.Combine(appDataFolder,_applicationInstanceSettings.GoogleCategoryMappingFileName);
 			var defaultCategory = _applicationInstanceSettings.DefaultGoogleCategory;
-			_googleCategoryMapping = new GoogleCategoryMapping(_applicationInstanceSettings.ConnecttionString,googleCategoryMappingFileName,defaultCategory);
+			var connectionString = _applicationInstanceSettings.ConnecttionString;
+			_googleCategoryMapping = new GoogleCategoryMapping(connectionString,googleCategoriesFileName, storeFrontGoogleCategoryMappingFileName,defaultGoogleCategory);
 			_googleCategoryMapping.Initialize();
 		}
 

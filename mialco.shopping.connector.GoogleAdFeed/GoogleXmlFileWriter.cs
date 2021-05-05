@@ -18,8 +18,6 @@ namespace mialco.shopping.connector.GoogleAdFeed
 		private const string LinkValue = "http://www.amoretees.com/";
 		private const string DescriptionTag = "description";
 		private const string DescriptionValue = "Amore - T Shirts store";
-		private const string AttributePrefix = "g";
-		private const string GoogleNameSpace = @"xmlns:g=""http://base.google.com/ns/1.0""";
 		private const string ItemTag ="item";
 		private readonly string _outputFileName;
 		private XmlWriter _xmlWriter;
@@ -37,7 +35,7 @@ namespace mialco.shopping.connector.GoogleAdFeed
 		/// <summary>
 		/// Starts a new XML feed file of the specified root element
 		/// </summary>
-		internal void OpenFeed(string prefix, string nameSpace)	
+		internal void OpenFeed(string prefix, string nameSpace, string title, string description, string storeLink)	
 		{
 			try
 			{

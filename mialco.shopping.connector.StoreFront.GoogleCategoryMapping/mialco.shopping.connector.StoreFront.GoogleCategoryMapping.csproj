@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\mialco.configuration\mialco.configuration.csproj" />
     <ProjectReference Include="..\mialco.shopping.objectvalues\mialco.shopping.objectvalues.csproj" />
     <ProjectReference Include="..\mialco.utilities\mialco.utilities.csproj" />
   </ItemGroup>

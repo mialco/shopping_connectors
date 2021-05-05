@@ -26,6 +26,7 @@ namespace mialco.shopping.connector.GoogleAdFeed
 		{
 			const string GooglePrefix = "g";
 			const string GoogleNamepace = @"http://base.google.com/ns/1.0";
+			
 
 			//GoogleXmlFileWriter is a helper class which writes records in
 			//an xml file formatted to align with the specifications requested 
@@ -72,7 +73,6 @@ namespace mialco.shopping.connector.GoogleAdFeed
 					}
 
 				}
-				xmlw.WriteItemElement("id", "306-202",GooglePrefix,GoogleNamepace);
 				xmlw.CloseFeed();
 			}
 		}

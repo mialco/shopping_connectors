@@ -14,5 +14,7 @@ namespace mialco.configuration
 		public string DefaultGoogleCategory { get; set; }
 		public string DefaultCurrency { get; set; }
 		public string GoogleCategoryMappingFileName { get; set; }
+		public string GoogleFeedTitle { get; set; }
+		public string GoogleFeedDescription { get; set; }
 	}
 }

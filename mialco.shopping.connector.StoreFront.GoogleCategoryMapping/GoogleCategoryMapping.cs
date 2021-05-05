@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Linq;
+using mialco.configuration;
 
 namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 {
@@ -18,14 +19,15 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 	/// </summary>
 	public class GoogleCategoryMapping
 	{
-		private const string ConnectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;"; //TODO: ReadFromConfig
+		//private const string ConnectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;"; //TODO: ReadFromConfig
 		private const string AppDataRoot = "ShoppingConnectorFeed"; //TODO: Read From Config
-		private const string GoogleCategoriesFileName = "taxonomy-with-ids.en-US.txt"; //todo: get from the configuration
-		private const string StoreFrontGoogleCategoryMappingFileName = "StoreFront-Google-Category-mapping.csv"; //todo: get from the configuration
+		//private const string GoogleCategoriesFileName = "taxonomy-with-ids.en-US.txt"; //todo: get from the configuration
+		//private const string StoreFrontGoogleCategoryMappingFileName = "StoreFront-Google-Category-mapping.csv"; //todo: get from the configuration
 		private const string DefaultGoogleCategory = "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers";  //TODO: Replace with value from the configuration
 		private bool _isDataLoaded;
 		private string _googleCategoriesFileName;
 		private string _storeFrontGoogleCategoryMappingFileName;
+		private string _connectionString;
 		private CategoryItemPath _defaultGoogleCategory;
 		private Dictionary<int, CategoryItemPath> _googleCategories;
 		private Dictionary<int, CategoryItemPath> _storeCategories;
@@ -38,9 +40,21 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 		/// <param name="storeConnectionString"></param>
 		/// <param name="categoryMappingFile"></param>
 		/// <param name="defaultCategory"></param>
-		public GoogleCategoryMapping(string storeConnectionString, string categoryMappingFile, string defaultCategory)
-		{
+		//public GoogleCategoryMapping(ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings)
+		//{
+		//	var appDataFolder = applicationSettings.Folders.InputFolder;
+		//	_googleCategoriesFileName = Path.Combine(appDataFolder, $"Google_{applicationSettings.Files.MarketingPlatformCategoriesBase}");
+		//	_storeFrontGoogleCategoryMappingFileName = Path.Combine(appDataFolder, applicationInstanceSettings.GoogleCategoryMappingFileName);
+		//	_defaultGoogleCategory = new CategoryItemPath { CategoryId = 2899, CategoryPath = applicationInstanceSettings.DefaultGoogleCategory };
+		//	_connectionString = applicationInstanceSettings.ConnecttionString;
+		//}
 
+		public GoogleCategoryMapping(string connectionString, string googleCategoriesFileName , string storeFrontGooleCategoryMappingFileName, string defaultGoogleCategory)
+		{
+			_connectionString = connectionString;
+			_googleCategoriesFileName = googleCategoriesFileName;
+			_storeFrontGoogleCategoryMappingFileName = storeFrontGooleCategoryMappingFileName;
+			_defaultGoogleCategory = new CategoryItemPath { CategoryId = 2899, CategoryPath = defaultGoogleCategory };
 		}
 
 
@@ -55,11 +69,8 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 			var result = false;
 			try
 			{
-				
-
 
 				if (_isDataLoaded) return true;
-				_defaultGoogleCategory = new CategoryItemPath { CategoryId = 2899, CategoryPath = DefaultGoogleCategory };
 				result = InitializeAndValidateResourceExistence();
 				if (!result)
 				{
@@ -91,19 +102,6 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 			var result = false;
 			try
 			{
-				var appDataFolder = AppUtilities.GetApplicationDataPath();
-				if (!Directory.Exists(appDataFolder))
-				{
-					Directory.CreateDirectory(appDataFolder);
-					// Clearly the data does not exist if the folder did not exist 
-					Console.WriteLine($"Applicaton data folder [{appDataFolder}] did not exists and it was created. " +
-						$"Please place your data files in this folder and re-run the application" +
-						$"The following Files are expected : \n" +
-						$" -  {GoogleCategoriesFileName}\n" +
-						$"");
-				}
-				_googleCategoriesFileName = Path.Combine(appDataFolder, GoogleCategoriesFileName);
-				_storeFrontGoogleCategoryMappingFileName = Path.Combine(appDataFolder, StoreFrontGoogleCategoryMappingFileName);
 				result = true;
 				if (!File.Exists(_googleCategoriesFileName))
 				{
@@ -118,7 +116,6 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 			}
 			catch (Exception ex)
 			{
-
 				Console.WriteLine(ex.ToString());
 				//todo: Handle exception
 			}
@@ -149,7 +146,7 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 		/// </summary>
 		public void LoadStoreCategoriesFromDb()
 		{
-			var repo = new DL.StoreCategoryRepository(ConnectionString);
+			var repo = new DL.StoreCategoryRepository(_connectionString);
 
 			var categories = repo.GetStoreCategories().OrderBy(x=>x.ParentCategoryID);
 

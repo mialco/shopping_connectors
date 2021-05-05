@@ -37,10 +37,7 @@ namespace mialco.shopping.connector.Orchestrator
 			_storeId = storeId;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_deploymentType = ShoppingConnectorUtills.DeploymentTypeFromString (applicationInstanceSettings.DeploymentType);
-			_rawFeedBuilder = new RawFeedBuilder(_applicationInstanceSettings);
 			_rawData = new List<GenericFeedRecord>();
-
-			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 		}
 
 
@@ -53,10 +50,7 @@ namespace mialco.shopping.connector.Orchestrator
 		{
 			_storeId = storeId;
 			_deploymentType = deploymentType;
-			_rawFeedBuilder = new RawFeedBuilder(_applicationInstanceSettings);
 			_rawData = new List<GenericFeedRecord>();
-
-			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 		}
 
 
@@ -70,9 +64,9 @@ namespace mialco.shopping.connector.Orchestrator
 			_storeId = storeId;
 			//_deploymentType = deploymentType;
 			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
-			_rawFeedBuilder = new RawFeedBuilder(_applicationInstanceSettings);
+			//_rawFeedBuilder = new RawFeedBuilder(_applicationSettings , _applicationInstanceSettings);
 			_rawData = new List<GenericFeedRecord>();
-			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
+			//_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 		}
 
 
@@ -83,10 +77,7 @@ namespace mialco.shopping.connector.Orchestrator
 			_applicationSettings = applicationSettings;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_identifiersFilters = identifiersFilters;
-			_rawFeedBuilder = new RawFeedBuilder(_applicationInstanceSettings);
 			_rawData = new List<GenericFeedRecord>();
-			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
-
 		}
 
 
@@ -127,6 +118,10 @@ namespace mialco.shopping.connector.Orchestrator
 			var appSettings = shoppingConnectorConfiguration.GetApplicationSettings();
 
 
+			StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF(applicationInstanceSettings.ConnecttionString);
+			_store = sfsr.GetById(storeId);
+
+
 			int result = 0;
 			// 1. We conect to the database
 			// and extract the data into a list pt Product : _product
@@ -134,7 +129,11 @@ namespace mialco.shopping.connector.Orchestrator
 			Console.WriteLine($"Category Filter : {filterString}");
 			Console.WriteLine($"Connecting to database to extract the list of products\nStoreId: {+storeId} - ConnectionString {_applicationInstanceSettings.ConnecttionString}");
 
+
 			ExtractData(_storeId, _applicationInstanceSettings.ConnecttionString, categoryFilter); ;
+
+			_rawFeedBuilder = new RawFeedBuilder(_store, _applicationSettings, _applicationInstanceSettings);
+			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 
 			//Create an initialize an instance of google category mapping
 			//GoogleCategoryMapping googleCategoryMapping = new GoogleCategoryMapping();
@@ -164,9 +163,11 @@ namespace mialco.shopping.connector.Orchestrator
 			var outputFile = Path.Combine( _applicationSettings.Folders.OutputFolder, outputFileName);
 
 
+			//Getting the 
 
 
-			feedGenerator.GenerateXmlFeed(outputFile, _rawData, new FeedProperties("RosePetalsStore", @"https://www.rosepatalestore.com", "The rose petalStore"));
+
+			feedGenerator.GenerateXmlFeed(outputFile, _rawData, new FeedProperties(_store.Name, @"https://www.rosepatalestore.com", "The rose petalStore"));
 			return result;
 		}
 
@@ -233,6 +234,9 @@ namespace mialco.shopping.connector.Orchestrator
 		//	_products = prodrep.GetAllFilteredByCategory(storeId,_identifiersFilters.GetFilter("Categories"));
 		//}
 
+
+		
+
 		private void ExtractData(int storeId, string connectionString)
 		{
 			StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF(connectionString);
@@ -243,10 +247,40 @@ namespace mialco.shopping.connector.Orchestrator
 
 		private void ExtractData(int storeId,string connectionString, IDataFilterValues<int> filters)
 		{
-			StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF(connectionString);
-			_store = sfsr.GetById(storeId);
+			string ThisMethod = $"{this.GetType().Name}.ExtractData(storeId, connectionString, filters)";
+			if (_store == null)
+			{
+				StoreFrontStoreRepositoryEF sfsr = new StoreFrontStoreRepositoryEF(connectionString);
+				_store = sfsr.GetById(storeId);
+			}
 			var prodrep = new StoreFrontProductRepositoryEF(connectionString);
-			_products = prodrep.GetAllFilteredByCategory(storeId, _identifiersFilters.GetFilter("Categories")); //todo: Fix Null filters
+			Console.WriteLine($"{ThisMethod} - Getting the products from the database");
+			var filterIsValid = true;
+			if (filters == null)
+			{
+				Console.WriteLine($"{ThisMethod} - Filters are empty - Extracting all data");
+				filterIsValid = false;
+			}
+			else
+			{
+				var categoryFilter = filters.GetFilter("Categories");
+
+				if (categoryFilter == null || categoryFilter.Count() <= 0)
+				{
+					Console.WriteLine($"{ThisMethod} - Category Filter has no values - Extracting all data");
+					filterIsValid = false;
+				}
+				else
+				{
+					_products = prodrep.GetAllFilteredByCategory(storeId, categoryFilter);
+				}
+
+			}
+			if (!filterIsValid)
+			{
+				_products = prodrep.GetAll(storeId);
+			}
+
 		}
 
 		//TODO: DEBT
@@ -257,6 +291,15 @@ namespace mialco.shopping.connector.Orchestrator
 			
 			try
 			{
+
+				IEnumerable<int> categoryFilter = new List<int> { };
+				if (_identifiersFilters != null)
+				{
+					categoryFilter = _identifiersFilters.GetFilter("Categories");
+				}
+				//_identifiersFilters
+
+
 				foreach (var p in products)
 				{
 					//var sizes = GetProductSizes(p);
@@ -278,12 +321,14 @@ namespace mialco.shopping.connector.Orchestrator
 					//We build products for each variant, color and size 
 					//var categoryFilter = new List<int> { 12,13,15, 17,19 , 25,28, 47,95,96};
 					//var categoryFilter = new List<int> { 28, 129, 17, 47, 25, 59, 93 }; // 200Petals Wedding Petals Feed
-					var categoryFilter = new List<int> { 217, 218 };
 					foreach (var variant in p.ProductVariants)
 					{
-						var categoryFilteredCount =  p.ProductCategories.Count(x => categoryFilter.Contains(x.CategoryID));
-						if (categoryFilteredCount == 0)
-							continue;
+						if (categoryFilter != null && categoryFilter.Count() > 0)
+						{
+							var categoryFilteredCount = p.ProductCategories.Count(x => categoryFilter.Contains(x.CategoryID));
+							if (categoryFilteredCount == 0)
+								continue;
+						}
 						variantNumber++;
 						if (defaultVariantOnly && variant.IsDefault != 1)
 						{
