@@ -16,5 +16,27 @@ namespace mialco.configuration
 		public string GoogleCategoryMappingFileName { get; set; }
 		public string GoogleFeedTitle { get; set; }
 		public string GoogleFeedDescription { get; set; }
+		/// <summary>
+		/// The Ebay feed type could be Ebay (CSV or XML) and Amazon (CSV)
+		/// </summary>
+		public string EbayFeedType { get; set; }
+		public string EbayOutputType { get; set; }
+		/// <summary>
+		/// Default Shipping policy name established on the ebay platform
+		/// </summary>
+		public string EbayShippingPolicy { get; set; }
+
+		/// <summary>
+		/// Default Payment policy name established on the ebay platform
+		/// </summary>
+		public string EbayPaymentPolicy { get; set; }
+		/// <summary>
+		/// Default Return policy name established on the ebay platform
+		/// </summary>
+		public string EbayReturnPolicy { get; set; }
+
+		public string EbayLocale { get; set; }
+
+		public IEnumerable<string> OutputTo { get; set; }
 	}
 }

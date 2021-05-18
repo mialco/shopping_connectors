@@ -1,11 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\mialco.configuration\mialco.configuration.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.RawFeed\mialco.shopping.connector.RawFeed.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.shared\mialco.shopping.connector.shared.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.StoreFront\mialco.shopping.connector.StoreFront.csproj" />
   </ItemGroup>

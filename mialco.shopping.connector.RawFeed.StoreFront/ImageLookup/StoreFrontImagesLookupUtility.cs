@@ -51,10 +51,6 @@ namespace mialco.shopping.connector.RawFeed.StoreFront.ImageLookup
 					{
 						var filePath = inputFile.ReadLine();
 						var newStoreFrontImage = new StoreFrontImage(filePath);
-						if (newStoreFrontImage.ImageId == 26)
-						{
-							var stophe = 1;
-						}
 						if (newStoreFrontImage.IsConfigured)
 						{
 							var existingImage = _imageDictionary.ContainsKey(newStoreFrontImage.ImageId) ? _imageDictionary[newStoreFrontImage.ImageId] : null;

@@ -7,6 +7,9 @@ namespace mialco.configuration
 	public class FeedPlatforms
 	{
 		public string GoogleFeedPrefix { get; set; }
-		public string GoogleFeedNamspace { get; set; }
+		public string GoogleFeedNamespace { get; set; }
+
+		public string EbayDefaultChannel { get; set; }
+		public string EbayLocale { get; set; }
 	}
 }

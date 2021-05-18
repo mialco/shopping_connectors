@@ -10,7 +10,7 @@ using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
 namespace mialco.shopping.connector.GoogleAdFeed
 {
 	/// <summary>
-	/// GIven a raw Feed shoudl create file with the proper format for google ad 
+	/// Given a raw Feed shoudl create file with the proper format for google ad 
 	/// </summary>
 	public class FeedGenerator
 	{
@@ -24,8 +24,6 @@ namespace mialco.shopping.connector.GoogleAdFeed
 		/// <param name="feedProerties"></param>
 		public void GenerateXmlFeed(string fileName, List<GenericFeedRecord> feedRecords, FeedProperties feedProperties)
 		{
-			const string GooglePrefix = "g";
-			const string GoogleNamepace = @"http://base.google.com/ns/1.0";
 			
 
 			//GoogleXmlFileWriter is a helper class which writes records in
@@ -34,7 +32,7 @@ namespace mialco.shopping.connector.GoogleAdFeed
 			using (GoogleXmlFileWriter xmlw = new GoogleXmlFileWriter(fileName))
 			{
 				var counter = 0;
-				xmlw.OpenFeed(GooglePrefix,GoogleNamepace);
+				xmlw.OpenFeed(feedProperties.XmlFeedPrefix, feedProperties.XmlFeedNameSpace ,feedProperties.Title, feedProperties.Description,feedProperties.Link);
 				//xmlw.StartItem();
 				/* StporeFrontGoogleFeedMap is a class which maps the fields extracted from the 
 				 * Storefront shopping cart to the filelds of the google feed xml file*/
@@ -63,7 +61,7 @@ namespace mialco.shopping.connector.GoogleAdFeed
 						try
 						{
 							var feedValue = GetFeedValueFromGenericRecord(rec, item.Value.ToString());
-							xmlw.WriteItemElement(item.Key.ToString(), feedValue, GooglePrefix, GoogleNamepace);
+							xmlw.WriteItemElement(item.Key.ToString(), feedValue, feedProperties.XmlFeedPrefix, feedProperties.XmlFeedNameSpace);
 						}
 						catch (Exception ex)
 						{

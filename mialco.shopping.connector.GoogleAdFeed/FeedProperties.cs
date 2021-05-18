@@ -12,6 +12,7 @@ namespace mialco.shopping.connector.GoogleAdFeed
 			Link = link??"";
 			Description = description?? string.Empty;
 			XmlFeedPrefix = xmlPrefix ?? string.Empty;
+			XmlFeedNameSpace = xmlNamespace ?? string.Empty;
 		}
 
 		public string Title { get; }

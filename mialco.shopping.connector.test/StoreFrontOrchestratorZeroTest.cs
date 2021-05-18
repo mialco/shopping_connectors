@@ -1,4 +1,5 @@
 ﻿using mialco.shopping.connector.Orchestrator;
+using mialco.shopping.connector.RawFeed.StoreFront;
 using mialco.shopping.connector.shared;
 using mialco.shopping.connector.StoreFront;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using static mialco.shopping.connector.Orchestrator.StoreFrontOrchestratorZero;
+
 
 namespace mialco.shopping.connector.test
 {

@@ -9,7 +9,9 @@
 				"ImagesListFileName": "StoreFrontImagesList.txt",
 				"DefaultGoogleCategory": "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers",
 				"DefaultCurrency": "USD",
-				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv"
+				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv",
+				"GoogleFeedTitle": "Romanian T-shirts",
+				"GoogleFeedDescription": "Romanian T-shirts Feed"
 			},
 			{
 
@@ -21,7 +23,9 @@
 				"ImagesListFileName": "StoreFrontImagesList.txt",
 				"DefaultGoogleCategory": "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers",
 				"DefaultCurrency": "USD",
-				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv"
+				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv",
+				"GoogleFeedTitle": "Romanian T-shirts",
+				"GoogleFeedDescription": "Romanian T-shirts Feed"
 			}
 		],
 		"Folders": {
@@ -35,6 +39,10 @@
 			"ImageListBase": "StoreFrontImagesList.txt",
 			"XmlOutputFeedBase": "OutputFeed.xml",
 			"InputDataFilterBase": "InputDataFilter.json"
+		},
+		"FeedPlatforms": {
+			"GoogleFeedPrefix" :"g",
+			"GoogleFeedNameSpace": "http://base.google.com/ns/1.0",
 		},
 		"CreateFolders": "true",
 		"DefaultInstance": "StoreFront_Dev"

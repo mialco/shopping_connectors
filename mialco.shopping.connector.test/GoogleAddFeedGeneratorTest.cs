@@ -304,7 +304,7 @@ namespace mialco.shopping.connector.test
 			var fileName = "GooleFeedTest.xml";
 			var outputFilename = Path.Combine(path, fileName);
 			var feedRecords = GetListOfFeedRecordsForXmlFeedTest();
-			var feedProperties = new FeedProperties("GoogleTestFeed","http://googletest.com","This is a the test feed for google feed xml");
+			var feedProperties = new FeedProperties("GoogleTestFeed","http://googletest.com","This is a the test feed for google feed xml","","");
 
 			var objArray = new object[] {outputFilename, feedRecords,feedProperties };
 

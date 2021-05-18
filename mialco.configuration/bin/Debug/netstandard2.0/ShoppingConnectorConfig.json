@@ -9,7 +9,17 @@
 				"ImagesListFileName": "StoreFrontImagesList.txt",
 				"DefaultGoogleCategory": "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers",
 				"DefaultCurrency": "USD",
-				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv"
+				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv",
+				"GoogleFeedTitle": "Romanian T-shirts",
+				"GoogleFeedDescription": "Romanian T-shirts Feed",
+				"EbayChannel" :  "EBAY_US",
+				"EbayFeedType": "Ebay|Amazon",
+				"EbayOutputType": "CSV|XML|API",
+				"EbayShippingPolicy": "shipping",
+				"EbayPaymentPolicy": "payment",
+				"EbayReturnPolicy": "return",
+				"EbayLocale": "en_AU,de_AT,en_CA,de_DE,es_ES,fr_FR,en_IN,it_IT,ru_RU,en_GB,en_US",
+				"OutputTo": [ "Google|XML", "Ebay|XML" ]
 			},
 			{
 
@@ -21,7 +31,9 @@
 				"ImagesListFileName": "StoreFrontImagesList.txt",
 				"DefaultGoogleCategory": "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers",
 				"DefaultCurrency": "USD",
-				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv"
+				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv",
+				"GoogleFeedTitle": "Romanian T-shirts",
+				"GoogleFeedDescription": "Romanian T-shirts Feed"
 			}
 		],
 		"Folders": {
@@ -35,6 +47,12 @@
 			"ImageListBase": "StoreFrontImagesList.txt",
 			"XmlOutputFeedBase": "OutputFeed.xml",
 			"InputDataFilterBase": "InputDataFilter.json"
+		},
+		"FeedPlatforms": {
+			"GoogleFeedPrefix": "g",
+			"GoogleFeedNamespace": "http://base.google.com/ns/1.0",
+			"EbayDefaultChannel": "EBAY_US",
+			"EbayLocale": "en_AU,de_AT,en_CA,de_DE,es_ES,fr_FR,en_IN,it_IT,ru_RU,en_GB,en_US"
 		},
 		"CreateFolders": "true",
 		"DefaultInstance": "StoreFront_Dev"

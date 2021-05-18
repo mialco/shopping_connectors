@@ -22,7 +22,7 @@ namespace WorkflowInitiatorConsole
 
 			
 			FeedGenerator fg = new FeedGenerator();
-			FeedProperties fp = new FeedProperties("Amore T-shirts", "http://www.amoretees.com/", "Amore T-shirts");
+			//FeedProperties fp = new FeedProperties("Amore T-shirts", "http://www.amoretees.com/", "Amore T-shirts");
 
 
 			var orch = new StoreFrontOrchestratorZero(33, WebStoreDeploymentType.Production);

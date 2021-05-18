@@ -13,11 +13,8 @@ namespace mialco.shopping.connector.GoogleAdFeed
 		private const string FeedRootElement = "rss";
 		private const string ChannelTag = "channel";
 		private const string TitleTag = "title";
-		private const string TitleValue = "Amore- T Shirts";
 		private const string LinkTag = "link";
-		private const string LinkValue = "http://www.amoretees.com/";
 		private const string DescriptionTag = "description";
-		private const string DescriptionValue = "Amore - T Shirts store";
 		private const string ItemTag ="item";
 		private readonly string _outputFileName;
 		private XmlWriter _xmlWriter;
@@ -35,7 +32,7 @@ namespace mialco.shopping.connector.GoogleAdFeed
 		/// <summary>
 		/// Starts a new XML feed file of the specified root element
 		/// </summary>
-		internal void OpenFeed(string prefix, string nameSpace, string title, string description, string storeLink)	
+		internal void OpenFeed(string prefix, string nameSpace, string title, string feedDescription, string storeLink)	
 		{
 			try
 			{
@@ -49,16 +46,16 @@ namespace mialco.shopping.connector.GoogleAdFeed
 				//_xmlWriter.WriteQualifiedName("QualifiedName", GoogleNameSpace);
 				
 				_xmlWriter.WriteStartElement("channel");
-				_xmlWriter.WriteElementString(TitleTag, TitleValue);
-				_xmlWriter.WriteElementString(LinkTag, LinkValue);
-				_xmlWriter.WriteElementString(DescriptionTag, DescriptionValue);
+				_xmlWriter.WriteElementString(TitleTag, title);
+				_xmlWriter.WriteElementString(LinkTag, storeLink);
+				_xmlWriter.WriteElementString(DescriptionTag, feedDescription);
 				_rootOpen = true;
 				//_xmlWriter.WriteEndElement();
 			}
 			catch (Exception)
 			{
 				//TODO: Handle this Exception
-				throw;
+					throw;
 			}
 		}
 

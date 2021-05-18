@@ -22,7 +22,7 @@ namespace mialco.shopping.connector.Orchestrator
 		private IEnumerable<Product> _products;
 		private readonly int _storeId;
 		private readonly WebStoreDeploymentType _deploymentType;
-		private readonly List<GenericFeedRecord> _rawData;
+		private List<GenericFeedRecord> _rawData;
 		private readonly ShoppingConnectorConfiguration _shoppingConnectorConfiguration;
 		private readonly ApplicationInstanceSettings _applicationInstanceSettings;
 		private readonly ApplicationSettings _applicationSettings;
@@ -37,7 +37,6 @@ namespace mialco.shopping.connector.Orchestrator
 			_storeId = storeId;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_deploymentType = ShoppingConnectorUtills.DeploymentTypeFromString (applicationInstanceSettings.DeploymentType);
-			_rawData = new List<GenericFeedRecord>();
 		}
 
 
@@ -50,7 +49,6 @@ namespace mialco.shopping.connector.Orchestrator
 		{
 			_storeId = storeId;
 			_deploymentType = deploymentType;
-			_rawData = new List<GenericFeedRecord>();
 		}
 
 
@@ -65,7 +63,6 @@ namespace mialco.shopping.connector.Orchestrator
 			//_deploymentType = deploymentType;
 			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
 			//_rawFeedBuilder = new RawFeedBuilder(_applicationSettings , _applicationInstanceSettings);
-			_rawData = new List<GenericFeedRecord>();
 			//_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 		}
 
@@ -77,7 +74,6 @@ namespace mialco.shopping.connector.Orchestrator
 			_applicationSettings = applicationSettings;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_identifiersFilters = identifiersFilters;
-			_rawData = new List<GenericFeedRecord>();
 		}
 
 
@@ -132,7 +128,7 @@ namespace mialco.shopping.connector.Orchestrator
 
 			ExtractData(_storeId, _applicationInstanceSettings.ConnecttionString, categoryFilter); ;
 
-			_rawFeedBuilder = new RawFeedBuilder(_store, _applicationSettings, _applicationInstanceSettings);
+			_rawFeedBuilder = new RawFeedBuilder(_store, _applicationSettings, _applicationInstanceSettings, _identifiersFilters);
 			_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
 
 			//Create an initialize an instance of google category mapping
@@ -149,7 +145,9 @@ namespace mialco.shopping.connector.Orchestrator
 			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
 			Console.WriteLine("Starting Building Feed from the product data");
 
-			BuildFeed(_store, _products, _googleCategoryMapping, true);
+			_rawData = _rawFeedBuilder.BuildFeed(_store, _products, _googleCategoryMapping, true);
+			//BuildFeed(_store, _products, _googleCategoryMapping, true);
+
 			FeedGenerator feedGenerator = new FeedGenerator();
 
 
@@ -163,11 +161,28 @@ namespace mialco.shopping.connector.Orchestrator
 			var outputFile = Path.Combine( _applicationSettings.Folders.OutputFolder, outputFileName);
 
 
-			//Getting the 
+			var storeLink = string.Empty;
+			switch (_applicationInstanceSettings.DeploymentType)
+			{
+				case "Production":
+					storeLink = _store.ProductionURI;
+					break;
+				case "Development":
+					storeLink = _store.DevelopmentURI;
+					break;
+				case "Staging":
+					storeLink = _store.StagingURI;
+					break;
+			}
+
+			var feedProperties = new FeedProperties(_applicationInstanceSettings.GoogleFeedTitle,
+				storeLink, _applicationInstanceSettings.GoogleFeedDescription,
+				_applicationSettings.FeedPlatforms.GoogleFeedPrefix,
+				_applicationSettings.FeedPlatforms.GoogleFeedNamespace);
 
 
 
-			feedGenerator.GenerateXmlFeed(outputFile, _rawData, new FeedProperties(_store.Name, @"https://www.rosepatalestore.com", "The rose petalStore"));
+			feedGenerator.GenerateXmlFeed(outputFile, _rawData, feedProperties);
 			return result;
 		}
 
@@ -205,7 +220,8 @@ namespace mialco.shopping.connector.Orchestrator
 			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
 			Console.WriteLine("Starting Building Feed from the product data"); 
 
-			BuildFeed(_store, _products, _googleCategoryMapping, true);
+			_rawData= _rawFeedBuilder.BuildFeed(_store, _products, _googleCategoryMapping, true);
+		
 			FeedGenerator feedGenerator = new FeedGenerator();
 
 
@@ -214,10 +230,26 @@ namespace mialco.shopping.connector.Orchestrator
 			//Debt. Almost no matching to the mapping. Just few items
 			// No Sizes or colors are discovered
 			var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
+			var storeLink = string.Empty;
+			switch (_applicationInstanceSettings.DeploymentType)
+			{
+				case "Production":
+					storeLink = _store.ProductionURI;
+					break;
+				case "Development":
+					storeLink = _store.DevelopmentURI;
+					break;
+				case "Staging":
+					storeLink = _store.StagingURI;
+					break;
+			}
 
+			var feedProperties = new FeedProperties(_applicationInstanceSettings.GoogleFeedTitle,
+				storeLink, _applicationInstanceSettings.GoogleFeedDescription,
+				_applicationSettings.FeedPlatforms.GoogleFeedPrefix,
+				_applicationSettings.FeedPlatforms.GoogleFeedNamespace);
 
-
-			feedGenerator.GenerateXmlFeed(outputFile, _rawData, new FeedProperties("RosePetalsStore", @"https://www.rosepatalestore.com", "The rose petalStore"));
+			feedGenerator.GenerateXmlFeed(outputFile, _rawData, feedProperties);
 			return result;
 		}
 
@@ -816,65 +848,65 @@ namespace mialco.shopping.connector.Orchestrator
 		}
 
 
-		public abstract class ProductAttributeAbstractFactory
-		{
-			abstract public ProductAttribute GetAttribute();
-		}
+		//public abstract class ProductAttributeAbstractFactory
+		//{
+		//	abstract public ProductAttribute GetAttribute();
+		//}
 
-		public class ColorOptionsFactory : ProductAttributeAbstractFactory
-		{
-			public override ProductAttribute GetAttribute()
-			{
-				return new ColorOption();
-			}
-		}
+		//public class ColorOptionsFactory : ProductAttributeAbstractFactory
+		//{
+		//	public override ProductAttribute GetAttribute()
+		//	{
+		//		return new ColorOption();
+		//	}
+		//}
 
-		public class SizeOptionsFactory : ProductAttributeAbstractFactory
-		{
-			public override ProductAttribute GetAttribute()
-			{
-				return new SizeOption();
-			}
-		}
+		//public class SizeOptionsFactory : ProductAttributeAbstractFactory
+		//{
+		//	public override ProductAttribute GetAttribute()
+		//	{
+		//		return new SizeOption();
+		//	}
+		//}
 
-		public abstract class ProductAttribute
-		{
-			public int Priority { get; }
-			public string Name { get; set; }
-			public decimal AddedPrice { get; set; }
-			public string SkuModifier { get; set; }
+		//public abstract class ProductAttribute
+		//{
+		//	public int Priority { get; }
+		//	public string Name { get; set; }
+		//	public decimal AddedPrice { get; set; }
+		//	public string SkuModifier { get; set; }
 
-			public override bool Equals(object obj)
-			{
-				if (obj == null)
-					return false;
-				var obj1 = obj as ProductAttribute;
-				return (obj1.Name == this.Name
-					&& obj1.Priority == this.Priority
-					&& obj1.SkuModifier == this.SkuModifier
-					&& obj1.AddedPrice == this.AddedPrice
-					);
-			}
+		//	public override bool Equals(object obj)
+		//	{
+		//		if (obj == null)
+		//			return false;
+		//		var obj1 = obj as ProductAttribute;
+		//		return (obj1.Name == this.Name
+		//			&& obj1.Priority == this.Priority
+		//			&& obj1.SkuModifier == this.SkuModifier
+		//			&& obj1.AddedPrice == this.AddedPrice
+		//			);
+		//	}
 
-			public override int GetHashCode()
-			{
-				const int p = 29;
-				int hash = p;
-				hash = hash * p + AddedPrice.GetHashCode();
-				hash = hash * p + (Name ?? "").GetHashCode();
-				hash = hash * p + (SkuModifier ?? "").GetHashCode();
-				hash = hash * p + Priority.GetHashCode();
-				return hash;
-			}
-		}
+		//	public override int GetHashCode()
+		//	{
+		//		const int p = 29;
+		//		int hash = p;
+		//		hash = hash * p + AddedPrice.GetHashCode();
+		//		hash = hash * p + (Name ?? "").GetHashCode();
+		//		hash = hash * p + (SkuModifier ?? "").GetHashCode();
+		//		hash = hash * p + Priority.GetHashCode();
+		//		return hash;
+		//	}
+		//}
 
-		public class SizeOption : ProductAttribute
-		{
-		}
+		//public class SizeOption : ProductAttribute
+		//{
+		//}
 
-		public class ColorOption : ProductAttribute
-		{
-		}
+		//public class ColorOption : ProductAttribute
+		//{
+		//}
 
 	}
 }
