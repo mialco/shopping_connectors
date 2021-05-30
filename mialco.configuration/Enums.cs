@@ -53,5 +53,12 @@ namespace mialco.configuration
 		ConnectionString,
 	}
 
+	public enum MarketingPlatforms
+	{ 
+		Google,
+		Ebay,
+		Amazon,
+		Etsy
+	}
 
 }

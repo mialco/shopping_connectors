@@ -101,6 +101,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizConnector-cli", "BizConn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "biz-connector-cli", "biz-connector-cli\biz-connector-cli.csproj", "{CDD4CBA7-A0C9-460C-AF25-CFC7A3F2B543}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.StoreFront.EbayCategoryMapping", "mialco.shopping.connector.StoreFront.EbayCategoryMapping\mialco.shopping.connector.StoreFront.EbayCategoryMapping.csproj", "{C0152542-9071-406F-8464-B611CA4F6778}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -235,6 +237,10 @@ Global
 		{CDD4CBA7-A0C9-460C-AF25-CFC7A3F2B543}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD4CBA7-A0C9-460C-AF25-CFC7A3F2B543}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDD4CBA7-A0C9-460C-AF25-CFC7A3F2B543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0152542-9071-406F-8464-B611CA4F6778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0152542-9071-406F-8464-B611CA4F6778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0152542-9071-406F-8464-B611CA4F6778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0152542-9071-406F-8464-B611CA4F6778}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

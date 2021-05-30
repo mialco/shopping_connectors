@@ -27,7 +27,10 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 		private bool _isDataLoaded;
 		private string _googleCategoriesFileName;
 		private string _storeFrontGoogleCategoryMappingFileName;
+		private string _storeFrontEbayCategoryMappingFileName;
 		private string _connectionString;
+		private ApplicationSettings _applicationSettings;
+		private ApplicationInstanceSettings _applicationInstanceSettings;
 		private CategoryItemPath _defaultGoogleCategory;
 		private Dictionary<int, CategoryItemPath> _googleCategories;
 		private Dictionary<int, CategoryItemPath> _storeCategories;
@@ -49,12 +52,14 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 		//	_connectionString = applicationInstanceSettings.ConnecttionString;
 		//}
 
-		public GoogleCategoryMapping(string connectionString, string googleCategoriesFileName , string storeFrontGooleCategoryMappingFileName, string defaultGoogleCategory)
+		public GoogleCategoryMapping(string googleCategoriesFileName , ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings)
 		{
-			_connectionString = connectionString;
-			_googleCategoriesFileName = googleCategoriesFileName;
-			_storeFrontGoogleCategoryMappingFileName = storeFrontGooleCategoryMappingFileName;
-			_defaultGoogleCategory = new CategoryItemPath { CategoryId = 2899, CategoryPath = defaultGoogleCategory };
+			_applicationInstanceSettings = applicationInstanceSettings;
+			_applicationSettings = applicationSettings;
+			_connectionString = _applicationInstanceSettings.ConnecttionString;
+			_googleCategoriesFileName = applicationSettings.GetMarketingPlatformCategoryFile(MarketingPlatforms.Google);
+			_storeFrontGoogleCategoryMappingFileName= Path.Combine(_applicationSettings.Folders.InputFolder, _applicationInstanceSettings.GoogleCategoryMappingFileName);
+			_defaultGoogleCategory = new CategoryItemPath { CategoryId = 2899, CategoryPath = _applicationInstanceSettings.DefaultGoogleCategory };
 		}
 
 

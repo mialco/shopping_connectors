@@ -32,6 +32,8 @@ namespace biz_connector_cli
 		ApplicationSettings _appSettings;
 		IdentifiersFilters _identifiersFilters;
 		WebStoreDeploymentType _deploymentType;
+		private bool _isConfigValid = true;
+		private StringBuilder _runtimeMessage = new StringBuilder();
 
 		
 		
@@ -41,8 +43,9 @@ namespace biz_connector_cli
 			string thisMethod = "StoreFrontFullFeed.Constructor";
 			this._storeId = storeId;
 			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
-			_appSettings = _shoppingConnectorConfiguration.GetApplicationSettings();			
-			var hasInstanceSettings = _appSettings.ApplicationInstances.TryGetValue(appInstanceName, out _appInstanceSettings);
+			_appSettings = _shoppingConnectorConfiguration.GetApplicationSettings();						
+			LoadInstanceSettings(appInstanceName);
+			if (!_isConfigValid) return;
 			GetFilters();
 			var orch = new StoreFrontOrchestratorZero(_storeId,_appSettings,_appInstanceSettings, _identifiersFilters);
 
@@ -67,26 +70,42 @@ namespace biz_connector_cli
 			//orch.Run();
 		}
 
-		public StoreFrontFullFeed(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration, string appInstanceName, string filterJSON)
-		{
-			this._storeId = storeId;
-			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
-			var appSettings = _shoppingConnectorConfiguration.GetApplicationSettings();
-			var hasInstanceSettings = appSettings.ApplicationInstances.TryGetValue(appInstanceName, out _appInstanceSettings);
-			// ToDo: To be continued
-		}
+		//public StoreFrontFullFeed(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration, string appInstanceName, string filterJSON)
+		//{
+		//	this._storeId = storeId;
+		//	_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
+		//	var appSettings = _shoppingConnectorConfiguration.GetApplicationSettings();
+		//	var hasInstanceSettings = appSettings.ApplicationInstances.TryGetValue(appInstanceName, out _appInstanceSettings);
+		//	// ToDo: To be continued
+		//}
+
+
 
 
 		private class Filters
 		{
 			public List<int> CategoryIds { get; set; }
 		}
+
+
+		private void LoadInstanceSettings(string appInstanceName)
+		{
+			var hasInstanceSettings = _appSettings.ApplicationInstances.TryGetValue(appInstanceName, out _appInstanceSettings);
+			if (!hasInstanceSettings)
+			{
+				_runtimeMessage.Append($"The configuration file does not contain an instance setting matching the input parameter [{appInstanceName}");
+				_isConfigValid = false;
+			}
+		}
+		
+		
 		/// <summary>
 		/// By Convention, filters are located in the Input folder and has the name <InstanceName>_<StoreId>_Filters.json
 		/// </summary>
 		private void GetFilters()
 		{
 
+			if (_appInstanceSettings == null) return;
 			var filterFileName = $"{_appInstanceSettings.Name.ToLower()}_{_storeId.ToString()}_Filters.json";
 			var filterFullPath = Path.Combine(_appSettings.Folders.InputFolder, filterFileName);
 			if (File.Exists(filterFullPath))
@@ -108,10 +127,14 @@ namespace biz_connector_cli
 			//var storeId = 33; //wickedTees
 			//storeId = 1; //irosepetals
 
-			var orch = new StoreFrontOrchestratorZero(_storeId,_appSettings, _appInstanceSettings,_identifiersFilters);
-			
-			orch.RunAllActionsInOneBigLoop(_storeId,_appSettings, _appInstanceSettings, _identifiersFilters);
-			//orch.Run();
+			if (_isConfigValid)
+			{
+				var orch = new StoreFrontOrchestratorZero(_storeId, _appSettings, _appInstanceSettings, _identifiersFilters);
+
+				orch.RunAllActionsInOneBigLoop(_storeId, _appSettings, _appInstanceSettings, _identifiersFilters);
+			}
+			//todo: Write to log console
+			if (_runtimeMessage.Length>0) Console.WriteLine(_runtimeMessage.ToString());
 
 		}
 

@@ -244,12 +244,9 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		{
 			var appDataFolder = _applicationSettings.Folders.InputFolder;
 			var googleCategoriesFileName = Path.Combine(appDataFolder, $"Google_{_applicationSettings.Files.MarketingPlatformCategoriesBase}");
-			var storeFrontGoogleCategoryMappingFileName = Path.Combine(appDataFolder, _applicationInstanceSettings.GoogleCategoryMappingFileName);
-			var defaultGoogleCategory = _applicationInstanceSettings.DefaultGoogleCategory;
-			var googleCategoryMappingFileName = Path.Combine(appDataFolder,_applicationInstanceSettings.GoogleCategoryMappingFileName);
-			var defaultCategory = _applicationInstanceSettings.DefaultGoogleCategory;
-			var connectionString = _applicationInstanceSettings.ConnecttionString;
-			_googleCategoryMapping = new GoogleCategoryMapping(connectionString,googleCategoriesFileName, storeFrontGoogleCategoryMappingFileName,defaultGoogleCategory);
+			//var storeFrontGoogleCategoryMappingFileName = Path.Combine(appDataFolder, _applicationInstanceSettings.GoogleCategoryMappingFileName);
+			//var googleCategoryMappingFileName = Path.Combine(appDataFolder,_applicationInstanceSettings.GoogleCategoryMappingFileName);
+			_googleCategoryMapping = new GoogleCategoryMapping(googleCategoriesFileName,_applicationSettings,_applicationInstanceSettings);
 			_googleCategoryMapping.Initialize();
 		}
 
@@ -596,6 +593,14 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 			return "new";
 		}
 
+
+		/// <summary>
+		/// This is a required field
+		/// Supported values in Google: in_stock, out_of_stock, preorder
+		/// We will return the vakue based in the inventory field
+		/// </summary>
+		/// <param name="productID"></param>
+		/// <returns></returns>
 		private string GetAvailability(ProductVariant variant)
 		{
 			//todo: Read the values from the configuration. These are values specific to google 
@@ -615,6 +620,15 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 			return result;
 		}
 
+
+
+		/// <summary>
+		/// This is not a required fiedld so we return empty for now
+		/// The field is defined for a preorder case
+		/// https://support.google.com/merchants/answer/6324470
+		/// </summary>
+		/// <param name="productID"></param>
+		/// <returns></returns>
 		private string GetAvailabilityDate(int productID)
 		{
 			//todo: Implement 
@@ -627,6 +641,14 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 			return string.Empty;
 		}
 
+		/// <summary>
+		/// At the implemenatonion time, the Brand was not a known value for the product 
+		/// Becasue this is a rquired field, we will HARD-CODE the return 
+		/// https://support.google.com/merchants/answer/6324351?hl=en&ref_topic=6324338
+		/// max Size : 70 characters
+		/// </summary>
+		/// <param name="productID"></param>
+		/// <returns></returns>
 		private string GetBrand(Store1 store)
 		{
 			//TODO: Veify if it returns the proper value 

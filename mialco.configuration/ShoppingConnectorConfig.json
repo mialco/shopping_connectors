@@ -12,7 +12,8 @@
 				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv",
 				"GoogleFeedTitle": "Romanian T-shirts",
 				"GoogleFeedDescription": "Romanian T-shirts Feed",
-				"EbayChannel" :  "EBAY_US",
+				"EbayCategoryMappingFileName": "StoreFront-Ebay-Category-mapping.csv",
+				"EbayChannel": "EBAY_US",
 				"EbayFeedType": "Ebay|Amazon",
 				"EbayOutputType": "CSV|XML|API",
 				"EbayShippingPolicy": "shipping",
@@ -21,6 +22,28 @@
 				"EbayLocale": "en_AU,de_AT,en_CA,de_DE,es_ES,fr_FR,en_IN,it_IT,ru_RU,en_GB,en_US",
 				"OutputTo": [ "Google|XML", "Ebay|XML" ]
 			},
+			{
+				"Name": "StoreFront-Dev_RomanianShirts",
+				"Description": "Store Front Based Used in development",
+				"ConnecttionString": "Server =.\\SQLExpress; Database = irosepetals; Trusted_Connection = True;",
+				"DeploymentType": "Production",
+				"ImagesListFileName": "StoreFrontImagesList.txt",
+				"DefaultGoogleCategory": "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers",
+				"DefaultCurrency": "USD",
+				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv",
+				"GoogleFeedTitle": "Romanian T-shirts",
+				"GoogleFeedDescription": "Romanian T-shirts Feed",
+				"EbayCategoryMappingFileName": "StoreFront-Ebay-Category-mapping.csv",
+				"EbayChannel": "EBAY_US",
+				"EbayFeedType": "Ebay|Amazon",
+				"EbayOutputType": "CSV|XML|API",
+				"EbayShippingPolicy": "shipping",
+				"EbayPaymentPolicy": "payment",
+				"EbayReturnPolicy": "return",
+				"EbayLocale": "en_AU,de_AT,en_CA,de_DE,es_ES,fr_FR,en_IN,it_IT,ru_RU,en_GB,en_US",
+				"OutputTo": [ "Google|XML", "Ebay|XML" ]
+			},
+
 			{
 
 

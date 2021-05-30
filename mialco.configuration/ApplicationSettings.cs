@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -15,8 +16,19 @@ namespace mialco.configuration
 		public string DefaultInstance { get; set; }
 
 		public FeedPlatforms FeedPlatforms  {get;set;}
-		
-		public IEnumerable<string> TestArray;
 
+		public string GetMarketingPlatformCategoryFile(MarketingPlatforms marketingPlatform)
+		{
+			try
+			{
+				return Path.Combine(Folders.InputFolder, $"{marketingPlatform.ToString()}_{Files.MarketingPlatformCategoriesBase}");
+				
+			}
+			catch (Exception)
+			{
+				//todo: handle error gratiously 
+				throw;
+			}
+		}
 	}
 }
