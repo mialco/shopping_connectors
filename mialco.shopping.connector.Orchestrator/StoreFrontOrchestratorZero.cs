@@ -187,13 +187,14 @@ namespace mialco.shopping.connector.Orchestrator
 		}
 
 
-
+		
 		/// <summary>
+		/// !!! Deprecated
 		/// It executes the extraction from the database in batches then 
 		/// loops through each record of the batch and outputs it directly to the Google feed xml file
 		/// 
 		/// </summary>
-		/// <returns></returns>
+		/// <returns></returns>		
 		public int RunAllActionsInOneBigLoop()
 		{
 

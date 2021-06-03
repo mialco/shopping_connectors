@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using mialco.configuration;
+using mialco.shopping.connector.shared;
 
 namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 {
@@ -19,11 +20,6 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 	/// </summary>
 	public class GoogleCategoryMapping
 	{
-		//private const string ConnectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;"; //TODO: ReadFromConfig
-		private const string AppDataRoot = "ShoppingConnectorFeed"; //TODO: Read From Config
-		//private const string GoogleCategoriesFileName = "taxonomy-with-ids.en-US.txt"; //todo: get from the configuration
-		//private const string StoreFrontGoogleCategoryMappingFileName = "StoreFront-Google-Category-mapping.csv"; //todo: get from the configuration
-		private const string DefaultGoogleCategory = "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers";  //TODO: Replace with value from the configuration
 		private bool _isDataLoaded;
 		private string _googleCategoriesFileName;
 		private string _storeFrontGoogleCategoryMappingFileName;
@@ -141,7 +137,7 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 			{
 				return _defaultGoogleCategory.CategoryPath;
 			}
-			var googleCategoryId = _categoryMapping[storeCategory].GoogleCategoryId;
+			var googleCategoryId = _categoryMapping[storeCategory].MappedCategoryId;
 			result = _googleCategories[googleCategoryId].CategoryPath;
 			return result;
 		}
@@ -274,11 +270,11 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 						}
 						if (_categoryMapping.ContainsKey(storeCategoryId))
 						{
-							_categoryMapping[storeCategoryId] = new CategoryMappingItem(storeCategoryId, googleId, 0, CategoryMappingType.CategoryMapping);
+							_categoryMapping[storeCategoryId] = new CategoryMappingItem( googleId, 0, CategoryMappingType.CategoryMapping);
 						}
 						else
 						{
-							_categoryMapping.Add(storeCategoryId, new CategoryMappingItem(storeCategoryId, googleId, 0, CategoryMappingType.CategoryMapping));
+							_categoryMapping.Add(storeCategoryId, new CategoryMappingItem(googleId, 0, CategoryMappingType.CategoryMapping));
 						}
 					}
 

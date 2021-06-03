@@ -8,4 +8,10 @@ namespace mialco.shopping.connector.shared
 		Staging = 2,
 		Development = 3
 	}
+	public enum CategoryMappingType
+	{
+		ProductMapping = 1,
+		CategoryMapping = 2
+	}
+
 }

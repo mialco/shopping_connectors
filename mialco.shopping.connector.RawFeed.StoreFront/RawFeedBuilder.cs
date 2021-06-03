@@ -3,6 +3,7 @@ using System.Text;
 using mialco.shopping.connector.RawFeed;
 using mialco.shopping.connector.StoreFront;
 using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
+using mialco.shopping.connector.StoreFront.EbayCategoryMapping;
 using mialco.shopping.connector.RawFeed.StoreFront.ImageLookup;
 using mialco.configuration;
 using System.IO;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using mialco.shopping.connector.shared;
 using System.Linq;
 using System.Text.RegularExpressions;
+
 
 namespace mialco.shopping.connector.RawFeed.StoreFront
 {
@@ -22,6 +24,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		private ApplicationSettings _applicationSettings;
 		private ApplicationInstanceSettings _applicationInstanceSettings;
 		GoogleCategoryMapping _googleCategoryMapping;
+		EbayCategoryMapping _ebayCategoryMapping;
 		ImageLookup.StoreFrontImagesLookupUtility _imageLookupUtility;
 		configuration.ShoppingConnectorConfiguration _shoppingConnectorConfiguration;
 		private Store1 _store;
@@ -67,6 +70,12 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		{
 			get => _googleCategoryMapping;
 		}
+
+		public EbayCategoryMapping EbayCategoryMapping
+		{
+			get => _ebayCategoryMapping;
+		}
+
 
 		public StoreFrontImagesLookupUtility ImagesLookupUtility
 		{
@@ -199,7 +208,11 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 										rawFeedRecord.FeedRecord.Add("Gtin", GetGtin(variant)); // TODO: Test data retrieval from the database
 										rawFeedRecord.FeedRecord.Add("Brand", GetBrand(store));
 										rawFeedRecord.FeedRecord.Add("MPN", GetMpn(productId, variant));
-										rawFeedRecord.FeedRecord.Add("Category", GetGoogleProductCategory(p));
+										if(_applicationInstanceSettings.HasGoogleFeed)
+											rawFeedRecord.FeedRecord.Add("Category", GetGoogleProductCategory(p));
+										if (_applicationInstanceSettings.HasEbayFeed)
+											rawFeedRecord.FeedRecord.Add("EbayCategoryId", GetEbayProductCategory(p).ToString());
+
 										rawFeedRecord.FeedRecord.Add("ProductType", GetProductType(p)); //todo: implement method
 																														//todo: rawFeedRecord.FeedRecord.Add("ShippingCountry", GetProductType(p.ProductID)); //todo: implement method
 																														//todo: rawFeedRecord.FeedRecord.Add("ShippingService", GetProductType(p.ProductID)); //todo: implement method
@@ -240,15 +253,47 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 			return _rawData;
 		}
 
+		/// <summary>
+		/// It loads the category classes mased on the type or merchant feed requested in the instance configuration 
+		/// </summary>
 		public void LoadCategories()
 		{
-			var appDataFolder = _applicationSettings.Folders.InputFolder;
-			var googleCategoriesFileName = Path.Combine(appDataFolder, $"Google_{_applicationSettings.Files.MarketingPlatformCategoriesBase}");
+
+			
+
+			if (_applicationInstanceSettings.HasGoogleFeed)
+			{
+				LoadStoreFront_GoogleCategories();
+			}
+			if (_applicationInstanceSettings.HasEbayFeed)
+			{
+				LoadStorefront_EbayCategories();
+			}
+
+
+		}
+
+		private  void LoadStoreFront_GoogleCategories()
+		{
+
+			var appDataFolder = _applicationSettings.Folders.InputFolder; 
+			var googleCategoriesFileName = Path.Combine(appDataFolder, $"{MarketingPlatforms.Google}_{_applicationSettings.Files.MarketingPlatformCategoriesBase}");
 			//var storeFrontGoogleCategoryMappingFileName = Path.Combine(appDataFolder, _applicationInstanceSettings.GoogleCategoryMappingFileName);
 			//var googleCategoryMappingFileName = Path.Combine(appDataFolder,_applicationInstanceSettings.GoogleCategoryMappingFileName);
-			_googleCategoryMapping = new GoogleCategoryMapping(googleCategoriesFileName,_applicationSettings,_applicationInstanceSettings);
+			_googleCategoryMapping = new GoogleCategoryMapping(googleCategoriesFileName, _applicationSettings, _applicationInstanceSettings);
 			_googleCategoryMapping.Initialize();
+
 		}
+
+		private void LoadStorefront_EbayCategories()
+		{
+			var appDataFolder = _applicationSettings.Folders.InputFolder;
+			var ebayCategoriesFileName = Path.Combine(appDataFolder, $"{MarketingPlatforms.Ebay}_{_applicationSettings.Files.MarketingPlatformCategoriesBase}");
+			_ebayCategoryMapping = new EbayCategoryMapping(ebayCategoriesFileName, _applicationSettings, _applicationInstanceSettings);
+			_ebayCategoryMapping.Initialize();
+
+		}
+
 
 
 		/// <summary>
@@ -293,6 +338,31 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 			}
 			return result;
 		}
+
+		public int GetEbayProductCategory(Product product)
+		{
+			//TODO: Implement more complex logic for selecting the mapped category
+			var result = _ebayCategoryMapping.DefaultEbayCategoryId;
+
+			//todo: Logging;
+			if (product == null) return result;
+
+			//todo: Logging
+			if (product.ProductCategories == null) return result;
+
+			//todo: Logging
+			if (product.ProductCategories.Count == 0) return result;
+			//For each cattegory that the product is assigned to,
+			//we return the first id that is matched and is not the same with the default category
+			foreach (var cat in product.ProductCategories)
+			{
+				var mappedCatId = _ebayCategoryMapping.GetMappedEbayCategory(cat.CategoryID);
+				if (mappedCatId != _ebayCategoryMapping.DefaultEbayCategoryId)
+					return mappedCatId;
+			}
+			return result;
+		}
+
 
 		public string GetProductType(Product p)
 		{

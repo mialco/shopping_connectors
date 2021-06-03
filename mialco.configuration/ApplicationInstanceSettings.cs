@@ -13,6 +13,7 @@ namespace mialco.configuration
 		public string DeploymentType { get; set; }
 		public string ImagesListFileName { get; set; }
 		public string DefaultGoogleCategory { get; set; }
+		public int DefaultEbayCategoryId { get; set; }
 		public string DefaultCurrency { get; set; }
 		public string GoogleCategoryMappingFileName { get; set; }
 		public string GoogleFeedTitle { get; set; }

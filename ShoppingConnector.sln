@@ -35,8 +35,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ObjectValues", "ObjectValue
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.objectvalues", "mialco.shopping.objectvalues\mialco.shopping.objectvalues.csproj", "{C744BC77-EFD2-48A2-AFB3-9EDDB47F07BD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflow", "Workflow", "{A25C5C1F-0A11-4238-B007-748754F91574}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "abstraction", "abstraction", "{665FA2BB-148F-471E-BA27-7059B6DAD322}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.abstractions", "mialco.abstractions\mialco.abstractions.csproj", "{A38B5619-66B2-4199-85D7-E331BC8EE639}"
@@ -101,7 +99,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BizConnector-cli", "BizConn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "biz-connector-cli", "biz-connector-cli\biz-connector-cli.csproj", "{CDD4CBA7-A0C9-460C-AF25-CFC7A3F2B543}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.StoreFront.EbayCategoryMapping", "mialco.shopping.connector.StoreFront.EbayCategoryMapping\mialco.shopping.connector.StoreFront.EbayCategoryMapping.csproj", "{C0152542-9071-406F-8464-B611CA4F6778}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.StoreFront.EbayCategoryMapping", "mialco.shopping.connector.StoreFront.EbayCategoryMapping\mialco.shopping.connector.StoreFront.EbayCategoryMapping.csproj", "{C0152542-9071-406F-8464-B611CA4F6778}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

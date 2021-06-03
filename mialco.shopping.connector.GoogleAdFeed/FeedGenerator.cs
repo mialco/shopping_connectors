@@ -5,7 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
-using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
+//using mialco.shopping.connector.StoreFront.GoogleCategoryMapping;
+
+
 
 namespace mialco.shopping.connector.GoogleAdFeed
 {
