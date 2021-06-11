@@ -28,7 +28,7 @@ namespace mialco.shopping.connector.StoreFront.EbayCategoryMapping
 			_ebayCategoriesFileName = ebayCategoriesFileName;
 			_applicationSettings = applicationSettings;
 			_applicationInstanceSettings = applicationInstanceSettings;
-			_defaultEbayCategoryId = applicationInstanceSettings.DefaultEbayCategoryId;
+			_defaultEbayCategoryId = applicationInstanceSettings.DefaultEbayCategoryId;//TO DO Validation if this is loaded correctly, Test Id this has a string value instead of an integer
 		}
 
 
@@ -61,8 +61,8 @@ namespace mialco.shopping.connector.StoreFront.EbayCategoryMapping
 							//TODO : Report error
 							continue;
 						}
-						int googleId = 0;
-						if (!int.TryParse(parts[1].Trim(), out googleId))
+						int ebayId = 0;
+						if (!int.TryParse(parts[1].Trim(), out ebayId))
 						{
 							// Error reading record 
 							//TODO : Report error
@@ -70,11 +70,11 @@ namespace mialco.shopping.connector.StoreFront.EbayCategoryMapping
 						}
 						if (_categoryMapping.ContainsKey(storeCategoryId))
 						{
-							_categoryMapping[storeCategoryId] = new CategoryMappingItem( googleId, 0, CategoryMappingType.CategoryMapping);
+							_categoryMapping[storeCategoryId] = new CategoryMappingItem( ebayId, 0, CategoryMappingType.CategoryMapping);
 						}
 						else
 						{
-							_categoryMapping.Add(storeCategoryId, new CategoryMappingItem( googleId, 0, CategoryMappingType.CategoryMapping));
+							_categoryMapping.Add(storeCategoryId, new CategoryMappingItem( ebayId, 0, CategoryMappingType.CategoryMapping));
 						}
 					}
 
@@ -121,7 +121,7 @@ namespace mialco.shopping.connector.StoreFront.EbayCategoryMapping
 				}
 				//LoadStoreCategoriesFromDb();
 				//LoadGoogleCategoriesToInternalData(_googleCategoriesFileName);
-				LoadFrontStoreToEbayMaping(_storeFrontGoogleCategoryMappingFileName);
+				LoadFrontStoreToEbayMaping(_storeFrontEbayCategoryMappingFileName);
 				_isDataLoaded = true;
 				result = true;
 				return result;
@@ -145,12 +145,13 @@ namespace mialco.shopping.connector.StoreFront.EbayCategoryMapping
 			try
 			{
 				result = true;
+				_storeFrontEbayCategoryMappingFileName = Path.Combine(_applicationSettings.Folders.InputFolder, _applicationInstanceSettings.EbayCategoryMappingFileName);
 				if (!File.Exists(_ebayCategoriesFileName))
 				{
 					result = false;
 					Console.WriteLine($"Cannot find {_ebayCategoriesFileName}");
 				}
-				if (!File.Exists(_ebayCategoriesFileName))
+				if (!File.Exists(_storeFrontEbayCategoryMappingFileName))
 				{
 					result = false;
 					Console.WriteLine($"Cannot find {_storeFrontEbayCategoryMappingFileName}");

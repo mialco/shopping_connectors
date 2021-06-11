@@ -8,8 +8,10 @@ namespace mialco.configuration
 	{
 		public string CategoriesBaseFile { get; set; }
 		public string CategoryMappingBase { get; set; }
-		public string MarketingPlatformCategoriesBase { get; set; }
 		public string ImageListBase { get; set; }
 		public string XmlOutputFeedBase { get; set; }
+		public string GoogleCategoriesFile { get; set; }
+		public string EbayCategoriesFile { get; set; }
+
 	}
 }

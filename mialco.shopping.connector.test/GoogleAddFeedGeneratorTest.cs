@@ -4,6 +4,7 @@ using Xunit;
 using mialco.shopping.connector.RawFeed;
 using mialco.shopping.connector.GoogleAdFeed;
 using System.IO;
+using mialco.shopping.connector.FeedCommon;
 
 namespace mialco.shopping.connector.test
 {

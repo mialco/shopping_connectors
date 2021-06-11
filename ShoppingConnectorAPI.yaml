@@ -17,20 +17,20 @@ paths:
 
   /admin/client/appinstance/list:
     get:
-	  summary: Lists all the application instances for all clients, handled by this API
-	  
-  /admin/client/apinnstance/{client_id}
+      summary: Lists all the application instances for all clients, handled by this API
+
+  /admin/client/apinnstance/{client_id}:
     get:
-	  summary: Lists all the application instances for the client  having client_id, handled by this API
+      summary: Lists all the application instances for the client  having client_id, handled by this API
 
 
   /admin/categories/store/list/{feedid}/{instance_id}/{store_id}:
     get:
-	  summary: Returns a list of categories associated with a store
+      summary: Returns a list of categories associated with a store
     responses:
-	  '200':
+      '200':
 
-	  '400':
+      '400':
   
   /admin/categories/publisher/{publisher_id}:
     get:
@@ -72,3 +72,15 @@ paths:
 	  '200':
 
       '400':
+
+  /admin/ebay/policies:
+    get:
+
+  /admin/policy/{policy_name}:
+    get:
+    put:
+      parameter: policyValue
+    post:
+      parameter: policiValue
+    delete:
+

@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\mialco.shopping.connector.entities\mialco.shopping.connector.entities.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.FeedCommon\mialco.shopping.connector.FeedCommon.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.GoogleAdFeed\mialco.shopping.connector.GoogleAdFeed.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.Orchestrator\mialco.shopping.connector.Orchestrator.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.RawFeed\mialco.shopping.connector.RawFeed.csproj" />

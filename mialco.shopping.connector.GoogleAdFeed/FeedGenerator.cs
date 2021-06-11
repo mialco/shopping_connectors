@@ -1,4 +1,5 @@
 ﻿using GoogleAdFeed;
+using mialco.shopping.connector.FeedCommon;
 using mialco.shopping.connector.RawFeed;
 using System;
 using System.Collections;

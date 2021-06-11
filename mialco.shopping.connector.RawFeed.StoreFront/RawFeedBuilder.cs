@@ -90,7 +90,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		/// <param name="products"></param>
 		/// <param name="googleCategoryMapping"></param>
 		/// <param name="defaultVariantOnly"></param>
-		public List<GenericFeedRecord> BuildFeed(Store1 store, IEnumerable<Product> products, GoogleCategoryMapping googleCategoryMapping, bool defaultVariantOnly)
+		public List<GenericFeedRecord> BuildFeed(Store1 store, IEnumerable<Product> products, bool defaultVariantOnly)
 		{
 			_rawData = new List<GenericFeedRecord>();
 			try
@@ -254,7 +254,8 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		}
 
 		/// <summary>
-		/// It loads the category classes mased on the type or merchant feed requested in the instance configuration 
+		/// It loads the category classes passed on the type or merchant feed requested in the instance configuration 
+		/// So far we are impementing mapping for Google and Ebay categories
 		/// </summary>
 		public void LoadCategories()
 		{
@@ -277,7 +278,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		{
 
 			var appDataFolder = _applicationSettings.Folders.InputFolder; 
-			var googleCategoriesFileName = Path.Combine(appDataFolder, $"{MarketingPlatforms.Google}_{_applicationSettings.Files.MarketingPlatformCategoriesBase}");
+			var googleCategoriesFileName = Path.Combine(appDataFolder, _applicationSettings.Files.GoogleCategoriesFile);
 			//var storeFrontGoogleCategoryMappingFileName = Path.Combine(appDataFolder, _applicationInstanceSettings.GoogleCategoryMappingFileName);
 			//var googleCategoryMappingFileName = Path.Combine(appDataFolder,_applicationInstanceSettings.GoogleCategoryMappingFileName);
 			_googleCategoryMapping = new GoogleCategoryMapping(googleCategoriesFileName, _applicationSettings, _applicationInstanceSettings);
@@ -288,7 +289,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		private void LoadStorefront_EbayCategories()
 		{
 			var appDataFolder = _applicationSettings.Folders.InputFolder;
-			var ebayCategoriesFileName = Path.Combine(appDataFolder, $"{MarketingPlatforms.Ebay}_{_applicationSettings.Files.MarketingPlatformCategoriesBase}");
+			var ebayCategoriesFileName = Path.Combine(appDataFolder, _applicationSettings.Files.EbayCategoriesFile);
 			_ebayCategoryMapping = new EbayCategoryMapping(ebayCategoriesFileName, _applicationSettings, _applicationInstanceSettings);
 			_ebayCategoryMapping.Initialize();
 

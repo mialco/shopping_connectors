@@ -30,6 +30,7 @@
 				"DeploymentType": "Production",
 				"ImagesListFileName": "StoreFrontImagesList.txt",
 				"DefaultGoogleCategory": "Arts & Entertainment > Party & Celebration > Gift Giving > Fresh Cut Flowers",
+				"DefaultEbayCategoryId": 158994,
 				"DefaultCurrency": "USD",
 				"GoogleCategoryMappingFileName": "StoreFront-Google-Category-mapping.csv",
 				"GoogleFeedTitle": "Romanian T-shirts",
@@ -67,7 +68,8 @@
 		"Files": {
 			"CategoriesBaseFile": "IRosePetalsCategories.csv",
 			"CategoryMappingBase": "StoreFront-Google-Category-mapping.csv",
-			"MarketingPlatformCategoriesBase": "taxonomy-with-ids.en-US.txt",
+			"GoogleCategoriesFile": "google_taxonomy-with-ids.en-US.txt",
+			"EbayCategoriesFile": "Ebay_US_Category_Changes_(May2021)_NFT-update.csv",
 			"ImageListBase": "StoreFrontImagesList.txt",
 			"XmlOutputFeedBase": "OutputFeed.xml",
 			"InputDataFilterBase": "InputDataFilter.json"

@@ -42,7 +42,6 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 		//public GoogleCategoryMapping(ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings)
 		//{
 		//	var appDataFolder = applicationSettings.Folders.InputFolder;
-		//	_googleCategoriesFileName = Path.Combine(appDataFolder, $"Google_{applicationSettings.Files.MarketingPlatformCategoriesBase}");
 		//	_storeFrontGoogleCategoryMappingFileName = Path.Combine(appDataFolder, applicationInstanceSettings.GoogleCategoryMappingFileName);
 		//	_defaultGoogleCategory = new CategoryItemPath { CategoryId = 2899, CategoryPath = applicationInstanceSettings.DefaultGoogleCategory };
 		//	_connectionString = applicationInstanceSettings.ConnecttionString;
@@ -53,7 +52,7 @@ namespace mialco.shopping.connector.StoreFront.GoogleCategoryMapping
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_applicationSettings = applicationSettings;
 			_connectionString = _applicationInstanceSettings.ConnecttionString;
-			_googleCategoriesFileName = applicationSettings.GetMarketingPlatformCategoryFile(MarketingPlatforms.Google);
+			_googleCategoriesFileName = Path.Combine(_applicationSettings.Folders.InputFolder,  applicationSettings.Files.GoogleCategoriesFile);
 			_storeFrontGoogleCategoryMappingFileName= Path.Combine(_applicationSettings.Folders.InputFolder, _applicationInstanceSettings.GoogleCategoryMappingFileName);
 			_defaultGoogleCategory = new CategoryItemPath { CategoryId = 2899, CategoryPath = _applicationInstanceSettings.DefaultGoogleCategory };
 		}

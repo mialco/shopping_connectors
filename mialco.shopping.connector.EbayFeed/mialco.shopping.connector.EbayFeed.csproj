@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GoogleAdFeed\GoogleAdFeed.csproj" />
+    <ProjectReference Include="..\mialco.configuration\mialco.configuration.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.FeedCommon\mialco.shopping.connector.FeedCommon.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.RawFeed\mialco.shopping.connector.RawFeed.csproj" />
   </ItemGroup>

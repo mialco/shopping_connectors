@@ -7,9 +7,9 @@ keywords:
   - default
   - none
 platforms:
-  - platform: asp.net:
-      description : asp.net shopping cart store
-      application : shopping-connector
+  - platform: asp.net
+    description : asp.net shopping cart store
+    application : shopping-connector
 command_types:
   - run_full_feed
   - verify_applictation
@@ -40,8 +40,8 @@ variant_filter_types:
   - size_priority
    
 commands:
-  - command
-    type : run_full_feed:
+  - command:
+    type : run_full_feed
     platform: asp.net
     name: Run feed store 33 petals  manual upload
     description: Run asp.et store in single pass with filters on petals and simple variant
@@ -66,6 +66,14 @@ commands:
       feed_persistence: 
 
 
+workflows:
+  - workflow:
+    name: dev_full_feed
+    description: Runs the command dev_full feed in developmet
+    store_type: Front_Store
+    steps:
+      - load_data:
+        connection_strig: "sdfdfdfsd  sdf asd asdf sdsd "
 
 
       

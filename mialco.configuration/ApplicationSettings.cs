@@ -17,18 +17,5 @@ namespace mialco.configuration
 
 		public FeedPlatforms FeedPlatforms  {get;set;}
 
-		public string GetMarketingPlatformCategoryFile(MarketingPlatforms marketingPlatform)
-		{
-			try
-			{
-				return Path.Combine(Folders.InputFolder, $"{marketingPlatform.ToString()}_{Files.MarketingPlatformCategoriesBase}");
-				
-			}
-			catch (Exception)
-			{
-				//todo: handle error gratiously 
-				throw;
-			}
-		}
 	}
 }

@@ -48,9 +48,17 @@ namespace mialco.configuration
 			{
 				if (_outputTo == null) ProcessOutputToSettings();
 				return _outputTo.ContainsKey(MarketingPlatforms.Google.ToString());
-					}
+			}
 		}
-		public bool HasEbayFeed { get; }
+		public bool HasEbayFeed 
+		{
+			get
+			{
+				if (_outputTo == null) ProcessOutputToSettings();
+				return _outputTo.ContainsKey(MarketingPlatforms.Ebay.ToString());
+
+			}
+		}
 
 
 		/// <summary>

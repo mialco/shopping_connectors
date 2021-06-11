@@ -41,7 +41,6 @@ namespace mialco.configuration
 	{
 		CategoriesBaseFile,
 		CategoryMappingBase,
-		MarketingPlatformCategoriesBase,
 		ImageListBase,
 		XmlOutputFeedBase,
 	}

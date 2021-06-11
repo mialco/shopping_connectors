@@ -13,6 +13,8 @@ using mialco.utilities;
 using System.IO;
 using System.Linq;
 using mialco.configuration;
+using mialco.shopping.connector.FeedCommon;
+using mialco.shopping.connector.EbayFeed;
 
 namespace mialco.shopping.connector.Orchestrator
 {
@@ -145,49 +147,68 @@ namespace mialco.shopping.connector.Orchestrator
 			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
 			Console.WriteLine("Starting Building Feed from the product data");
 
-			_rawData = _rawFeedBuilder.BuildFeed(_store, _products, _googleCategoryMapping, true);
+			_rawData = _rawFeedBuilder.BuildFeed(_store, _products, true);
 			//BuildFeed(_store, _products, _googleCategoryMapping, true);
 
-			FeedGenerator feedGenerator = new FeedGenerator();
 
 
-			Console.WriteLine("Starting writing the products to the output feed for Google ");
-			//DEBT: The XML Generator writes one singe item for all of the products
-			//Debt. Almost no matching to the mapping. Just few items
-			// No Sizes or colors are discovered
-			//var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
-			var timeStamp = $"{DateTime.Now.Year}{DateTime.Now.Month.ToString("00")}{DateTime.Now.Day.ToString("00")}{DateTime.Now.Hour.ToString("00")}{DateTime.Now.Minute.ToString("00")}{DateTime.Now.Second.ToString("00")}";
-			var outputFileName =$"{_applicationInstanceSettings.Name}_{timeStamp}_{applicationSettings.Files.XmlOutputFeedBase}";
-			var outputFile = Path.Combine( _applicationSettings.Folders.OutputFolder, outputFileName);
-
-
-			var storeLink = string.Empty;
-			switch (_applicationInstanceSettings.DeploymentType)
+			if (_applicationInstanceSettings.HasGoogleFeed)
 			{
-				case "Production":
-					storeLink = _store.ProductionURI;
-					break;
-				case "Development":
-					storeLink = _store.DevelopmentURI;
-					break;
-				case "Staging":
-					storeLink = _store.StagingURI;
-					break;
+				FeedGenerator feedGenerator = new FeedGenerator();
+
+				Console.WriteLine("Starting writing the products to the output feed for Google ");
+				//DEBT: The XML Generator writes one singe item for all of the products
+				//Debt. Almost no matching to the mapping. Just few items
+				// No Sizes or colors are discovered
+				//var outputFile = Path.Combine(AppUtilities.GetApplicationDataPath(), OutputFileName);
+				var timeStamp = $"{DateTime.Now.Year}{DateTime.Now.Month.ToString("00")}{DateTime.Now.Day.ToString("00")}{DateTime.Now.Hour.ToString("00")}{DateTime.Now.Minute.ToString("00")}{DateTime.Now.Second.ToString("00")}";
+				var outputFileName = $"{_applicationInstanceSettings.Name}_{MarketingPlatforms.Google}_{timeStamp}_{applicationSettings.Files.XmlOutputFeedBase}";
+				var outputFile = Path.Combine(_applicationSettings.Folders.OutputFolder, outputFileName);
+
+
+				var storeLink = string.Empty;
+				switch (_applicationInstanceSettings.DeploymentType)
+				{
+					case "Production":
+						storeLink = _store.ProductionURI;
+						break;
+					case "Development":
+						storeLink = _store.DevelopmentURI;
+						break;
+					case "Staging":
+						storeLink = _store.StagingURI;
+						break;
+				}
+
+			
+				//todo: Replace feed properties with application instance settings
+				var feedProperties = new FeedProperties(_applicationInstanceSettings.GoogleFeedTitle,
+					storeLink, _applicationInstanceSettings.GoogleFeedDescription,
+					_applicationSettings.FeedPlatforms.GoogleFeedPrefix,
+					_applicationSettings.FeedPlatforms.GoogleFeedNamespace);
+
+
+
+				feedGenerator.GenerateXmlFeed(outputFile, _rawData, feedProperties);
 			}
 
-			var feedProperties = new FeedProperties(_applicationInstanceSettings.GoogleFeedTitle,
-				storeLink, _applicationInstanceSettings.GoogleFeedDescription,
-				_applicationSettings.FeedPlatforms.GoogleFeedPrefix,
-				_applicationSettings.FeedPlatforms.GoogleFeedNamespace);
+			if (_applicationInstanceSettings.HasEbayFeed)
+			{
 
+				var timeStamp = $"{DateTime.Now.Year}{DateTime.Now.Month.ToString("00")}{DateTime.Now.Day.ToString("00")}{DateTime.Now.Hour.ToString("00")}{DateTime.Now.Minute.ToString("00")}{DateTime.Now.Second.ToString("00")}";
+				var outputFileName = $"{_applicationInstanceSettings.Name}_{MarketingPlatforms.Ebay.ToString()}_{timeStamp}_{applicationSettings.Files.XmlOutputFeedBase}";
+				var outputFile = Path.Combine(_applicationSettings.Folders.OutputFolder, outputFileName);
+				var ebayFeedGenerator = new EbayFeedGenerator();
+				ebayFeedGenerator.GenerateXmlFeed(outputFile , _rawData, _applicationInstanceSettings);
 
+			}
 
-			feedGenerator.GenerateXmlFeed(outputFile, _rawData, feedProperties);
 			return result;
+
 		}
 
 
-		
+
 		/// <summary>
 		/// !!! Deprecated
 		/// It executes the extraction from the database in batches then 
@@ -221,7 +242,7 @@ namespace mialco.shopping.connector.Orchestrator
 			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
 			Console.WriteLine("Starting Building Feed from the product data"); 
 
-			_rawData= _rawFeedBuilder.BuildFeed(_store, _products, _googleCategoryMapping, true);
+			_rawData= _rawFeedBuilder.BuildFeed(_store, _products, true);
 		
 			FeedGenerator feedGenerator = new FeedGenerator();
 
