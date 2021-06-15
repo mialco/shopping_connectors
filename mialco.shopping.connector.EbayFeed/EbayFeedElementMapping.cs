@@ -21,6 +21,7 @@ namespace mialco.shopping.connector.EbayFeed
 		public const string Gtin = "Gtin";
 		public const string ePID = "ePID";
 		public const string ImageLink = "ImageLink";
+		public const string Inventory = "Inventory";
 		public const string ISBN = "ISBN";
 		public const string Metal = "Metal";
 		public const string MPN = "ManufaturingPartNumber";

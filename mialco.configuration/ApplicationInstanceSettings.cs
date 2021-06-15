@@ -24,6 +24,8 @@ namespace mialco.configuration
 		public string EbayCategoryMappingFileName { get; set; }
 		public string EbayFeedType { get; set; }
 		public string EbayOutputType { get; set; }
+		public string EbayChannel { get;  set; }
+		
 		/// <summary>
 		/// Default Shipping policy name established on the ebay platform
 		/// </summary>

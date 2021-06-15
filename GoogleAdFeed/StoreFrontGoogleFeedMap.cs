@@ -37,7 +37,7 @@ namespace GoogleAdFeed
 			_propertyMapping.Add("mobile_link", "MobileLink");
 			_propertyMapping.Add("availability", "Availability");
 			_propertyMapping.Add("availability_date", "AvailabilityDate");
-			_propertyMapping.Add("price", "Price");
+			_propertyMapping.Add("price", "PriceWithCurrency");
 			_propertyMapping.Add("gtin", "Gtin");
 			_propertyMapping.Add("brand", "Brand");
 			_propertyMapping.Add("mpn", "MPN");
@@ -56,7 +56,7 @@ namespace GoogleAdFeed
 
 			_propertyMapping.Add("cost_of_goods_sold", "CostOfGoodsSold");
 			_propertyMapping.Add("expiration_date", "ExpirationDate");
-			_propertyMapping.Add("sale_price", "SalePrice");
+			_propertyMapping.Add("sale_price", "SalePriceWithCurrency");
 			_propertyMapping.Add("sale_price_effective_date", "SalePriceEffectiveDate");
 			_propertyMapping.Add("unit_pricing_measure", "");
 			_propertyMapping.Add("unit_pricing_base_measure", "");

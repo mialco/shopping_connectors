@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace mialco.shopping.connector.RawFeed
@@ -14,9 +15,10 @@ namespace mialco.shopping.connector.RawFeed
 		public string ProductId { get; set; }
 		public Dictionary<string, string> FeedRecord { get;set;}
 
-
+		
 		public string GetFeedValue( string key)
 		{
+			//todo: Test Method
 			var result = string.Empty;
 
 			if (string.IsNullOrEmpty(key)) return string.Empty;
@@ -36,6 +38,33 @@ namespace mialco.shopping.connector.RawFeed
 			}
 			return result;
 		}
+
+		public bool GetFeedValue(string key, out int value)
+		{
+			//Todo: test Method
+			var result = false;
+			var stringVal = GetFeedValue(key)??string.Empty;
+
+			result = int.TryParse(stringVal, out value);
+			
+			return result;
+		}
+
+
+		public bool GetFeedValue(string key, out  decimal value)
+		{
+			//Todo: test Method
+			var result = false;
+			var stringVal = GetFeedValue(key) ?? string.Empty;
+			//var numberStyle = NumberStyles.AllowCurrencySymbol | NumberStyles.Any;
+			var numberStyle = NumberStyles.Any;
+			result = decimal.TryParse(stringVal,numberStyle,null, out value);
+
+			return result;
+		}
+
+
+
 
 	}
 

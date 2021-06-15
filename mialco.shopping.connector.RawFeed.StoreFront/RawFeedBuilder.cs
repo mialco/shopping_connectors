@@ -202,9 +202,12 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 										rawFeedRecord.FeedRecord.Add("Condition", GetContition(variant)); //TODO: Improve method
 										rawFeedRecord.FeedRecord.Add("Availability", GetAvailability(variant)); //TODO: improve method -currently hard-coded value
 										rawFeedRecord.FeedRecord.Add("AvailabilityDate", GetAvailabilityDate(p.ProductID));
+										rawFeedRecord.FeedRecord.Add("Inventory", variant.Inventory.ToString());
+										rawFeedRecord.FeedRecord.Add("SalePriceWithCurrency", GetSalePriceWithCurrency(variant)); //TODO: Hardcoded currency 
 										rawFeedRecord.FeedRecord.Add("SalePrice", GetSalePrice(variant)); //TODO: Hardcoded currency 
 										rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate", GetSalePriceEffecctiveDate(variant).ToString());
-										rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString() + " USD");
+										rawFeedRecord.FeedRecord.Add("PriceWithCurrency", (variant.Price + size.AddedPrice + color.AddedPrice).ToString() + " USD");
+										rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString());
 										rawFeedRecord.FeedRecord.Add("Gtin", GetGtin(variant)); // TODO: Test data retrieval from the database
 										rawFeedRecord.FeedRecord.Add("Brand", GetBrand(store));
 										rawFeedRecord.FeedRecord.Add("MPN", GetMpn(productId, variant));
@@ -453,13 +456,22 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 			return null;
 		}
 
-		public string GetSalePrice(ProductVariant variant )
+		public string GetSalePrice(ProductVariant variant)
 		{
 			var result = string.Empty;
 			var defaultCurrency = _shoppingConnectorConfiguration.GetValue("");
 			if (variant == null) return result;
 			var salePrice = variant.SalePrice.HasValue ? variant.SalePrice.Value : variant.Price;
 			if (salePrice <= 0) salePrice = variant.Price;
+			result = salePrice.ToString();
+			return result;
+		}
+
+		public string GetSalePriceWithCurrency(ProductVariant variant )
+		{
+			var result = string.Empty;
+			var defaultCurrency = _shoppingConnectorConfiguration.GetValue("");
+			var salePrice  =GetSalePrice(variant);
 			result = $"{salePrice} {defaultCurrency}";
 			return result;
 		}
