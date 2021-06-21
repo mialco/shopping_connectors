@@ -10,5 +10,6 @@ namespace mialco.abstractions
 			void LogWarning(string message, string referenceId, [CallerMemberName] string caller = "");
 			void LogInfo(string message, string referenceId, [CallerMemberName] string caller = "");
 			void LogError(string message, string referenceId, [CallerMemberName] string caller = "");
+
 	}
 }

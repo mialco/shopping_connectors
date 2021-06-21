@@ -4,9 +4,9 @@ using System.Text;
 
 namespace mialco.shopping.connector.intefaces
 {
-  //  public interface IRepository<T>
-  //  {
-		//T Get(long id);
-		//IEnumerable<T> GetAll();
-  //  }
+    public interface IRepository<T>
+    {
+		T GetById(int id);
+		IEnumerable<T> GetAll();
+    }
 }

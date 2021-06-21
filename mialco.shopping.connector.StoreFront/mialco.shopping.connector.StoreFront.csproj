@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\mialco.shopping.connector.intefaces\mialco.shopping.connector.intefaces.csproj" />
+  </ItemGroup>
+
 </Project>

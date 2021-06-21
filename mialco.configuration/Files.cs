@@ -12,6 +12,6 @@ namespace mialco.configuration
 		public string XmlOutputFeedBase { get; set; }
 		public string GoogleCategoriesFile { get; set; }
 		public string EbayCategoriesFile { get; set; }
-
+		public string LogFile { get; set; }
 	}
 }

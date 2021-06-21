@@ -12,12 +12,8 @@ namespace mialco.shopping.connector.StoreFront
 
 		public StoreFrontDbContext(string connectionString ) : base()
 		{
-			_connectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;";
-		}
+			_connectionString = connectionString;
 
-		public StoreFrontDbContext() : base()
-		{
-			_connectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;";
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -114,6 +110,7 @@ namespace mialco.shopping.connector.StoreFront
 		public DbSet<ProductStore> ProductStore { get; set; }
 		public DbSet<ProductCategory> ProductCategory { get; set; }
 		public DbSet<ProductType> ProductType { get; set; }
+		public DbSet<Category> Category { get; set; }
 
 	}
 }

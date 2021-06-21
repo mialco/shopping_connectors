@@ -63,7 +63,8 @@
 		],
 		"Folders": {
 			"InputFolder": "C:\\Data\\Mialco\\Development\\ShoppingConnectorResources\\Data\\Input",
-			"OutputFolder": "C:\\Data\\Mialco\\Development\\ShoppingConnectorResources\\Data\\Output"
+			"OutputFolder": "C:\\Data\\Mialco\\Development\\ShoppingConnectorResources\\Data\\Output",
+			"LogFolder": "C:\\Data\\Mialco\\Development\\ShoppingConnectorResources\\Data\\Log"
 		},
 		"Files": {
 			"CategoriesBaseFile": "IRosePetalsCategories.csv",
@@ -72,7 +73,8 @@
 			"EbayCategoriesFile": "Ebay_US_Category_Changes_(May2021)_NFT-update.csv",
 			"ImageListBase": "StoreFrontImagesList.txt",
 			"XmlOutputFeedBase": "OutputFeed.xml",
-			"InputDataFilterBase": "InputDataFilter.json"
+			"InputDataFilterBase": "InputDataFilter.json",
+			"LogFile": "mialco_shopping_connector.log"
 		},
 		"FeedPlatforms": {
 			"GoogleFeedPrefix": "g",

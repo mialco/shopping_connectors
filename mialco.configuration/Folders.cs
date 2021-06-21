@@ -8,5 +8,6 @@ namespace mialco.configuration
 	{
 		public string InputFolder { get; set; }
 		public string OutputFolder { get; set; }
+		public string LogFolder { get; set; }
 	}
 }

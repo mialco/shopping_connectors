@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace biz_connector_cli
 {
@@ -13,7 +14,17 @@ namespace biz_connector_cli
 		static void Main(string[] args)
 		{
 			var errors = new List<Error> { };
-		
+			var settings  = ShoppingConnectorConfiguration.GetConfiguration().GetApplicationSettings();
+			var logfile = Path.Combine(settings.Folders.LogFolder, settings.Files.LogFile);
+			//Configure the logger
+			var logger = mialco.utilities.MialcoLogger.GetLogger();
+			logger.configure(logfile);
+			logger.LogInfo("Shopping connector cli started", "0");
+			logger.LogError("Testing logger error", "1");
+			logger.LogException(new Exception("Custom exception testing the logging"), "Message Excetion", "-1");
+			logger.LogException(new Exception("Custom exception 1 testing the logging"));
+			logger.LogWarning("Logging a warning to test the log module", "1");
+
 			Func<IFeedOptions, string> feed = fopts =>
 			{
 
@@ -30,7 +41,7 @@ namespace biz_connector_cli
 				//if (fopts.StoreId.HasValue)
 				//{
 					var applicationSettings = mialco.configuration.ShoppingConnectorConfiguration.GetConfiguration();
-					var runFullFeed = new StoreFrontFullFeed(fopts.StoreId, applicationSettings, fopts.InstanceName);
+					var runFullFeed = new StoreFrontFullFeed(fopts.StoreId, applicationSettings, fopts.InstanceName , logger);
 					runFullFeed.Run();
 
 				//}
@@ -39,6 +50,8 @@ namespace biz_connector_cli
 				//	Console.WriteLine("StoreId is mising");
 				//	fresult = "StoreId is missing";
 				//}
+
+
 
 				return fresult;
 			};

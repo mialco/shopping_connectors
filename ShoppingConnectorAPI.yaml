@@ -37,39 +37,39 @@ paths:
       summary: Returns a list of categories associated with a publisher (Amazon, Google etc)  
   
     put: 
-	  summary: Updates the categories associated with the publisher 
+      summary: Updates the categories associated with the publisher 
 
   /admin/config/default_category:
     get:
-	  summary: Returns the configuration category
-    responses: 
-	  '200':
+      summary: Returns the configuration category
+      responses: 
+        '200':
 
-      '400':
+        '400':
     put:
-	  summary: Sets the google default category for this API installation
+      summary: Sets the google default category for this API installation
 
   /admin/config/instance/list:
     get:
-	  summary: 
-    responses: 
-	  '200':
+      summary: 
+      responses: 
+        '200':
 
-      '400':
+        '400':
 
   /admin/config/instance/{instanceName}:
     get:
-	  summary: Re
+    summary: Re
     responses: 
-	  '200':
+    '200':
 
       '400':
 
   /admin/config/instance/default_category/{instanceName}:
     get:
-	  summary: Re
+    summary: Re
     responses: 
-	  '200':
+    '200':
 
       '400':
 
@@ -83,4 +83,18 @@ paths:
     post:
       parameter: policiValue
     delete:
+  /store/list:
+    get:
+      summary: Returns a list of stores
+
+  /category/list/all:
+    get:
+      summary: gets alist of all categories from all the strom from one installation
+  responses:
+    200:
+
+    400: 
+    
+  /category/list/{storeId}:
+
 

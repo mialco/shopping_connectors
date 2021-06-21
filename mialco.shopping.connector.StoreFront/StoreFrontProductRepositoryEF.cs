@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mialco.shopping.connector.intefaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,16 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 
 
+
 namespace mialco.shopping.connector.StoreFront
 {
-	public class StoreFrontProductRepositoryEF
+	public class StoreFrontProductRepositoryEF: IProductRepository<Product>
 	{
 
 		string _connectionString;
-		public StoreFrontProductRepositoryEF()
-		{
-			_connectionString = @"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;";
-		}
 
 		public StoreFrontProductRepositoryEF(string connectionString)
 		{
@@ -25,7 +23,7 @@ namespace mialco.shopping.connector.StoreFront
 
 		public IEnumerable<Product> GetAll(int storeId)
 		{
-			using (var ctx = new StoreFrontDbContext())
+			using (var ctx = new StoreFrontDbContext(_connectionString))
 			{
 				var prods = ctx.Product.Where(x => x.Published > 0
 				&& x.ProductStores.Any(ps => ps.StoreID == storeId
@@ -43,7 +41,7 @@ namespace mialco.shopping.connector.StoreFront
 
 		public IEnumerable<Product> GetAllFilteredByCategory(int storeId , IEnumerable<int> categories)
 		{
-			using (var ctx = new StoreFrontDbContext())
+			using (var ctx = new StoreFrontDbContext(_connectionString))
 			{
 				if (categories != null && categories.Count() > 0)
 				{
@@ -77,7 +75,7 @@ namespace mialco.shopping.connector.StoreFront
 
 		public Product GetById(int productId)
 		{
-			using (var ctx = new StoreFrontDbContext())
+			using (var ctx = new StoreFrontDbContext(_connectionString))
 			{
 				var product  = ctx.Product.Where(p => p.ProductID == productId).FirstOrDefault();
 				return product;

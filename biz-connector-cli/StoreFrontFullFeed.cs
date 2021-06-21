@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Text;
 using System.IO;
+using mialco.abstractions;
 
 namespace biz_connector_cli
 {
@@ -34,14 +35,15 @@ namespace biz_connector_cli
 		WebStoreDeploymentType _deploymentType;
 		private bool _isConfigValid = true;
 		private StringBuilder _runtimeMessage = new StringBuilder();
-
+		private IMialcoLogger _logger;
 		
 		
 
-		public StoreFrontFullFeed(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration , string appInstanceName)
+		public StoreFrontFullFeed(int storeId, ShoppingConnectorConfiguration shoppingConnectorConfiguration , string appInstanceName, mialco.abstractions.IMialcoLogger mialcoLogger)
 		{
 			string thisMethod = "StoreFrontFullFeed.Constructor";
 			this._storeId = storeId;
+			_logger = mialcoLogger;
 			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
 			_appSettings = _shoppingConnectorConfiguration.GetApplicationSettings();						
 			LoadInstanceSettings(appInstanceName);
@@ -52,8 +54,9 @@ namespace biz_connector_cli
 			//Early validation Validation of the configurations, to make sure that they are loaded
 			var appSettingsLoaded = _appSettings != null;
 			var appInstanceSettingsLoaded = _appInstanceSettings != null;
-			Console.WriteLine($"[{thisMethod}] appSetings Loaded: {appSettingsLoaded}  ");
-			Console.WriteLine($"[{thisMethod}] app Instance Seting sLoaded: {appInstanceSettingsLoaded}  ");
+		
+			_logger.LogInfo($"[{thisMethod}] appSetings Loaded: {appSettingsLoaded}","0");
+			_logger.LogInfo($"[{thisMethod}] app Instance Seting sLoaded: {appInstanceSettingsLoaded},  ","0");
 
 			if (appSettingsLoaded)
 			{

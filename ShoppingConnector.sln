@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.t
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{A6794480-4211-460C-B090-082EECB692D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.StoreFrontDbService", "mialco.shopping.connector.StoreFrontDbService\mialco.shopping.connector.StoreFrontDbService.csproj", "{D00B908D-6F94-4128-88A9-1610B6A90B53}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{E54CF22F-09EB-41D3-A575-A8A5653ACE48}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedServices", "SharedServices", "{626195FA-2078-4276-8034-CD9F122ED833}"
@@ -101,9 +99,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "biz-connector-cli", "biz-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.StoreFront.EbayCategoryMapping", "mialco.shopping.connector.StoreFront.EbayCategoryMapping\mialco.shopping.connector.StoreFront.EbayCategoryMapping.csproj", "{C0152542-9071-406F-8464-B611CA4F6778}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.FeedCommon", "mialco.shopping.connector.FeedCommon\mialco.shopping.connector.FeedCommon.csproj", "{8CBE9526-CFE3-4BAA-9FFE-6817B991A541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.FeedCommon", "mialco.shopping.connector.FeedCommon\mialco.shopping.connector.FeedCommon.csproj", "{8CBE9526-CFE3-4BAA-9FFE-6817B991A541}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.EbayFeed", "mialco.shopping.connector.EbayFeed\mialco.shopping.connector.EbayFeed.csproj", "{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.EbayFeed", "mialco.shopping.connector.EbayFeed\mialco.shopping.connector.EbayFeed.csproj", "{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.StoreFrontApi", "Services\mialco.shopping.connector.StoreFrontApi\mialco.shopping.connector.StoreFrontApi.csproj", "{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,10 +131,6 @@ Global
 		{A0343BE4-3BA5-4EDB-80F1-A6B76B631C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0343BE4-3BA5-4EDB-80F1-A6B76B631C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0343BE4-3BA5-4EDB-80F1-A6B76B631C60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D00B908D-6F94-4128-88A9-1610B6A90B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D00B908D-6F94-4128-88A9-1610B6A90B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D00B908D-6F94-4128-88A9-1610B6A90B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D00B908D-6F94-4128-88A9-1610B6A90B53}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0406F7BF-C256-4111-95E6-86FEEC68F9A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0406F7BF-C256-4111-95E6-86FEEC68F9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0406F7BF-C256-4111-95E6-86FEEC68F9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -251,6 +247,10 @@ Global
 		{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -258,7 +258,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{908D2215-C6E7-45E0-BABA-37121F43C439} = {D613846F-F247-45A0-83E9-908EED192B82}
 		{AA5B09B0-F87A-4C3C-B336-48E838B54B4B} = {710C509D-AF1B-4033-83B9-768EDB7300DB}
-		{D00B908D-6F94-4128-88A9-1610B6A90B53} = {A6794480-4211-460C-B090-082EECB692D7}
 		{0406F7BF-C256-4111-95E6-86FEEC68F9A9} = {626195FA-2078-4276-8034-CD9F122ED833}
 		{B3B9E800-B5DC-4302-B5B8-DC2CE7DE0401} = {626195FA-2078-4276-8034-CD9F122ED833}
 		{F9A3E99B-88E3-4537-A504-0D2AC2A45246} = {710C509D-AF1B-4033-83B9-768EDB7300DB}
@@ -276,6 +275,7 @@ Global
 		{487DCE2A-AAE1-45D2-BF70-C143DE1932BF} = {626195FA-2078-4276-8034-CD9F122ED833}
 		{8CBE9526-CFE3-4BAA-9FFE-6817B991A541} = {CD076112-6362-4732-88F1-62F30113572F}
 		{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05} = {CD076112-6362-4732-88F1-62F30113572F}
+		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9} = {A6794480-4211-460C-B090-082EECB692D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FEA44C69-BDAC-4409-9B5D-2362954201C7}
