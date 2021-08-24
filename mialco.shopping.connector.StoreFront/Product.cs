@@ -24,6 +24,9 @@ namespace mialco.shopping.connector.StoreFront
 		//}
 		public string Name { get; set; }
 		public string Description { get; set; }
+		public string SEDescription { get; set; }
+		public string SETitle { get; set; }
+		public string SEAltText { get; set; }
 		public Guid ProductGUID { get; set; }
 		public string ProductColor { get; set; }
 		public string Summary { get; set; }

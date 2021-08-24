@@ -6,8 +6,6 @@ namespace mialco.shopping.connector.EbayFeed
 {
 	internal static class  EbayFeedElementMapping
 	{
-
-
 		public const string AdditionalImageLink = "AdditionalImageLink";
 		public const string Availability = "Availability";
 		public const string AvailabilityDate = "AvailabilityDate";

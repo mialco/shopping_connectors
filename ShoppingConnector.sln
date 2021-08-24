@@ -103,7 +103,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.EbayFeed", "mialco.shopping.connector.EbayFeed\mialco.shopping.connector.EbayFeed.csproj", "{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mialco.shopping.connector.StoreFrontApi", "Services\mialco.shopping.connector.StoreFrontApi\mialco.shopping.connector.StoreFrontApi.csproj", "{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.StoreFrontApi", "Services\mialco.shopping.connector.StoreFrontApi\mialco.shopping.connector.StoreFrontApi.csproj", "{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

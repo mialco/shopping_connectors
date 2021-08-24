@@ -18,7 +18,7 @@ namespace mialco.shopping.connector.StoreFront
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer(@"Server =.\SQLExpress; Database = irosepetals; Trusted_Connection = True;");
+			optionsBuilder.UseSqlServer(_connectionString);
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

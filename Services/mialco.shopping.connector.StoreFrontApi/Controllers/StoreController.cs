@@ -40,7 +40,6 @@ namespace mialco.shopping.connector.StoreFrontApi.Controllers
 
 				throw;
 			}
-			return null;
 		}
 
 

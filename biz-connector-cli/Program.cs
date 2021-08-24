@@ -6,24 +6,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Autofac;
+using mialco.utilities;
+using mialco.abstractions;
 
 namespace biz_connector_cli
 {
 	class Program
 	{
+		//public static IContainer Container { get; set; }
+
 		static void Main(string[] args)
 		{
+
+			BuildContainer();
 			var errors = new List<Error> { };
 			var settings  = ShoppingConnectorConfiguration.GetConfiguration().GetApplicationSettings();
 			var logfile = Path.Combine(settings.Folders.LogFolder, settings.Files.LogFile);
 			//Configure the logger
-			var logger = mialco.utilities.MialcoLogger.GetLogger();
-			logger.configure(logfile);
+			//var logger = mialco.utilities.MialcoLogger.GetLogger();
+			IMialcoLogger logger;
+			using (var containerScope = AppUtilities.DiContainer.BeginLifetimeScope())
+			{
+				logger = containerScope.Resolve<IMialcoLogger>();
+
+			}
+
+			logger.Configure(logfile);
 			logger.LogInfo("Shopping connector cli started", "0");
 			logger.LogError("Testing logger error", "1");
 			logger.LogException(new Exception("Custom exception testing the logging"), "Message Excetion", "-1");
 			logger.LogException(new Exception("Custom exception 1 testing the logging"));
 			logger.LogWarning("Logging a warning to test the log module", "1");
+
+			mialco.shopping.repositories.CorrelationRepositoryLiteDb corl = new mialco.shopping.repositories.CorrelationRepositoryLiteDb("asdasDASD");
+			logger.LogInfo( corl.GetNextId("Correlation"),"0");
+			logger.LogInfo(corl.GetNextId("Correlation"), "0");
+			logger.LogInfo(corl.GetNextId("Correlation"), "0");
+			logger.LogInfo(corl.GetNextId("Correlation"), "0");
+			logger.LogInfo(corl.GetNextId("Store"), "0");
+			logger.LogInfo(corl.GetNextId("Store"), "0");
+			logger.LogInfo(corl.GetNextId("Sites"), "0");
+			logger.LogInfo(corl.GetNextId("Sites"), "0");
+			logger.LogInfo(corl.GetNextId("Sites"), "0");
+			logger.LogInfo(corl.GetNextId("Vendor"), "0");
+			logger.LogInfo(corl.GetNextId("Vendor"), "0");
+
+
+
 
 			Func<IFeedOptions, string> feed = fopts =>
 			{
@@ -131,5 +161,15 @@ namespace biz_connector_cli
 		}
 
 		public static string MakeError() { return "Error"; }
+
+		/// <summary>
+		/// Register components with AUTOFAC
+		/// </summary>
+		private static void BuildContainer()
+		{
+			var builder = new ContainerBuilder();
+			builder.RegisterType<MialcoLogger>().As<IMialcoLogger>();
+			AppUtilities.DiContainer = builder.Build();
+		}
 	}
 }

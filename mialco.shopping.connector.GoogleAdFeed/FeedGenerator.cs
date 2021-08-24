@@ -27,7 +27,6 @@ namespace mialco.shopping.connector.GoogleAdFeed
 		/// <param name="feedProerties"></param>
 		public void GenerateXmlFeed(string fileName, List<GenericFeedRecord> feedRecords, FeedProperties feedProperties)
 		{
-			
 
 			//GoogleXmlFileWriter is a helper class which writes records in
 			//an xml file formatted to align with the specifications requested 

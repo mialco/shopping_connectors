@@ -15,6 +15,8 @@ namespace mialco.shopping.connector.StoreFront
 		public decimal Price { get; set; }
 		public decimal? SalePrice { get; set; }
 		public string SkuSuffix { get; set; }
+		public string Description { get; set; }
+		public string SEDescription { get; set; }
 		public string Colors { get; set; }
 		public string ColorSKUModifiers { get; set; }
 		public string Sizes { get; set; }

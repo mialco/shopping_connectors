@@ -6,11 +6,34 @@ using System.Collections.Generic;
 using mialco.configuration;
 using System.Xml.Serialization;
 using System.IO;
+using mialco.shopping.connector.shared;
 
 namespace mialco.shopping.connector.EbayFeed
 {
 	public class EbayFeedGenerator
 	{
+		//todo: Get this frpm the configuration
+		private const int MaxAttributesPerProduct = 30;
+		private Dictionary<string, string> _ebayMappedConditions;
+		private Dictionary<int,List<string>> _
+		public EbayFeedGenerator()
+		{
+			InitializeEbayMappedConditions();
+		
+		}
+
+
+		/// <summary>
+		/// Loads the mapping between product condition of the raw feed and the ebay required condition name
+		/// </summary>
+		private void InitializeEbayMappedConditions()
+		{
+			//todo: Retrieve the map from the database
+			_ebayMappedConditions = new Dictionary<string, string>();
+			_ebayMappedConditions.Add(EbayConditionsMappedKeys.New, EbayProductConditions.NEW);
+		}
+
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -45,12 +68,12 @@ namespace mialco.shopping.connector.EbayFeed
 					product.SKU = sku;
 					var productInformation = new ProductTypeProductInformation();
 					product.productInformation = productInformation;
-					productInformation.title = rec.GetFeedValue(EbayFeedElementMapping.Title);
+					productInformation.title = GetTitle(rec);
 					product.productInformation.subtitle = string.Empty;
 
 					var productInformationdescription = new ProductTypeProductInformationDescription();
 					product.productInformation.description = productInformationdescription;
-					productInformationdescription.productDescription = rec.GetFeedValue(EbayFeedElementMapping.Description);
+					productInformationdescription.productDescription = GetProductDescription( rec);
 
 					productInformation.localizedFor = locale;
 
@@ -64,12 +87,12 @@ namespace mialco.shopping.connector.EbayFeed
 					productInformation.ePID = rec.GetFeedValue(EbayFeedElementMapping.ePID);
 					
 					// Pictures					
-					productInformation.pictureURL = GetPictureUrls(rec);
+					productInformation.	pictureURL = GetPictureUrls(rec);
 					//Attributes
 					productInformation.attribute = GetProductAttributes(rec);
 					//Codition
 					var conditionInfo = new ProductTypeProductInformationConditionInfo();
-					conditionInfo.condition = rec.GetFeedValue(EbayFeedElementMapping.Condition);
+					conditionInfo.condition =  GetEbayProductCondition(rec);
 					conditionInfo.conditionDescription = rec.GetFeedValue(EbayFeedElementMapping.ConditionDescription);
 					productInformation.conditionInfo = conditionInfo;
 
@@ -100,6 +123,31 @@ namespace mialco.shopping.connector.EbayFeed
 			}
 		}
 
+		private string GetEbayProductCondition(GenericFeedRecord rec)
+		{
+			var result = string.Empty;
+			var condition = rec.GetFeedValue(EbayFeedElementMapping.Condition);
+			if (string.IsNullOrEmpty(condition))
+			{
+				//todo: Logging
+				Console.WriteLine($"There is no condition associated with the product {rec.ProductId} in the raw record");
+			}
+			else
+			{
+				if (!_ebayMappedConditions.ContainsKey(condition))
+				{
+					Console.WriteLine($"There is no condition mapped for Ebay with the raw condition {condition}  for  the product {rec.ProductId} in the raw record");
+				}
+				else
+				{
+					result = _ebayMappedConditions[condition];
+				}
+			}
+			return result;
+		}
+
+
+
 
 		/// <summary>
 		/// Builds a list of the available attributes,like size, color, metal
@@ -108,8 +156,27 @@ namespace mialco.shopping.connector.EbayFeed
 		/// <returns></returns>
 		private AttributeType[] GetProductAttributes(GenericFeedRecord rec)
 		{
+
 			//Attributes
 			var attributes = new List<AttributeType>();
+			var categoryId = 0;
+			AttributeType attributeType;
+			var required = false;
+			foreach (var attributeName in EbayRequiredAttributeNames.AttributeList)
+			{
+				switch (attributeName)
+				{
+					case EbayRequiredAttributeNames.Color :
+					attributeType = 	GetColorAttribute(rec, categoryId, out required);
+						attributes.Add(attributeType);
+						break;
+					default:
+						break;
+
+				}
+			
+			}
+			
 			var color = rec.GetFeedValue(EbayFeedElementMapping.Color);
 			if (!string.IsNullOrEmpty(color)) attributes.Add(new AttributeType { name = "Color", Value = color });
 
@@ -120,6 +187,89 @@ namespace mialco.shopping.connector.EbayFeed
 			if (!string.IsNullOrEmpty(size)) attributes.Add(new AttributeType { name = "Metal", Value = metal });
 			return attributes.ToArray();
 
+		}
+
+		/// <summary>
+		/// It retrieves the color attribute of the product.
+		/// The category id is used to determine if this attribute is required for the respective category
+		/// </summary>
+		/// <param name="rec"></param>
+		/// <param name="categoryId"></param>
+		/// <returns></returns>
+		private AttributeType GetColorAttribute(GenericFeedRecord rec, int categoryId, out bool required)
+		{
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
+		/// Returns the title trimmed and truncated at 80 characters long
+		/// </summary>
+		/// <param name="rec"></param>
+		/// <returns></returns>
+		private string GetTitle(GenericFeedRecord rec)
+		{
+			//todo: get MaxLength from config
+			const int MaxLenght = 80;
+			var title= (rec.GetFeedValue(EbayFeedElementMapping.Title) ?? string.Empty).Trim() ;
+			if (title.Length == 0) 
+			{
+				Console.WriteLine($"WARNING : EbayFeedgenerator::GetTitle() - The Title field is Zero Length for {rec.ProductId}");
+			}
+			if (title.Length > MaxLenght)
+			{
+				Console.WriteLine($"WARNING : EbayFeedgenerator::GetTitle() - The Title field is longer than {MaxLenght} and will be truncated. RecordId: {rec.ProductId} Title: {title}");
+				title = title.Substring(0, MaxLenght);
+			}
+			return title;
+		}
+
+		private string GetProductDescription(GenericFeedRecord rec)
+		{
+
+			//todo: DescriptionMaxLength in the app configuration
+			const int DescriptionMaxLength = 800;
+
+			var result = string.Empty;
+
+			var variationSEDescription = rec.GetFeedValue(RawFeedFieldNames.VariantSEDescription);
+			if (!string.IsNullOrEmpty(variationSEDescription))
+			{
+				result = variationSEDescription;
+			}
+			else {
+				var seDescription = rec.GetFeedValue(RawFeedFieldNames.SEDescription);
+				if (!string.IsNullOrEmpty(seDescription))
+				{
+					result = seDescription;
+				}
+				else
+				{
+					var variationDescription = rec.GetFeedValue(RawFeedFieldNames.VariantDescription);
+					variationDescription = RemoveHtmlTags(variationDescription);
+					if (!string.IsNullOrEmpty(variationDescription))
+					{
+						result = variationDescription;
+					}
+					else
+					{
+						var description = rec.GetFeedValue(RawFeedFieldNames.Description);
+						description = RemoveHtmlTags(description);
+						result = description;
+					}
+				}
+			}
+			if (string.IsNullOrEmpty(result))
+			{ 
+			//todo: Log Error 
+			
+			}
+			return result;		
+		}
+
+		private string RemoveHtmlTags(string variationDescription)
+		{
+			//todo: implementation
+			return variationDescription;
 		}
 
 		/// <summary>
@@ -135,12 +285,16 @@ namespace mialco.shopping.connector.EbayFeed
 			{
 				pictureUrls.Add(pictureUrl);
 			}
-			pictureUrl = rec.GetFeedValue(EbayFeedElementMapping.AdditionalImageLink);
-			if (!string.IsNullOrEmpty(pictureUrl))
+			//ToDo: Additional Picture is allowed only for advanced Ebay subscrptions
+			var isAdvancedAccount = false;
+			if (isAdvancedAccount)
 			{
-				pictureUrls.Add(pictureUrl);
+				pictureUrl = rec.GetFeedValue(EbayFeedElementMapping.AdditionalImageLink);
+				if (!string.IsNullOrEmpty(pictureUrl))
+				{
+					pictureUrls.Add(pictureUrl);
+				}
 			}
-
 			return pictureUrls.ToArray();
 
 		}
@@ -224,7 +378,7 @@ namespace mialco.shopping.connector.EbayFeed
 			//todo: This is optional field The default is false
 			// When we will implement ebay product enhancemet,we shoudl be able to add logic to this field
 
-			return false;
+			return result;
 		}
 
 		private InventoryType GetProductInventory(GenericFeedRecord rec)

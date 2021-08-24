@@ -62,6 +62,11 @@ namespace mialco.configuration
 			}
 		}
 
+		public string EtsyShopName { get; set; }
+		public string EtsyGroup { get; set; }
+		public string EtsyAPIAppKey { get; set; }
+		public string EtsyApiBaseURL { get; set; }
+
 
 		/// <summary>
 		/// TODO!!!!!!!!!!!!!

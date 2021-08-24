@@ -20,7 +20,9 @@ namespace mialco.shopping.connector.StoreFront
 			{
 				using (var ctx = new StoreFrontDbContext(_connectionString))
 				{
-					var categories = ctx.Category.Where(c => c.Deleted == 0 && c.Published == 1).ToList();
+					var categories = ctx.Category.Where(c => c.Deleted == 0 && c.Published == 1).
+						OrderBy(c => c.ParentCategoryID).ThenBy(c => c.CategoryID)
+						.ToList();
 					return categories;
 				}
 			}

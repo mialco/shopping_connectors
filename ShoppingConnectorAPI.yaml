@@ -23,6 +23,17 @@ paths:
     get:
       summary: Lists all the application instances for the client  having client_id, handled by this API
 
+  /admin/product-source-type:
+    get:
+      summary: returns a list of Product Source Types
+  
+  /admin/product-source-type/{id}:
+    get:
+      summary: Gets 1 Product Source Type of id {id}
+    post:
+      summary : Updates the product source type
+    delete: 
+      summary: Delets the product source type
 
   /admin/categories/store/list/{feedid}/{instance_id}/{store_id}:
     get:

@@ -21,7 +21,11 @@
 				"EbayPaymentPolicy": "payment",
 				"EbayReturnPolicy": "return",
 				"EbayLocale": "en_AU,de_AT,en_CA,de_DE,es_ES,fr_FR,en_IN,it_IT,ru_RU,en_GB,en_US",
-				"OutputTo": [ "Google|XML", "Ebay|XML" ]
+				"OutputTo": [ "Google|XML", "Ebay|XML,Etsy|API" ],
+				"EtsyShopName": "bestsyracuse",
+				"EtsyGroup": "T-Shirt",
+				"EtsyAPIAppKey": "x74r3vqgl3w43soxxll37a0u",
+				"EtsyApiBaseURL": "https://openapi.etsy.com/v2"
 			},
 			{
 				"Name": "StoreFront-Dev_RomanianShirts",
@@ -80,7 +84,8 @@
 			"GoogleFeedPrefix": "g",
 			"GoogleFeedNamespace": "http://base.google.com/ns/1.0",
 			"EbayDefaultChannel": "EBAY_US",
-			"EbayLocale": "en_AU,de_AT,en_CA,de_DE,es_ES,fr_FR,en_IN,it_IT,ru_RU,en_GB,en_US"
+			"EbayLocale": "en_AU,de_AT,en_CA,de_DE,es_ES,fr_FR,en_IN,it_IT,ru_RU,en_GB,en_US",
+			"EtsyApiBaseURL": "https://openapi.etsy.com/v2"
 		},
 		"CreateFolders": "true",
 		"DefaultInstance": "StoreFront_Dev"

@@ -23,7 +23,7 @@ namespace mialco.utilities
 			_loggerInstance = new MialcoLogger();
 		}
 
-		public void configure(string logName)
+		public void Configure(string logName)
 		{
 			var config = new NLog.Config.LoggingConfiguration();
 			var logFile = new NLog.Targets.FileTarget("logFile") { FileName = logName };

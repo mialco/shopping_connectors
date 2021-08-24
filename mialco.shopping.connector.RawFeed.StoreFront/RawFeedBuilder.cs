@@ -36,6 +36,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 
 		public RawFeedBuilder(Store1 store ,ApplicationSettings applicationSettings, ApplicationInstanceSettings applicationInstanceSettings, IdentifiersFilters identifiersFilters)
 		{
+
 			_applicationSettings = applicationSettings;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_shoppingConnectorConfiguration = ShoppingConnectorConfiguration.GetConfiguration();
@@ -92,6 +93,8 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 		/// <param name="defaultVariantOnly"></param>
 		public List<GenericFeedRecord> BuildFeed(Store1 store, IEnumerable<Product> products, bool defaultVariantOnly)
 		{
+			
+
 			_rawData = new List<GenericFeedRecord>();
 			try
 			{
@@ -173,14 +176,18 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 										id++; //The Id we are just incrementing the previous id
 										var productId = GenerateProductId(p.ProductID, variant.VariantID, size.SkuModifier, color.SkuModifier);
 										rawFeedRecord.ProductId = productId;
-										rawFeedRecord.FeedRecord.Add("Id", productId);
-										rawFeedRecord.FeedRecord.Add("ColorOptionCount", colorOptionCount.ToString());
-										rawFeedRecord.FeedRecord.Add("SizeOptionCount", colorOptionCount.ToString());
-										rawFeedRecord.FeedRecord.Add("Size", size.Name);
-										rawFeedRecord.FeedRecord.Add("SizePriority", size.Priority.ToString());
-										rawFeedRecord.FeedRecord.Add("ColorPriority", color.Priority.ToString());
-										rawFeedRecord.FeedRecord.Add("Title", p.Name ?? "");
-										rawFeedRecord.FeedRecord.Add("Description", p.Description ?? "");
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Id, productId);
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.ColorOptionCount, colorOptionCount.ToString());
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.SizeOptionCount, colorOptionCount.ToString());
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Size, size.Name);
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.SizePriority, size.Priority.ToString());
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.ColorPriority, color.Priority.ToString());
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Title, p.Name ?? "");
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.SETitle, p.SETitle ?? "");
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Description, p.Description ?? "");
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.SEDescription, p.SEDescription ?? "");
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.VariantDescription, variant.Description ?? "");
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.VariantSEDescription, variant.SEDescription ?? "");
 										// The category from the store Front will be mapped to the
 										// Google field product_type
 										// The Value will be created by listing the entire path of a category with its 
@@ -191,36 +198,36 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 										//DEBT: Add category Logic
 										//rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate",)
 										//DEBT: AgeGroup
-										rawFeedRecord.FeedRecord.Add("AgeGroup", "");
-										rawFeedRecord.FeedRecord.Add("ManufaturingPartNumber", variant.ManufacturerPartNumber ?? "");
-										rawFeedRecord.FeedRecord.Add("ItemGroupId", $"{p.ProductID}-{variant.VariantID}");
-										rawFeedRecord.FeedRecord.Add("Weight", variant.Weight.ToString());
-										rawFeedRecord.FeedRecord.Add("Link", GetProductLink(p, _store));  //todo: test method
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.AgeGroup, "");
+										rawFeedRecord.FeedRecord.Add( RawFeedFieldNames.ManufaturingPartNumber, variant.ManufacturerPartNumber ?? "");
+										rawFeedRecord.FeedRecord.Add( RawFeedFieldNames.ItemGroupId, $"{p.ProductID}-{variant.VariantID}");
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Weight, variant.Weight.ToString());
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Link, GetProductLink(p, _store));  //todo: test method
 										var additionalImage = string.Empty;
-										rawFeedRecord.FeedRecord.Add("ImageLink", GetProductImage(p.ProductID, store, out additionalImage));//ToDo: Test Method
-										rawFeedRecord.FeedRecord.Add("AdditionalImageLink", additionalImage);
-										rawFeedRecord.FeedRecord.Add("Condition", GetContition(variant)); //TODO: Improve method
-										rawFeedRecord.FeedRecord.Add("Availability", GetAvailability(variant)); //TODO: improve method -currently hard-coded value
-										rawFeedRecord.FeedRecord.Add("AvailabilityDate", GetAvailabilityDate(p.ProductID));
-										rawFeedRecord.FeedRecord.Add("Inventory", variant.Inventory.ToString());
-										rawFeedRecord.FeedRecord.Add("SalePriceWithCurrency", GetSalePriceWithCurrency(variant)); //TODO: Hardcoded currency 
-										rawFeedRecord.FeedRecord.Add("SalePrice", GetSalePrice(variant)); //TODO: Hardcoded currency 
-										rawFeedRecord.FeedRecord.Add("SalePriceEffectiveDate", GetSalePriceEffecctiveDate(variant).ToString());
-										rawFeedRecord.FeedRecord.Add("PriceWithCurrency", (variant.Price + size.AddedPrice + color.AddedPrice).ToString() + " USD");
-										rawFeedRecord.FeedRecord.Add("Price", (variant.Price + size.AddedPrice + color.AddedPrice).ToString());
-										rawFeedRecord.FeedRecord.Add("Gtin", GetGtin(variant)); // TODO: Test data retrieval from the database
-										rawFeedRecord.FeedRecord.Add("Brand", GetBrand(store));
-										rawFeedRecord.FeedRecord.Add("MPN", GetMpn(productId, variant));
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.ImageLink, GetProductImage(p.ProductID, store, out additionalImage));//ToDo: Test Method
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.AdditionalImageLink, additionalImage);
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Condition, GetContition(variant)); //TODO: Improve method
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Availability, GetAvailability(variant)); //TODO: improve method -currently hard-coded value
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.AvailabilityDate, GetAvailabilityDate(p.ProductID));
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Inventory, variant.Inventory.ToString());
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.SalePriceWithCurrency, GetSalePriceWithCurrency(variant)); //TODO: Hardcoded currency 
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.SalePrice, GetSalePrice(variant)); //TODO: Hardcoded currency 
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.SalePriceEffectiveDate, GetSalePriceEffecctiveDate(variant).ToString());
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.PriceWithCurrency, (variant.Price + size.AddedPrice + color.AddedPrice).ToString() + " USD");
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Price, (variant.Price + size.AddedPrice + color.AddedPrice).ToString());
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Gtin, GetGtin(variant)); // TODO: Test data retrieval from the database
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Brand, GetBrand(store));
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.MPN, GetMpn(productId, variant));
 										if(_applicationInstanceSettings.HasGoogleFeed)
-											rawFeedRecord.FeedRecord.Add("Category", GetGoogleProductCategory(p));
+											rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Category, GetGoogleProductCategory(p));
 										if (_applicationInstanceSettings.HasEbayFeed)
-											rawFeedRecord.FeedRecord.Add("EbayCategoryId", GetEbayProductCategory(p).ToString());
+											rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.EbayCategoryId, GetEbayProductCategory(p).ToString());
 
-										rawFeedRecord.FeedRecord.Add("ProductType", GetProductType(p)); //todo: implement method
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.ProductType, GetProductType(p)); //todo: implement method
 																														//todo: rawFeedRecord.FeedRecord.Add("ShippingCountry", GetProductType(p.ProductID)); //todo: implement method
 																														//todo: rawFeedRecord.FeedRecord.Add("ShippingService", GetProductType(p.ProductID)); //todo: implement method
 																														//todo: rawFeedRecord.FeedRecord.Add("ShippingPrice", GetProductType(p.ProductID)); //todo: implement method
-										rawFeedRecord.FeedRecord.Add("Color", color.Name);
+										rawFeedRecord.FeedRecord.Add(RawFeedFieldNames.Color, color.Name);
 
 
 

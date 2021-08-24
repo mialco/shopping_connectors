@@ -11,5 +11,7 @@ namespace mialco.configuration
 
 		public string EbayDefaultChannel { get; set; }
 		public string EbayLocale { get; set; }
+
+		public string EtsyApiBaseURL { get; set; }
 	}
 }
