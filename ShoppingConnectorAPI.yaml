@@ -2,6 +2,7 @@ openapi: 3.0.0
 info: API for GGA Automation for XEH - XCeptor runtime control
 description: Commands and queries for controlling XEH - XCeptor runtime
 version:  0.1.1
+# https://spec.openapis.org/oas/v3.1.0
 
 servers:
   - url: http://api.example.com/v1
@@ -101,11 +102,63 @@ paths:
   /category/list/all:
     get:
       summary: gets alist of all categories from all the strom from one installation
-  responses:
-    200:
+    responses:
+      '200':
 
-    400: 
+      '400': 
     
   /category/list/{storeId}:
 
 
+  /etsy/auth/start/{storeId}:
+    /get:
+      summary: |
+        This is used to produce the required data for startign the Etsy authorization process by the client
+        In the first step, the client needs to call etsy for a temporary token. 
+        For this, the client needs a challenge code (PKCE), a random state code, an etsy store key
+        and a list of etsy scopes. The etsy scopes are allowing access to different sections of the etsy application
+        The API will create the state key, the verification code, the correspondent challenge (PKCE format).
+        The API will store under the key {stateKey} the verification code, the challenge code (PKCE format), 
+        the method used to create the PKCE, the etsy store key and the scopes 
+        (the record will also contain placeholders for the auth token, refresh token and token expiration time ) 
+        It will return an object of;State Key, Etsy Store Key, PKCE code, PKCE Challenge Method, Etsy temp request url, return Url 
+  responses:
+    '200':
+      description: the parameters and keys needed by the client UI to make the call to etsy for the  temporary token
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              stateCode: #Unique code to track the request 
+                type: string
+              client_key: #client code identifying a client store with Etsy
+                type: string
+              challenge: # code PKCE format 
+                type: string
+              tempTokenUrl: #the url where we go to obtain the temp auth from rtsy
+                type: string
+              call_back_url: # the url which etsy calls back with the temp authorization
+
+
+
+                type: string
+              
+              
+    
+
+  /etsy/auth/request:
+
+  /etsy/auth/token/state/{storeId}/{scopes}:
+    /get:
+      summary: |
+        gets the state of the authorization token for a specific store 
+        and the list of scopes specified in the parametrer
+      content:
+        application/json:
+
+    responses:
+      '200':
+        description: Returns 
+
+      '400': 

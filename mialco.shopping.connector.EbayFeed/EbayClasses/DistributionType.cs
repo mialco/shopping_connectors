@@ -30,6 +30,24 @@ namespace mialco.shopping.connector.EbayFeed.EbayClasses
             }
         }
 
+        private string localizedForField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string localizedFor
+        {
+            get
+            {
+                return this.localizedForField;
+            }
+            set
+            {
+                this.localizedForField = value;
+            }
+        }
+
+
+
         /// <remarks/>
         public DistributionTypeChannelDetails channelDetails
         {

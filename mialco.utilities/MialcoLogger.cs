@@ -13,10 +13,10 @@ namespace mialco.utilities
 		//Implementing a singleton
 
 		private static MialcoLogger _loggerInstance;
-		NLog.Logger _fileLogger;
-		NLog.Logger _consoleLogger;
-		NLog.Logger _colorConsoleLogger;
-		NLog.Logger _dbLogger;
+		private static NLog.Logger _fileLogger;
+		private static NLog.Logger _consoleLogger;
+		private static NLog.Logger _colorConsoleLogger;
+		private static NLog.Logger _dbLogger;
 
 		static MialcoLogger()
 		{
@@ -25,6 +25,7 @@ namespace mialco.utilities
 
 		public void Configure(string logName)
 		{
+			
 			var config = new NLog.Config.LoggingConfiguration();
 			var logFile = new NLog.Targets.FileTarget("logFile") { FileName = logName };
 			//var logconsole = new NLog.Targets.ConsoleTarget("logconsole");

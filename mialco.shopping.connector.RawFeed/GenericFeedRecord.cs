@@ -64,6 +64,18 @@ namespace mialco.shopping.connector.RawFeed
 		}
 
 
+		public bool GetFeedValue(string key, out float value)
+		{
+			//Todo: test Method
+			var result = false;
+			var stringVal = GetFeedValue(key) ?? string.Empty;
+			//var numberStyle = NumberStyles.AllowCurrencySymbol | NumberStyles.Any;
+			var numberStyle = NumberStyles.Any;
+			result = float.TryParse(stringVal, numberStyle, null, out value);
+
+			return result;
+		}
+
 
 
 	}

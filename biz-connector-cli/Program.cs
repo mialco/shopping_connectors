@@ -9,6 +9,8 @@ using System.IO;
 using Autofac;
 using mialco.utilities;
 using mialco.abstractions;
+using mialco.shopping.connector.EbayFeed.Abstraction;
+using mialco.shopping.connector.EbayFeed.Data;
 
 namespace biz_connector_cli
 {
@@ -18,6 +20,11 @@ namespace biz_connector_cli
 
 		static void Main(string[] args)
 		{
+
+
+			var authData1 = AuthUtils.GenerateCodeChallenge();
+			var authData2 = AuthUtils.GenerateCodeChallenge();
+
 
 			BuildContainer();
 			var errors = new List<Error> { };
@@ -31,6 +38,10 @@ namespace biz_connector_cli
 				logger = containerScope.Resolve<IMialcoLogger>();
 
 			}
+
+			var ebaySeeding = new mialco.shopping.connector.shared.EbayDbSeeding(settings.ConnectionStrings.EbayFeedDb);
+			ebaySeeding.AtributeNamesSeeding();
+			ebaySeeding.EbayChannelSeeding();
 
 			logger.Configure(logfile);
 			logger.LogInfo("Shopping connector cli started", "0");
@@ -169,6 +180,7 @@ namespace biz_connector_cli
 		{
 			var builder = new ContainerBuilder();
 			builder.RegisterType<MialcoLogger>().As<IMialcoLogger>();
+			builder.RegisterType<EbayFeedCategoryAttributesRepositoryDbLite>().As<IEbayFeedCategoryAttributesRepository>();
 			AppUtilities.DiContainer = builder.Build();
 		}
 	}

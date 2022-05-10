@@ -9,8 +9,12 @@ namespace mialco.configuration
 		private Dictionary<string, string> _outputTo;
 		public string Name { get; set; }
 		public string Description { get; set; }
+		//todo : Include this in "ConnectionStrings"
 		public string ConnecttionString { get; set; }
 		public string DeploymentType { get; set; }
+
+		public string InventoryOverride { get; set; }
+
 		public string ImagesListFileName { get; set; }
 		public string DefaultGoogleCategory { get; set; }
 		public int DefaultEbayCategoryId { get; set; }
@@ -62,10 +66,23 @@ namespace mialco.configuration
 			}
 		}
 
+		public bool HasEtsyFeed
+		{
+			get
+			{
+				if (_outputTo == null) ProcessOutputToSettings();
+				return _outputTo.ContainsKey(MarketingPlatforms.Etsy.ToString());
+
+			}
+		}
+
+
 		public string EtsyShopName { get; set; }
 		public string EtsyGroup { get; set; }
 		public string EtsyAPIAppKey { get; set; }
 		public string EtsyApiBaseURL { get; set; }
+		public int EtsyDefaultCategoryId { get; set; }
+		public int EtsyShippingProfileId { get; set; }
 
 
 		/// <summary>

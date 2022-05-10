@@ -61,6 +61,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScripts", "SqlScripts", 
 	ProjectSection(SolutionItems) = preProject
 		Categories.sql = Categories.sql
 		ProductAndVariants.sql = ProductAndVariants.sql
+		ProductAndVariantsWithCategories.sql = ProductAndVariantsWithCategories.sql
 		ProductsAndStores.sql = ProductsAndStores.sql
 		ProductVariantsCounts.sql = ProductVariantsCounts.sql
 	EndProjectSection
@@ -104,6 +105,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.EbayFeed", "mialco.shopping.connector.EbayFeed\mialco.shopping.connector.EbayFeed.csproj", "{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.StoreFrontApi", "Services\mialco.shopping.connector.StoreFrontApi\mialco.shopping.connector.StoreFrontApi.csproj", "{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.EbayFeed.Abstraction", "mialco.shopping.connector.EbayFeed.Abstraction\mialco.shopping.connector.EbayFeed.Abstraction.csproj", "{9C3F772E-767D-4523-B43E-2F79476317EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.EbayFeed.Data", "mialco.shopping.connector.EbayFeed.Data\mialco.shopping.connector.EbayFeed.Data.csproj", "{14E138DD-D8B9-415A-98B6-C71E36D73FB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.StoreFront.ImportSvc", "mialco.shopping.connector.StoreFront.ImportSvc\mialco.shopping.connector.StoreFront.ImportSvc.csproj", "{D27FF14A-1654-4CE5-A150-71423F2D0AEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mialco.shopping.connector.EtsyFeed", "mialco.shopping.connector.EtsyFeed\mialco.shopping.connector.EtsyFeed.csproj", "{3C4B74C5-A5BA-4895-918A-1261EB0A6AB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{76B7A251-D771-4991-A62D-92F085086EC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -251,6 +262,22 @@ Global
 		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C3F772E-767D-4523-B43E-2F79476317EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3F772E-767D-4523-B43E-2F79476317EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3F772E-767D-4523-B43E-2F79476317EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3F772E-767D-4523-B43E-2F79476317EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14E138DD-D8B9-415A-98B6-C71E36D73FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E138DD-D8B9-415A-98B6-C71E36D73FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E138DD-D8B9-415A-98B6-C71E36D73FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E138DD-D8B9-415A-98B6-C71E36D73FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D27FF14A-1654-4CE5-A150-71423F2D0AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D27FF14A-1654-4CE5-A150-71423F2D0AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D27FF14A-1654-4CE5-A150-71423F2D0AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D27FF14A-1654-4CE5-A150-71423F2D0AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C4B74C5-A5BA-4895-918A-1261EB0A6AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C4B74C5-A5BA-4895-918A-1261EB0A6AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C4B74C5-A5BA-4895-918A-1261EB0A6AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C4B74C5-A5BA-4895-918A-1261EB0A6AB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -276,6 +303,9 @@ Global
 		{8CBE9526-CFE3-4BAA-9FFE-6817B991A541} = {CD076112-6362-4732-88F1-62F30113572F}
 		{4905821B-A6F5-4B07-BEC8-4A6AAD97FA05} = {CD076112-6362-4732-88F1-62F30113572F}
 		{F522CE73-4660-4F0B-B186-C7ED06D1CAF9} = {A6794480-4211-460C-B090-082EECB692D7}
+		{9C3F772E-767D-4523-B43E-2F79476317EA} = {CD076112-6362-4732-88F1-62F30113572F}
+		{14E138DD-D8B9-415A-98B6-C71E36D73FB3} = {CD076112-6362-4732-88F1-62F30113572F}
+		{3C4B74C5-A5BA-4895-918A-1261EB0A6AB6} = {CD076112-6362-4732-88F1-62F30113572F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FEA44C69-BDAC-4409-9B5D-2362954201C7}

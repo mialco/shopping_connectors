@@ -15,6 +15,9 @@ using System.Linq;
 using mialco.configuration;
 using mialco.shopping.connector.FeedCommon;
 using mialco.shopping.connector.EbayFeed;
+using Autofac;
+using mialco.shopping.connector.EbayFeed.Abstraction;
+using mialco.shopping.connector.EtsyFeed;
 
 namespace mialco.shopping.connector.Orchestrator
 {
@@ -32,13 +35,15 @@ namespace mialco.shopping.connector.Orchestrator
 		private Store1 _store;
 		RawFeedBuilder _rawFeedBuilder;
 		GoogleCategoryMapping _googleCategoryMapping;
-
+		private IMialcoLogger _logger;
+		private IEbayFeedCategoryAttributesRepository _ebayCategoryAttributesRepo;
 
 		public StoreFrontOrchestratorZero(int storeId, ApplicationInstanceSettings applicationInstanceSettings)
 		{
 			_storeId = storeId;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_deploymentType = ShoppingConnectorUtills.DeploymentTypeFromString (applicationInstanceSettings.DeploymentType);
+			InitializeContainer();
 		}
 
 
@@ -51,6 +56,7 @@ namespace mialco.shopping.connector.Orchestrator
 		{
 			_storeId = storeId;
 			_deploymentType = deploymentType;
+			InitializeContainer();
 		}
 
 
@@ -66,6 +72,7 @@ namespace mialco.shopping.connector.Orchestrator
 			_shoppingConnectorConfiguration = shoppingConnectorConfiguration;
 			//_rawFeedBuilder = new RawFeedBuilder(_applicationSettings , _applicationInstanceSettings);
 			//_googleCategoryMapping = _rawFeedBuilder.GoogleCategoryMapping;
+			InitializeContainer();
 		}
 
 
@@ -76,9 +83,23 @@ namespace mialco.shopping.connector.Orchestrator
 			_applicationSettings = applicationSettings;
 			_applicationInstanceSettings = applicationInstanceSettings;
 			_identifiersFilters = identifiersFilters;
+			InitializeContainer();
+
 		}
 
 
+		private void InitializeContainer()
+		{
+			using (var containerScope = AppUtilities.DiContainer.BeginLifetimeScope())
+			{
+				_logger = containerScope.Resolve<IMialcoLogger>();
+				_ebayCategoryAttributesRepo = containerScope.Resolve<IEbayFeedCategoryAttributesRepository>(new TypedParameter(typeof(string), _applicationSettings.ConnectionStrings.EbayFeedDb));
+				_logger.LogWarning("AsdasdasdasdasdASD ehehehehe hehe","asdasdasd");
+
+			}
+
+
+		}
 		/// <summary>
 		/// This is executing the following steps  :
 		/// * Executes ExtactData() Extracts data from the storefront database, process it  and saves it on some storage type 
@@ -147,7 +168,7 @@ namespace mialco.shopping.connector.Orchestrator
 			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
 			Console.WriteLine("Starting Building Feed from the product data");
 
-			_rawData = _rawFeedBuilder.BuildFeed(_store, _products, true);
+			_rawData = _rawFeedBuilder.BuildFeed(_store, _products, false);
 			//BuildFeed(_store, _products, _googleCategoryMapping, true);
 
 
@@ -192,17 +213,28 @@ namespace mialco.shopping.connector.Orchestrator
 				feedGenerator.GenerateXmlFeed(outputFile, _rawData, feedProperties);
 			}
 
-			if (_applicationInstanceSettings.HasEbayFeed)
+			//TODO: Definetely we need some refactoring here with these if 
+			// We may need to come up with something like a rule engine to run each output
+			if (_applicationInstanceSettings.HasEtsyFeed)
 			{
 
 				var timeStamp = $"{DateTime.Now.Year}{DateTime.Now.Month.ToString("00")}{DateTime.Now.Day.ToString("00")}{DateTime.Now.Hour.ToString("00")}{DateTime.Now.Minute.ToString("00")}{DateTime.Now.Second.ToString("00")}";
-				var outputFileName = $"{_applicationInstanceSettings.Name}_{MarketingPlatforms.Ebay.ToString()}_{timeStamp}_{applicationSettings.Files.XmlOutputFeedBase}";
-				var outputFile = Path.Combine(_applicationSettings.Folders.OutputFolder, outputFileName);
-				var ebayFeedGenerator = new EbayFeedGenerator();
-				ebayFeedGenerator.GenerateXmlFeed(outputFile , _rawData, _applicationInstanceSettings);
-
+				var outputFileName = $"{_applicationInstanceSettings.Name}_{MarketingPlatforms.Etsy.ToString()}_{timeStamp}_{applicationSettings.Files.XmlOutputFeedBase}";
+				outputFileName = Path.Combine(_applicationSettings.Folders.OutputFolder, outputFileName);
+				var etsyFeedGenerator = new EtsyFeedGenerator(_applicationSettings,_applicationInstanceSettings , _logger);
+				etsyFeedGenerator.GenerateFeed(outputFileName, _rawData, applicationInstanceSettings);
 			}
 
+			
+			if (_applicationInstanceSettings.HasEbayFeed)
+			{
+				var timeStamp = $"{DateTime.Now.Year}{DateTime.Now.Month.ToString("00")}{DateTime.Now.Day.ToString("00")}{DateTime.Now.Hour.ToString("00")}{DateTime.Now.Minute.ToString("00")}{DateTime.Now.Second.ToString("00")}";
+				var outputFileName = $"{_applicationInstanceSettings.Name}_{MarketingPlatforms.Ebay.ToString()}_{timeStamp}_{applicationSettings.Files.XmlOutputFeedBase}";
+				var outputFile = Path.Combine(_applicationSettings.Folders.OutputFolder, outputFileName);
+				var ebayFeedGenerator = new EbayFeedGenerator(_applicationSettings, _applicationInstanceSettings, _logger, _ebayCategoryAttributesRepo);
+				ebayFeedGenerator.GenerateXmlFeed(outputFile, _rawData, _applicationInstanceSettings);
+
+			}
 			return result;
 
 		}
@@ -242,7 +274,7 @@ namespace mialco.shopping.connector.Orchestrator
 			// Here is happening the core of the data processing logic from the database to the daat that will be put in the data stream
 			Console.WriteLine("Starting Building Feed from the product data"); 
 
-			_rawData= _rawFeedBuilder.BuildFeed(_store, _products, true);
+			_rawData= _rawFeedBuilder.BuildFeed(_store, _products, false);
 		
 			FeedGenerator feedGenerator = new FeedGenerator();
 

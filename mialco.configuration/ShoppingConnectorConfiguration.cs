@@ -99,7 +99,7 @@ namespace mialco.configuration
 				var instancesSettings = new Dictionary<string, ApplicationInstanceSettings>();
 				foreach (var item in instancesValues)
 				{
-					if (!instancesSettings.ContainsKey(item.Name))
+					if ( !instancesSettings.ContainsKey(item.Name))
 					{
 						instancesSettings.Add(item.Name, item);
 					}

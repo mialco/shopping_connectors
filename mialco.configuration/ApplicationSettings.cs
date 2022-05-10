@@ -9,12 +9,12 @@ namespace mialco.configuration
 	public class ApplicationSettings
 	{
 
+		public ConnectionStrings ConnectionStrings { get; set; }
 		public Folders Folders { get; set; }
 		public IReadOnlyDictionary<string, ApplicationInstanceSettings> ApplicationInstances;
 		public Files Files { get; set; }
 		public bool CreateFolders { get; set; }
 		public string DefaultInstance { get; set; }
-
 		public FeedPlatforms FeedPlatforms  {get;set;}
 
 	}

@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\mialco.shopping.connector.EbayFeed.Abstraction\mialco.shopping.connector.EbayFeed.Abstraction.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.EbayFeed.Data\mialco.shopping.connector.EbayFeed.Data.csproj" />
     <ProjectReference Include="..\mialco.storage.abstracts\mialco.storage.abstracts.csproj" />
   </ItemGroup>
 

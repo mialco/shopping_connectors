@@ -160,8 +160,17 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 							sizeOptions = new List<ProductAttribute> { new SizeOption { Name = String.Empty, AddedPrice = 0, SkuModifier = string.Empty } };
 						if (colorOptions == null || colorOptions.Count == 0)
 							colorOptions = new List<ProductAttribute> { new ColorOption { Name = string.Empty, AddedPrice = 0, SkuModifier = string.Empty } };
-						sizeOptions.ForEach(size =>
+
+						
+						
+						sizeOptions.Where(x=>x.Name=="1000").ToList().ForEach(size =>
 						{
+							if ((size.Name??"") != "1000")
+							{
+								//next;
+							}
+							else
+
 							sizeOptionCount++;
 							colorOptionCount = 0;
 							colorOptions.ForEach(color =>
@@ -443,8 +452,11 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 			imageRelativePath = imageRelativePath ?? string.Empty;
 			additionalImageRelativePath = additionalImageRelativePath ?? string.Empty;
 
-			var url = $"{storeURI}/{imageRelativePath}";
-			additionalImage = $"{storeURI}/{additionalImageRelativePath}";
+			//todo: Review adding the https artificially ASAP
+			var https = storeURI.StartsWith("https://") ? string.Empty : "https://";
+
+			var url = $"{https}{storeURI}/{imageRelativePath}";
+			additionalImage = $"{https}{storeURI}/{additionalImageRelativePath}";
 
 			result = url.ToString();
 
@@ -556,7 +568,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 					uriBuilder.Host,
 					uriBuilder.Path,
 					uriBuilder.Port) = GetStoreURIParts(deploymentType, store);
-
+			//uriBuilder.
 			return uriBuilder.ToString();
 
 		}
@@ -596,6 +608,7 @@ namespace mialco.shopping.connector.RawFeed.StoreFront
 				scheme = "http:";
 				host = host.PadRight(9).Substring(8).Trim();
 			}
+			scheme = string.IsNullOrEmpty(scheme) ? "https:" : scheme ;
 			host = (host ?? string.Empty).Trim();
 			return new Tuple<string, string, string, int>(scheme, host, path, port);
 		}

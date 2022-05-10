@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\mialco.configuration\mialco.configuration.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.EbayFeed.Abstraction\mialco.shopping.connector.EbayFeed.Abstraction.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.EbayFeed.Data\mialco.shopping.connector.EbayFeed.Data.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.FeedCommon\mialco.shopping.connector.FeedCommon.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.RawFeed\mialco.shopping.connector.RawFeed.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.shared\mialco.shopping.connector.shared.csproj" />

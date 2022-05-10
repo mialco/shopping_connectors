@@ -14,11 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\mialco.shopping.connector.EbayFeed.Abstraction\mialco.shopping.connector.EbayFeed.Abstraction.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.EbayFeed.Data\mialco.shopping.connector.EbayFeed.Data.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.GoogleAdFeed\mialco.shopping.connector.GoogleAdFeed.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.Orchestrator\mialco.shopping.connector.Orchestrator.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.RawFeed\mialco.shopping.connector.RawFeed.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.shared\mialco.shopping.connector.shared.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.StoreFront.GoogleCategoryMapping\mialco.shopping.connector.StoreFront.GoogleCategoryMapping.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.StoreFront.ImportSvc\mialco.shopping.connector.StoreFront.ImportSvc.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.StoreFront\mialco.shopping.connector.StoreFront.csproj" />
     <ProjectReference Include="..\mialco.utilities\mialco.utilities.csproj" />
     <ProjectReference Include="..\mialco.workflow.initiator\mialco.workflow.initiator.csproj" />

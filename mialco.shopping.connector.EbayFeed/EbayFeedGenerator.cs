@@ -7,6 +7,8 @@ using mialco.configuration;
 using System.Xml.Serialization;
 using System.IO;
 using mialco.shopping.connector.shared;
+using mialco.abstractions;
+using mialco.shopping.connector.EbayFeed.Abstraction;
 
 namespace mialco.shopping.connector.EbayFeed
 {
@@ -15,11 +17,32 @@ namespace mialco.shopping.connector.EbayFeed
 		//todo: Get this frpm the configuration
 		private const int MaxAttributesPerProduct = 30;
 		private Dictionary<string, string> _ebayMappedConditions;
-		private Dictionary<int,List<string>> _
-		public EbayFeedGenerator()
+		private Dictionary<int, List<string>> _ebayCategoryRequiredAttributes;
+		private ApplicationSettings _applicatiopnSettings;
+		private ApplicationInstanceSettings _applicationInstanceSettings;
+		private IMialcoLogger _logger;
+		private IEbayFeedCategoryAttributesRepository _ebayCategoryAttributesRepo;
+		private int _productCountOverride = 0;
+		public EbayFeedGenerator(ApplicationSettings applicationSettings,ApplicationInstanceSettings applicationInstanceSettings,  IMialcoLogger logger, IEbayFeedCategoryAttributesRepository attributesRepository)
 		{
+			_logger = logger;
+			_applicatiopnSettings = applicationSettings;
+			_applicationInstanceSettings = applicationInstanceSettings;
+			_ebayCategoryAttributesRepo = attributesRepository;
 			InitializeEbayMappedConditions();
-		
+			InitializeEbayCategoryRequiredAttributes();
+			InitializeProductCountOverride(applicationInstanceSettings);
+			
+		}
+
+		private void InitializeProductCountOverride(ApplicationInstanceSettings applicationInstanceSettings)
+		{
+			int.TryParse(applicationInstanceSettings.InventoryOverride, out _productCountOverride);
+		}
+
+		private void InitializeEbayCategoryRequiredAttributes()
+		{
+			_ebayCategoryRequiredAttributes = new Dictionary<int, List<string>>();
 		}
 
 
@@ -79,7 +102,7 @@ namespace mialco.shopping.connector.EbayFeed
 
 
 					var description = new ProductTypeProductInformationDescription();
-					productInformation.Brand = rec.GetFeedValue(EbayFeedElementMapping.Brand);
+					productInformation.Brand = string.Empty;// rec.GetFeedValue(EbayFeedElementMapping.Brand);
 					productInformation.UPC = rec.GetFeedValue(EbayFeedElementMapping.UPC);
 					productInformation.ISBN = rec.GetFeedValue(EbayFeedElementMapping.ISBN);
 					productInformation.EAN = rec.GetFeedValue(EbayFeedElementMapping.EAN);
@@ -167,9 +190,15 @@ namespace mialco.shopping.connector.EbayFeed
 				switch (attributeName)
 				{
 					case EbayRequiredAttributeNames.Color :
-					attributeType = 	GetColorAttribute(rec, categoryId, out required);
-						attributes.Add(attributeType);
+					//attributeType = 	GetColorAttribute(rec, categoryId, out required);
+					//	attributes.Add(attributeType);
 						break;
+					case EbayRequiredAttributeNames.Brand:
+						required = true;
+						//attributeType = Ge...(rec, categoryId, out required);
+						///attributes.Add(attributeType);
+						break;
+
 					default:
 						break;
 
@@ -177,14 +206,26 @@ namespace mialco.shopping.connector.EbayFeed
 			
 			}
 			
-			var color = rec.GetFeedValue(EbayFeedElementMapping.Color);
-			if (!string.IsNullOrEmpty(color)) attributes.Add(new AttributeType { name = "Color", Value = color });
+			//var color = (rec.GetFeedValue(EbayFeedElementMapping.Color)?? string.Empty).Trim();
+			//if (!string.IsNullOrEmpty(color)) attributes.Add(new AttributeType { name = "Color", Value = color });
 
-			var size = rec.GetFeedValue(EbayFeedElementMapping.Size);
-			if (!string.IsNullOrEmpty(size)) attributes.Add(new AttributeType { name = "Size", Value = color });
+			attributes.Add(new AttributeType { name = "Brand", Value = "Amore Rose Petals - New York" });
+			attributes.Add(new AttributeType { name = "Product", Value = "Topiary" });
+			//attributes.Add(new AttributeType { name = "Type", Value = "Table Skirt" });
+			attributes.Add(new AttributeType { name = "Type", Value = "Petals" });
+			attributes.Add(new AttributeType { name = "Occasion", Value = "Wedding" });
+			//attributes.Add(new AttributeType { name = "Occasion", Value = "Party" });
+			//attributes.Add(new AttributeType { name = "Occasion", Value = "All Occasions" });
+			//attributes.Add(new AttributeType { name = "Occasion", Value = "Anniversary" });
+			//attributes.Add(new AttributeType { name = "Occasion", Value = "Bachelorette Party" });
+			//attributes.Add(new AttributeType { name = "Occasion", Value = "Baby Shower" });
 
-			var metal = rec.GetFeedValue(EbayFeedElementMapping.Metal);
-			if (!string.IsNullOrEmpty(size)) attributes.Add(new AttributeType { name = "Metal", Value = metal });
+
+			//var size = rec.GetFeedValue(EbayFeedElementMapping.Size);
+			//if (!string.IsNullOrEmpty(size)) attributes.Add(new AttributeType { name = "Size", Value = color });
+
+			//var metal = rec.GetFeedValue(EbayFeedElementMapping.Metal);
+			//if (!string.IsNullOrEmpty(size)) attributes.Add(new AttributeType { name = "Metal", Value = metal });
 			return attributes.ToArray();
 
 		}
@@ -198,7 +239,11 @@ namespace mialco.shopping.connector.EbayFeed
 		/// <returns></returns>
 		private AttributeType GetColorAttribute(GenericFeedRecord rec, int categoryId, out bool required)
 		{
-			throw new NotImplementedException();
+			//todo: This method has to be redone considering all the conditions related to the category 
+		 var color =	rec.GetFeedValue(EbayFeedElementMapping.Color);
+			var attributeType = new AttributeType {name = EbayRequiredAttributeNames.Color, Value=color };
+			required = false;
+			return attributeType;
 		}
 
 		/// <summary>
@@ -215,6 +260,7 @@ namespace mialco.shopping.connector.EbayFeed
 			{
 				Console.WriteLine($"WARNING : EbayFeedgenerator::GetTitle() - The Title field is Zero Length for {rec.ProductId}");
 			}
+			title = $"1000 Wedding {title}, Petals & Garlands, Rose Petals"; 
 			if (title.Length > MaxLenght)
 			{
 				Console.WriteLine($"WARNING : EbayFeedgenerator::GetTitle() - The Title field is longer than {MaxLenght} and will be truncated. RecordId: {rec.ProductId} Title: {title}");
@@ -263,7 +309,7 @@ namespace mialco.shopping.connector.EbayFeed
 			//todo: Log Error 
 			
 			}
-			return result;		
+			return $"1000 {result} \n ******* All our products are shipped from our warehouse in Cicero, New York *******";		
 		}
 
 		private string RemoveHtmlTags(string variationDescription)
@@ -307,8 +353,12 @@ namespace mialco.shopping.connector.EbayFeed
 			var shippingCostOverrides = new DistributionTypeChannelDetailsShippingCostOverrides();
 			channelDetails.shippingCostOverrides = shippingCostOverrides; //Laurentiu:
 			channelDetails.channelID = applicationInstanceSettings.EbayChannel;
-
+			
 			var categoryId = 0;
+
+			var locale = applicationInstanceSettings.EbayLocale;
+			distribution.localizedFor = locale;
+
 			rec.GetFeedValue(EbayFeedElementMapping.CategotyId,out categoryId);
 			channelDetails.categorySpecified = true;
 			channelDetails.category = categoryId; // TODO: This is a mandatory field. Needs Validation! 
@@ -344,10 +394,10 @@ namespace mialco.shopping.connector.EbayFeed
 			priceDetails.listPrice = price;
 			priceDetails.listPriceSpecified = true;
 			var salesPrice = 0m;
-			if (rec.GetFeedValue(EbayFeedElementMapping.SalePrice, out salesPrice) && salesPrice> 0)
+			if (rec.GetFeedValue(EbayFeedElementMapping.SalePrice, out salesPrice) && salesPrice> 0 && salesPrice < price)
 			{
 				//todo - we need more logic to establish the sales price based on date for example
-				priceDetails.strikeThroughPriceSpecified = true;
+				priceDetails.strikeThroughPriceSpecified = false; ///!!!!!! hardcoded not to put sales price
 				priceDetails.strikeThroughPrice = salesPrice;
 			}
 			//TODO : Review minimumAdvertisedPrice implementation. This may be something imposed by a producer or distrbutor to the retailer 
@@ -381,6 +431,7 @@ namespace mialco.shopping.connector.EbayFeed
 			return result;
 		}
 
+		
 		private InventoryType GetProductInventory(GenericFeedRecord rec)
 		{
 			var inventory = new InventoryType();
@@ -390,8 +441,9 @@ namespace mialco.shopping.connector.EbayFeed
 			{
 				inventory.totalShipToHomeQuantity = inventoryCount;
 				inventory.totalShipToHomeQuantitySpecified = true;
+				if (_productCountOverride> 0 )
+					inventory.totalShipToHomeQuantity = _productCountOverride;
 			}
-
 			return inventory;
 		}
 

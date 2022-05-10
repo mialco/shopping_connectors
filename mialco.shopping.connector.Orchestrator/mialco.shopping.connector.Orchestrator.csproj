@@ -6,7 +6,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\mialco.abstractions\mialco.abstractions.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.EbayFeed.Abstraction\mialco.shopping.connector.EbayFeed.Abstraction.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.EbayFeed\mialco.shopping.connector.EbayFeed.csproj" />
+    <ProjectReference Include="..\mialco.shopping.connector.EtsyFeed\mialco.shopping.connector.EtsyFeed.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.FeedCommon\mialco.shopping.connector.FeedCommon.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.GoogleAdFeed\mialco.shopping.connector.GoogleAdFeed.csproj" />
     <ProjectReference Include="..\mialco.shopping.connector.RawFeed.StoreFront\mialco.shopping.connector.RawFeed.StoreFront.csproj" />
